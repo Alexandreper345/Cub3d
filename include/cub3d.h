@@ -50,9 +50,9 @@ typedef struct s_vars
 	void		*win;
 	int			width;
 	int			height;
-	t_player	*player;
-	t_map		*map;
-	t_game		*game;
+	t_player	player;
+	t_map		map;
+	t_game		game;
 } t_vars;
 
 int		parsing(int argc, char **argv);
