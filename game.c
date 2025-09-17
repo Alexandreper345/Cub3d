@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/15 18:27:42 by alda-sil         ###   ########.fr       */
+/*   Created: 2025-09-17 22:02:09 by erocha-l          #+#    #+#             */
+/*   Updated: 2025-09-17 22:02:09 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-int	main(int argc, char **argv)
+int game(t_vars *vars)
 {
-	t_vars vars;
-
-	init_vars(&vars);
-	//if (parsing(argc, argv))
-	//	return (1);
-	game(&vars);
+    printf("cheguei até aqui\n");
+    vars->mlx = mlx_init();
+    vars->win = mlx_new_window(vars->mlx, 1920, 1080, "Hello world!");
+    mlx_loop(vars->mlx);
+    return (0);
 }
