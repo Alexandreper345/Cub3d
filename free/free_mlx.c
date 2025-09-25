@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/24 21:30:30 by erocha-l         ###   ########.fr       */
+/*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/09/24 21:26:39 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
-int game(t_vars *vars)
+void    free_mlx(void *win)
 {
-    printf("cheguei até aqui\n");
-    vars->mlx = mlx_init();
-    if (vars->win == NULL)
-        free_mlx(vars->mlx);
-    vars->win = mlx_new_window(vars->mlx, 1920, 1080, "Hello world!");
-    mlx_loop(vars->mlx);
-    return (0);
+    mlx_destroy_display(win);
+    free(win);
 }

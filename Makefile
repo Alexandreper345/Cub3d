@@ -1,11 +1,12 @@
 NAME = Cub3d
 CC = cc -g
-FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux
+FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -fPIE
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c \
 			game.c \
 			vars_init.c \
+			free/free_mlx.c
 
 SRCC =  parsing/parsing.c error/ft_error.c
 SRC_DIR_SRC = src/
