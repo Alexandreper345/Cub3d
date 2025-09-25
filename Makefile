@@ -1,6 +1,6 @@
 NAME = Cub3d
 CC = cc -g
-FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -fPIE
+FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c \

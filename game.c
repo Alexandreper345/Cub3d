@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/24 23:04:31 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:17:13 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int game(t_vars *vars)
 {
     printf("cheguei até aqui\n");
     vars->mlx = mlx_init();
+    vars->win = mlx_new_window(vars->mlx, 1080, 720, "Hello world!");
     if (vars->win == NULL)
         free_mlx(vars->mlx);
-    vars->win = mlx_new_window(vars->mlx, 1920, 1080, "Hello world!");
     gameplay(vars);
     mlx_loop(vars->mlx);
     return (0);

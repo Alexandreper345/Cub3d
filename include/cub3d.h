@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/24 23:03:37 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:10:50 by erick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,12 @@ int		parsing(int argc, char **argv);
 void	ft_error(char *str);
 void    init_vars(t_vars *vars);
 int		game(t_vars *vars);
-void	simple_parser(t_map *map);
-void	free_mlx(void *win);
+void	simple_parser(t_map *map, char *path);
+void	free_mlx(t_vars *vars);
 void	gameplay(t_vars *vars);
+void	free_and_exit(t_vars *vars);
+int		escape(int keycode, t_vars *vars);
+int		x_button(t_vars *vars);
+
 
 #endif

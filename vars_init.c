@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vars_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/24 21:02:54 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 10:39:04 by erick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void    init_vars(t_vars *vars)
     ft_memset(&vars->player, 0, sizeof(t_player));
 }
 
-void simple_parser(t_map *map)
+void    simple_parser(t_map *map, char *path)
 {
     int     fd;
     char    *line;
     int     i;
 
-    fd = open("/mnt/c/Documents and Settings/Erick Rocha/Documents/code/cub3d/files/cubmap.cub", O_RDWR);
+    fd = open(path, O_RDWR);
     line = get_next_line(fd);
     i = 0;
     while (line != NULL)
@@ -38,10 +38,10 @@ void simple_parser(t_map *map)
         i++;
         line = get_next_line(fd);
     }
-    map->map = malloc(sizeof(char *) * i + 1);
+    map->map = ft_calloc(sizeof(char *), (i + 1));
     i = 0;
     close(fd);
-    fd = open("/mnt/c/Documents and Settings/Erick Rocha/Documents/code/cub3d/files/cubmap.cub", O_RDWR);
+    fd = open(path, O_RDWR);
     line = get_next_line(fd);
     while (line != NULL)
     {
@@ -64,4 +64,5 @@ void simple_parser(t_map *map)
     map->Ceiling[0] = 225;
     map->Ceiling[1] = 30;
     map->Ceiling[2] = 0;
+    close (fd);
 }
