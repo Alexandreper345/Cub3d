@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 12:15:09 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:53:27 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_vars vars;
 
-	//init_vars(&vars);
+	init_vars(&vars);
 	if (argc != 2)
 	{
 		perror("missing map file .cub");

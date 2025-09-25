@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vars_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 10:39:04 by erick            ###   ########.fr       */
+/*   Updated: 2025/09/25 12:57:59 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    init_vars(t_vars *vars)
     ft_memset(&vars->player, 0, sizeof(t_player));
 }
 
+// only to simulate a parser, it will be substitued for alexandre real parser
 void    simple_parser(t_map *map, char *path)
 {
     int     fd;
@@ -50,10 +51,10 @@ void    simple_parser(t_map *map, char *path)
         line = get_next_line(fd);
         i++;
     }
-    map->NO_path = NULL;
-    map->SO_path = NULL;
-    map->WE_path = NULL;
-    map->EA_path = NULL;
+    map->NO_path = "./files/NORTH.png";
+    map->SO_path = "./files/SOUTH.png";
+    map->WE_path = "./files/WEST.png";
+    map->EA_path = "./files/EAST.xpm";
     map->NO = NULL;
     map->SO = NULL;
     map->WE = NULL;
@@ -64,5 +65,7 @@ void    simple_parser(t_map *map, char *path)
     map->Ceiling[0] = 225;
     map->Ceiling[1] = 30;
     map->Ceiling[2] = 0;
+    map->width = 0;
+    map->height = 0;
     close (fd);
 }
