@@ -6,7 +6,10 @@ SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c \
 			game.c \
 			vars_init.c \
-			free/free_mlx.c
+			free/free_mlx.c \
+			gameplay/hooks.c \
+			gameplay/gameplay.c \
+
 
 SRCC =  parsing/parsing.c error/ft_error.c
 SRC_DIR_SRC = src/

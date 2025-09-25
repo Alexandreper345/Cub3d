@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   gameplay.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/24 23:04:31 by erocha-l         ###   ########.fr       */
+/*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/09/24 23:06:43 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
-int game(t_vars *vars)
+void gameplay(t_vars *vars)
 {
-    printf("cheguei até aqui\n");
-    vars->mlx = mlx_init();
-    if (vars->win == NULL)
-        free_mlx(vars->mlx);
-    vars->win = mlx_new_window(vars->mlx, 1920, 1080, "Hello world!");
-    gameplay(vars);
-    mlx_loop(vars->mlx);
-    return (0);
+    mlx_hook(vars->win, 2, 1L<<0, ) // create enum
 }
