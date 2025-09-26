@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 10:12:32 by erick            ###   ########.fr       */
+/*   Updated: 2025/09/25 20:17:07 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,19 @@ static int	format_map(char *map)
 		ft_error("format invalid");
 		return(EXIT_FAILURE);
 	}
-	#include <string.h> //tirar depois quando criar a ft_strcmp!
-	result = strcmp(search_dot, ".cub"); // não temos essa ft, tem que criar!
+	result = ft_strcmp(search_dot, ".cub");
 	if (result != 0)
 	{
 		ft_error("format invalid");
 		return(EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
-
 }
 
-int	parsing(int argc, char **argv)
+int	check_file_path(int argc, char **argv)
 {	
 	if (argc != 2)
 		return (EXIT_FAILURE);
 	if (format_map(argv[1]))
 		return (EXIT_FAILURE);
-		
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 10:21:33 by erick            ###   ########.fr       */
+/*   Updated: 2025/09/25 20:04:32 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 void    free_map(char **map)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 12:17:13 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:04:32 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int game(t_vars *vars)
 {

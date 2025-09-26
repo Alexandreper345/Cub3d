@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   gameplay.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 12:59:49 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:07:15 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static  convert_textures_to_img(t_vars *vars)
 {
+    t_map map;
+    
     map = vars->map;
     map->width = 256;
     map->height = 256;

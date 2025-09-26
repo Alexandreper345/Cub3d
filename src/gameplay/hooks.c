@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 12:10:36 by erick            ###   ########.fr       */
+/*   Updated: 2025/09/25 20:04:46 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int escape(int keycode, t_vars *vars)
 {
