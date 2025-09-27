@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 12:57:59 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:28:24 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void    simple_parser(t_map *map, char *path)
         line = get_next_line(fd);
         i++;
     }
-    map->NO_path = "./files/NORTH.png";
-    map->SO_path = "./files/SOUTH.png";
-    map->WE_path = "./files/WEST.png";
+    map->NO_path = "./files/NORTH.xpm";
+    map->SO_path = "./files/SOUTH.xpm";
+    map->WE_path = "./files/WEST.xpm";
     map->EA_path = "./files/EAST.xpm";
     map->NO = NULL;
     map->SO = NULL;

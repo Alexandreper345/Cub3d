@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 12:52:49 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/09/27 10:01:03 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void    init_vars(t_vars *vars);
 int		game(t_vars *vars);
 void	simple_parser(t_map *map, char *path);
 void	free_mlx(t_vars *vars);
-void	gameplay(t_vars *vars);
+void	game_settings(t_vars *vars);
 void	free_and_exit(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
