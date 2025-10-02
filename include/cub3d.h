@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 20:47:20 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:47:33 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_player	player;
-	t_map		map;
+	t_map		*map;
 } t_vars;
 
 void	ft_error(char *str);
@@ -61,6 +61,7 @@ int		game(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
 int		check_file_path(int argc, char **argv);
+int		init_matriz(t_map *map, char *path);
 
 
 #endif

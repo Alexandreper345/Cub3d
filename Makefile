@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c
-SRCC =  parsing/parsing.c \
+SRCC =  parsing/check_file.c \
 		parsing/vars_init.c \
 		error/ft_error.c  \
 		free/free_mlx.c	\

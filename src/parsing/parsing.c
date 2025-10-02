@@ -5,37 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 20:17:07 by alda-sil         ###   ########.fr       */
+/*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
+/*   Updated: 2025/10/01 21:11:04 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	format_map(char *map)
-{
-	char	*search_dot;
-	int		result;
 
-	search_dot = ft_strrchr(map, '.');
-	if (!search_dot)
-	{
-		ft_error("format invalid");
-		return(EXIT_FAILURE);
-	}
-	result = ft_strcmp(search_dot, ".cub");
-	if (result != 0)
-	{
-		ft_error("format invalid");
-		return(EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+int	format_texture(t_map *map)
+{
+
 }
 
-int	check_file_path(int argc, char **argv)
-{	
-	if (argc != 2)
+int	color(t_map *map)
+
+int	parsing(t_map *map)
+{
+	if (format_texture(map))
 		return (EXIT_FAILURE);
-	if (format_map(argv[1]))
+	if (color(map))
 		return (EXIT_FAILURE);
 }

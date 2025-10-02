@@ -6,12 +6,11 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/25 21:41:11 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:53:52 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 int	is_malloc_in_pointe_x(t_map	*map)
 {
@@ -23,7 +22,7 @@ int	is_malloc_in_pointe_x(t_map	*map)
 		map->matriz[index] = ft_calloc(sizeof(char), map->x + 1);
 		if (map->matriz[index] == NULL)
 		{
-			//frees(map->matriz, map->y); not yet create free free
+			//frees(map->matriz, map->y); not yet create free
 			ft_error("failure in calloc map_x");
 			return (EXIT_FAILURE);
 		}
@@ -32,22 +31,18 @@ int	is_malloc_in_pointe_x(t_map	*map)
 	return (EXIT_SUCCESS);
 }
 
-int	is_malloc_in_pointer_y(t_map *map, char *path)
+int	malloc_in_pointer_y(t_map *map, char *line, int fd)
 {
-	int     fd;
-	char    *line;
+	int		height;
 
-	fd = open(path, O_RDWR);
-	line = get_next_line(fd);
-	map->height = ft_strlen(line);
+	height = 0;
 	while (line != NULL)
 	{
 		free(line);
-		if (map->height < ft_strlen(line))
-			map->height = ft_strlen(line);
+		height++;
 		line = get_next_line(fd);
 	}
-	map->matriz = (char **)ft_calloc(sizeof(char *), ((map->height * 2) + 1));
+	map->matriz = (char **)ft_calloc(sizeof(char *), ((map->height) + 1));
 	if (!map->matriz)
 	{
 		ft_error("failure in calloc map_y");
@@ -57,4 +52,25 @@ int	is_malloc_in_pointer_y(t_map *map, char *path)
 		return (EXIT_FAILURE);
 	close(fd);
 	return (EXIT_SUCCESS);
+}
+
+int	init_matriz(t_map *map, char *path)
+{
+	int		fd;
+	char	*line;
+
+	fd = open(path, O_RDWR);
+	if (!fd)
+	{
+		ft_error("is fd failed");
+		return (EXIT_FAILURE);
+	}
+	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		ft_error("the content map is NULL");
+		return (EXIT_FAILURE);
+	}
+	if (malloc_in_pointer_y(map, line, fd))
+		return (EXIT_FAILURE);
 }
