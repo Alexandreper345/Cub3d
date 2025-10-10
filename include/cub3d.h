@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/01 20:47:33 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/09 21:06:48 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef	struct s_map
 	void		*EA;
 	int			height;
 	int			width;
-	int			Floor[3];
-	int			Ceiling[3];
+	char		**Floor;
+	char		**Ceiling;
 } t_map;
 
 typedef struct s_vars
@@ -62,6 +62,6 @@ int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
 int		check_file_path(int argc, char **argv);
 int		init_matriz(t_map *map, char *path);
-
+int		parsing(t_map *map);
 
 #endif

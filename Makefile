@@ -6,6 +6,7 @@ SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c
 SRCC =  parsing/check_file.c \
 		parsing/vars_init.c \
+		parsing/parsing.c \
 		error/ft_error.c  \
 		free/free_mlx.c	\
 		gameplay/hooks.c \

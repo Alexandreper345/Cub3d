@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/01 21:05:45 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/09 21:03:25 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (check_file_path(argc, argv) || init_matriz(vars->map, argv[1]))
 		return (EXIT_FAILURE);
-	if (parsing(map, argv[1]))
+	if (parsing(map))
 		return (EXIT_FAILURE);
 	
 	
