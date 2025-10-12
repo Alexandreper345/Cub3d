@@ -5,72 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/27 10:10:02 by erocha-l         ###   ########.fr       */
+/*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/10/12 17:29:04 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static  void convert_textures_to_img(t_vars *vars)
+int gameplay(t_vars *vars)
 {
-    t_map   *map;
-
-    map = &vars->map;
-    map->width = 256;
-    map->height = 256;
-    map->NO = mlx_xpm_file_to_image(vars->mlx, map->NO_path, &map->width, &map->height);
-    map->EA = mlx_xpm_file_to_image(vars->mlx, map->EA_path, &map->width, &map->height);
-    map->SO = mlx_xpm_file_to_image(vars->mlx, map->SO_path, &map->width, &map->height);
-    map->WE = mlx_xpm_file_to_image(vars->mlx, map->WE_path, &map->width, &map->height);
-}
-
-static void render_line(t_vars *vars, int y_axis, char *line)
-{
-    t_map   *map;
-    int     x_axis;
-    int     i;
+    t_map       *map;
+    t_camera    *cam;
+    t_player    *player;
+    int         x;
     
-    map = &vars->map;
-    x_axis = 0;
-    i = 0;
-    while (line[i] != '\0' && line[i] != '\n')
+    map = vars->map;
+    cam = vars->camera;
+    player = vars->player;
+    x = 0;
+    while(x < map->width)
     {
-        if (i % 2 == 0)
-            mlx_put_image_to_window(vars->mlx, vars->win, map->EA, x_axis, y_axis);
+        cam->hit = 0;
+        cam->camX = 2 * x / double(map->width) - 1;
+        cam->rayDirX = cam->dirX + cam->planeX * cam->cameraX;
+        cam->rayDirY = cam->dirY + cam->PlaneY * cam->cameraX;  
+        cam->mapX = vars->player->posX;
+        cam->mapY = vars->player->posY;
+        if (cam->rayDirX == 0)
+            cam->deltaDistX = 1e30; 
         else
-            mlx_put_image_to_window(vars->mlx, vars->win, map->NO, x_axis, y_axis);
-        x_axis = x_axis + 256;
-        i++;
-        printf("loppei 2\n");
+            cam->deltaDistX = fabs(1 / cam->rayDirX);
+        if (cam->rayDiry == 0)
+            cam->deltaDisty = 1e30; 
+        else
+            cam->deltaDisty = fabs(1 / cam->rayDiry);
+        if (cam->rayDirX < 0)
+        {
+            player->stepX = -1;
+            map->sideDistX = (player->posX - cam->mapX) * cam->deltaDistX;
+        }
+        else
+        {
+            player->stepX = 1;
+            map->sideDistX = (cam->mapX + 1.0 - player->posX ) * cam->deltaDistX;            
+        }
+        if (cam->rayDirY < 0)
+        {
+            player->stepY = -1;
+            map->sideDistY = (player->posY - cam->mapY) * cam->deltaDistY;
+        }
+        else
+        {
+            player->stepY = 1;
+            map->sideDistY = (cam->mapY + 1.0 - player->posY ) * cam->deltaDistY;            
+        }
+        while (cam->hit == 0)
+        {
+            if (cam->sideDistX < cam->sideDistY)
+            {
+                cam->sideDistX += cam->deltaDistX;
+                cam->mapX += player->stepX;
+                cam->side = 0;
+            }
+            else
+            {
+                cam->sideDistY += cam->deltaDistY;
+                cam->mapY += player->stepY;
+                cam->side = 1;
+            }
+            if (map->map[cam->mapX][cam->mapY] > 0)
+                hit = 1
+        }
+        if (side == 0)
+            cam->perpWallDist = (cam->sideDistX - cam->deltaDistX);
+        else
+            cam->perpWallDist = (cam->sideDistY - cam->deltaDistY);
+        cam->lineHeight = (int)(player->height / map->perpWallDist);
+        cam->drawStart = -cam->lineHeight / 2 + player->height / 2;
+        if (cam->drawStart < 0)
+            cam->drawStart = 0;
+        cam->drawEnd = cam->lineHeight / 2 + player->height / 2;
+        if (cam->drawEnd >= player->height)
+            cam->drawEnd = player->height - 1;
+        
+        x++;
     }
-}
-
-static void render_map(t_vars *vars)
-{
-    t_map   *map;
-    char    **grid;
-    int     i;
-    int     y_axis;
-
-    i = 0;
-    map = &vars->map;
-    grid = map->map;
-    y_axis = 0;
-    while (grid[i] != NULL)
-    {
-        render_line(vars, y_axis, grid[i]);
-        i++;
-        y_axis = y_axis + 256;
-        printf("loppei 1\n");
-    }
-    
-}
-
-void game_settings(t_vars *vars)
-{
-    convert_textures_to_img(vars);
-    mlx_hook(vars->win, 2, 1L<<0, escape, vars); // create enum
-    mlx_hook(vars->win, 17, 1L<<19, x_button, vars); // create enum
-    render_map(vars);
 }

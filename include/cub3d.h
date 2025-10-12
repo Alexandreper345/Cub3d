@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/27 10:01:03 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:32:24 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 #include <stdlib.h>
+#include <math.h>
 #include <stdio.h>
 # include "../mlx_linux/mlx.h"
 # include <X11/keysym.h>
@@ -21,10 +22,45 @@
 #include "../libft/libft.h"
 #include "../get_next_line/get_next_line.h"
 
+typedef struct s_ColorRGB {
+    unsigned char r;  // Quantidade de Vermelho (de 0 a 255)
+    unsigned char g;  // Quantidade de Verde (de 0 a 255)
+    unsigned char b;  // Quantidade de Azul (de 0 a 255)
+} ColorRGB;
+
+typedef struct s_camera
+{
+	int				side;
+	int				drawEnd;
+	int				drawStart;
+	int				lineHeight;
+	int				hit;
+	double			perpWallDist;
+	double			deltaDistX;
+	double			deltaDistY;
+	double			sideDistX;
+	double			sideDistY;
+	double			mapX;
+	double			mapY;
+	double			dirX;
+	double			dirY;
+	double			planeX;
+	double			PlaneY;
+    double         	cameraX;
+    double         	rayDirX;
+    double         	rayDirY;
+	double			time;
+	double			oldTime;
+} t_camera
+
 typedef struct s_player
 {
-	int	width;
-	int	height;
+	int				stepY;
+	int				stepX;
+	int				posX;
+	int				posY;
+	int				width;
+	int				height;
 } t_player;
 
 
@@ -59,6 +95,7 @@ typedef struct s_vars
 	t_player	player;
 	t_map		map;
 	t_game		game;
+	t_camera	camera;
 } t_vars;
 
 int		parsing(int argc, char **argv);
@@ -71,6 +108,8 @@ void	game_settings(t_vars *vars);
 void	free_and_exit(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
+int		gameplay(t_vars *vars);
+char	*determinate_texture(t_camera *cam, t_vars *vars, t_vars *map);
 
 
 #endif

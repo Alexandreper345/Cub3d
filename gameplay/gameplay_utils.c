@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   gameplay_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/09 17:42:49 by erocha-l         ###   ########.fr       */
+/*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/10/12 17:32:10 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
-int game(t_vars *vars)
+char *determinate_texture(t_camera *cam, t_vars *vars, t_vars *map)
 {
-    vars->mlx = mlx_init();
-    vars->win = mlx_new_window(vars->mlx, 1080, 720, "Hello world!");
-    if (vars->win == NULL)
-        free_mlx(vars->mlx);
-    game_settings(vars);
-    gameplay(vars)
-    mlx_loop(vars->mlx);
-    return (0);
+    if (cam->side == 0)
+    {
+        if (cam->rayDirX < 0)
+            return (map->WE)
+        else 
+            return (map->EA)
+    }
+    else
+    {
+        if (cam->rayDirY < 0)
+            return (map->NO)
+        else
+            return (map->SO) 
+    }
 }

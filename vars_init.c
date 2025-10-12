@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/26 17:28:24 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/12 15:48:46 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void    init_vars(t_vars *vars)
     ft_memset(&vars->game, 0, sizeof(t_game));
     ft_memset(&vars->map, 0, sizeof(t_map));
     ft_memset(&vars->player, 0, sizeof(t_player));
+    ft_memset(&vars->camera, 0, sizeof(t_camera));
+    vars->player->posX = 2; 
+    vars->player->posY = 2;
+    vars->player->hit = 0;
+    vars->player->height = 0;
 }
 
 // only to simulate a parser, it will be substitued for alexandre real parser
@@ -65,7 +70,7 @@ void    simple_parser(t_map *map, char *path)
     map->Ceiling[0] = 225;
     map->Ceiling[1] = 30;
     map->Ceiling[2] = 0;
-    map->width = 0;
-    map->height = 0;
+    map->width = ft_strlen(map->map[i]);
+    map->height = i;
     close (fd);
 }

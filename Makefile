@@ -7,8 +7,9 @@ SRCC_MAIN = main.c \
 			game.c \
 			vars_init.c \
 			free/free_mlx.c \
-			gameplay/hooks.c \
-			gameplay/gameplay.c \
+			render_map/hooks.c \
+			render_map/gameplay.c \
+			render_map/gameplay_utils.c \
 
 
 SRCC =  parsing/parsing.c error/ft_error.c
