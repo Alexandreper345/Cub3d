@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/12 17:29:04 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/14 07:37:25 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ int gameplay(t_vars *vars)
         cam->drawEnd = cam->lineHeight / 2 + player->height / 2;
         if (cam->drawEnd >= player->height)
             cam->drawEnd = player->height - 1;
-        
+        if (cam->side == 0)
+            cam->wallX = player->posY * cam->perpWallDist * cam->rayDirY;
+        else
+            cam->wallX = player->posX * cam->perpWallDist * cam->rayDirX;
+        cam->wallX -= floor(cam->wallX);
         x++;
     }
 }

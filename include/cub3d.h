@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/12 17:32:24 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:49:35 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_camera
 	int				drawStart;
 	int				lineHeight;
 	int				hit;
+	double			wallX;
 	double			perpWallDist;
 	double			deltaDistX;
 	double			deltaDistY;
@@ -63,6 +64,17 @@ typedef struct s_player
 	int				height;
 } t_player;
 
+typedef struct s_texture
+{
+	void	*img_ptr;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_texture;
+
 
 typedef	struct s_map
 {
@@ -71,10 +83,10 @@ typedef	struct s_map
 	char		*SO_path;
 	char		*WE_path;
 	char		*EA_path;
-	void		*NO;
-	void		*SO;
-	void		*WE;
-	void		*EA;
+	t_texture	NO;
+	t_texture	SO;
+	t_texture	WE;
+	t_texture	EA;
 	int			height;
 	int			width;
 	int			Floor[3];
@@ -109,7 +121,7 @@ void	free_and_exit(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
 int		gameplay(t_vars *vars);
-char	*determinate_texture(t_camera *cam, t_vars *vars, t_vars *map);
+t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_vars *map);
 
 
 #endif

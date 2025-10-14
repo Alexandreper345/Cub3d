@@ -6,13 +6,13 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/12 17:32:10 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:49:26 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-char *determinate_texture(t_camera *cam, t_vars *vars, t_vars *map)
+t_texture *determinate_texture(t_camera *cam, t_vars *vars, t_vars *map)
 {
     if (cam->side == 0)
     {
