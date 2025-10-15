@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/14 09:47:33 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:37:44 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void create_texture(t_vars *vars, t_texture *tex, char *path)
     t_map   *map;
     
     map = &vars->map;
-    tex->img_ptr = mlx_xpm_file_to_image(vars->mlx, path, &map->width, &map->height);
+    tex->img_ptr = mlx_xpm_file_to_image(vars->mlx, path, &map->tex_width, &map->tex_height);
     if (tex->img_ptr == NULL)
     {
         printf("erro ao carregar textura\n"); //mudar talvez
@@ -27,8 +27,8 @@ static void create_texture(t_vars *vars, t_texture *tex, char *path)
         &tex->bpp,
         &tex->line_len,
         &tex->endian);
-    tex->width = map->width;
-    tex->height = map->height;
+    tex->width = map->tex_width;
+    tex->height = map->tex_height;
 }
 
 static  void    convert_textures_to_img(t_vars *vars)
@@ -36,8 +36,8 @@ static  void    convert_textures_to_img(t_vars *vars)
     t_map   *map;
 
     map = &vars->map;
-    map->width = 256;
-    map->height = 256;
+    map->tex_width = 256;
+    map->tex_height = 256;
     create_texture(vars, &map->NO, map->NO_path);
     create_texture(vars, &map->EA, map->EA_path);
     create_texture(vars, &map->SO, map->SO_path);
@@ -45,7 +45,7 @@ static  void    convert_textures_to_img(t_vars *vars)
 }
 
 
-static void render_line(t_vars *vars, int y_axis, char *line)
+/*static void render_line(t_vars *vars, int y_axis, char *line)
 {
     t_map   *map;
     int     x_axis;
@@ -85,7 +85,7 @@ static void render_map(t_vars *vars)
         printf("loppei 1\n");
     }
     
-}
+}*/
 
 void game_settings(t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/14 09:49:35 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:43:13 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,43 @@ typedef struct s_ColorRGB {
 
 typedef struct s_camera
 {
+	int				color;
+	int				y;
+	int				texX;
+	int				texY;
 	int				side;
 	int				drawEnd;
 	int				drawStart;
 	int				lineHeight;
 	int				hit;
+	double			step;
+	double			texPos;
+	double			camX;
 	double			wallX;
 	double			perpWallDist;
 	double			deltaDistX;
 	double			deltaDistY;
 	double			sideDistX;
 	double			sideDistY;
-	double			mapX;
-	double			mapY;
+	int			mapX;
+	int			mapY;
 	double			dirX;
 	double			dirY;
 	double			planeX;
-	double			PlaneY;
-    double         	cameraX;
+	double			planeY;
     double         	rayDirX;
     double         	rayDirY;
 	double			time;
 	double			oldTime;
-} t_camera
+	int				height;
+} t_camera;
 
 typedef struct s_player
 {
 	int				stepY;
 	int				stepX;
-	int				posX;
-	int				posY;
+	double				posX;
+	double				posY;
 	int				width;
 	int				height;
 } t_player;
@@ -87,6 +94,8 @@ typedef	struct s_map
 	t_texture	SO;
 	t_texture	WE;
 	t_texture	EA;
+	int			tex_height;
+	int			tex_width;
 	int			height;
 	int			width;
 	int			Floor[3];
@@ -108,6 +117,7 @@ typedef struct s_vars
 	t_map		map;
 	t_game		game;
 	t_camera	camera;
+	t_texture	buffer;
 } t_vars;
 
 int		parsing(int argc, char **argv);
@@ -121,7 +131,10 @@ void	free_and_exit(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
 int		gameplay(t_vars *vars);
-t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_vars *map);
+t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
+int get_texture_pixel_color(t_texture *tex, int x, int y);
+void my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
+
 
 
 #endif
