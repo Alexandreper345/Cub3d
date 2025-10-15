@@ -6,12 +6,12 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 20:04:32 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:40:16 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
+/*
 int game(t_vars *vars)
 {
     printf("cheguei até aqui\n");
@@ -23,3 +23,4 @@ int game(t_vars *vars)
     mlx_loop(vars->mlx);
     return (0);
 }
+    */

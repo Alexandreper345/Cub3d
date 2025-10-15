@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/01 20:53:52 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:41:10 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	is_malloc_in_pointe_x(t_map	*map)
 	int	index;
 
 	index = 0;
-	while (index < map->y)
+	while (index < map->height)
 	{
-		map->matriz[index] = ft_calloc(sizeof(char), map->x + 1);
+		map->matriz[index] = ft_calloc(sizeof(char), map->width + 1);
 		if (map->matriz[index] == NULL)
 		{
 			//frees(map->matriz, map->y); not yet create free
@@ -31,17 +31,23 @@ int	is_malloc_in_pointe_x(t_map	*map)
 	return (EXIT_SUCCESS);
 }
 
-int	malloc_in_pointer_y(t_map *map, char *line, int fd)
+int	malloc_in_pointer_y(t_map *map, char *line, int fd, int width)
 {
 	int		height;
+	t_map	*lines;
 
+	lines = NULL;
 	height = 0;
 	while (line != NULL)
 	{
 		free(line);
+		if (ft_strlen(line) > (size_t)width)
+			width = ft_strlen(line);
+		ft_lstadd_back(&lines, ft_lstnew(line));
 		height++;
 		line = get_next_line(fd);
 	}
+	map->width = lines;
 	map->matriz = (char **)ft_calloc(sizeof(char *), ((map->height) + 1));
 	if (!map->matriz)
 	{
@@ -57,8 +63,10 @@ int	malloc_in_pointer_y(t_map *map, char *line, int fd)
 int	init_matriz(t_map *map, char *path)
 {
 	int		fd;
+	int		width;
 	char	*line;
 
+	width = 0;
 	fd = open(path, O_RDWR);
 	if (!fd)
 	{
@@ -71,6 +79,6 @@ int	init_matriz(t_map *map, char *path)
 		ft_error("the content map is NULL");
 		return (EXIT_FAILURE);
 	}
-	if (malloc_in_pointer_y(map, line, fd))
+	if (malloc_in_pointer_y(map, line, fd, width))
 		return (EXIT_FAILURE);
 }

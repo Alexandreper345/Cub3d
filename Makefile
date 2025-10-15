@@ -7,6 +7,7 @@ SRCC_MAIN = main.c
 SRCC =  parsing/check_file.c \
 		parsing/vars_init.c \
 		parsing/parsing.c \
+		parsing/init_matriz.c \
 		error/ft_error.c  \
 		free/free_mlx.c	\
 		gameplay/hooks.c \

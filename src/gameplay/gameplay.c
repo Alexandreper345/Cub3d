@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -11,7 +13,7 @@
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
+/*
 static  convert_textures_to_img(t_vars *vars)
 {
     t_map map;
@@ -28,3 +30,5 @@ void gameplay(t_vars *vars)
     mlx_hook(vars->win, 2, 1L<<0, escape, vars); // create enum
     mlx_hook(vars->win, 17, 1L<<19, x_button, vars); // create enum
 }
+
+*/

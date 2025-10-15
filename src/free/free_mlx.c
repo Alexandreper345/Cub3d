@@ -6,12 +6,13 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 20:04:32 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:38:52 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+/*
 void    free_map(char **map)
 {
     int i;
@@ -39,3 +40,4 @@ void	free_and_exit(t_vars *vars)
     free_map(vars->map.map);
 	exit(0);
 }
+*/

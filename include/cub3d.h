@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/09 21:06:48 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:35:16 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef	struct s_map
 	void		*EA;
 	int			height;
 	int			width;
-	char		**Floor;
-	char		**Ceiling;
+	char		*Floor;
+	char		*Ceiling;
 } t_map;
 
 typedef struct s_vars
