@@ -123,5 +123,7 @@ int gameplay(t_vars *vars)
         }
         x++;
     }
+    calc_fps(&vars->fps);
+    mlx_clear_window(vars->mlx, vars->win);
     mlx_put_image_to_window(vars->mlx, vars->win, vars->buffer.img_ptr, 0, 0);
 }

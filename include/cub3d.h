@@ -31,12 +31,12 @@ typedef struct s_ColorRGB {
 
 typedef struct s_fps
 {
-	timeval	timeOfDay;
+	struct 	timeval	timeOfDay;
 	double	time;
 	double	oldTime;
 	double	frameTime;
 	double	moveSpeed;
-	double	rotSpeed
+	double	rotSpeed;
 } t_fps;
 
 typedef struct s_camera
@@ -127,7 +127,7 @@ typedef struct s_vars
 	t_game		game;
 	t_camera	camera;
 	t_texture	buffer;
-	t_frames_per_second
+	t_fps		fps;
 } t_vars;
 
 int			parsing(int argc, char **argv);
@@ -144,7 +144,7 @@ int			gameplay(t_vars *vars);
 t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
 int			get_texture_pixel_color(t_texture *tex, int x, int y);
 void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
-void		calc_fps(t_fps *fps)
+void		calc_fps(t_fps *fps);
 
 
 

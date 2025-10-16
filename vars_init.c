@@ -31,10 +31,14 @@ static void init_buffer(t_vars *vars)
 
 static void init_fps(t_fps *fps)
 {
-    ft_menset(fps, 0, sizeof(t_fps));
+    ft_memset(fps, 0, sizeof(t_fps));
     fps->time = 0;
     fps->oldTime = 0;
-    gettimeofday();
+    gettimeofday(&fps->timeOfDay, NULL);
+    fps->time = fps->timeOfDay.tv_sec;
+    fps->frameTime = 0;
+    fps->moveSpeed = 0;
+    fps->rotSpeed = 0;
 }
 
 void    init_vars(t_vars *vars)

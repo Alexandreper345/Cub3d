@@ -53,5 +53,12 @@ void my_pixel_put_to_buffer(t_texture *img, int x, int y, int color)
 
 void calc_fps(t_fps *fps)
 {
-    
+    fps->oldTime = fps->time;
+    gettimeofday(&fps->timeOfDay, NULL);
+    fps->time = fps->timeOfDay.tv_sec + (fps->timeOfDay.tv_usec / 1000000.0);;
+    printf("aqui está o tempo %f\n", fps->time);
+    fps->frameTime = (fps->time - fps->oldTime);
+    printf("aqui esta o frameTime %f\n" , fps->frameTime);
+    fps->moveSpeed = fps->frameTime * 5.0;
+    fps->rotSpeed = fps->frameTime * 3.0;
 }

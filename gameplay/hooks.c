@@ -22,3 +22,8 @@ int x_button(t_vars *vars)
 {
     free_and_exit(vars);
 }
+
+int walk(t_vars *vars)
+{
+    
+}
