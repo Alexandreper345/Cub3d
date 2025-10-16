@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/15 16:52:54 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:22:27 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int gameplay(t_vars *vars)
     cam->height = 720;
     x = 0;
     cam->dirX = 1;
-    cam->dirY = 0;
+    cam->dirY = 1;
     cam->planeX = 0.66;
     cam->planeY = 0.0;
     while(x < vars->width)

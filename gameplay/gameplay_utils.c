@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/15 12:31:52 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/16 12:49:21 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ void my_pixel_put_to_buffer(t_texture *img, int x, int y, int color)
     pixel_addr = img->addr + (y * img->line_len + x * (img->bpp / 8));
     
     *(unsigned int*)pixel_addr = color;
+}
+
+void calc_fps(t_fps *fps)
+{
+    
 }
