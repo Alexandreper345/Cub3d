@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/16 12:49:31 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:49:56 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_fps
 	double	time;
 	double	oldTime;
 	double	frameTime;
-	double	moveSpeed;
-	double	rotSpeed;
+	double	mv;
+	double	rs;
 } t_fps;
 
 typedef struct s_camera
@@ -107,8 +107,10 @@ typedef	struct s_map
 	int			tex_width;
 	int			height;
 	int			width;
-	int			Floor[3];
-	int			Ceiling[3];
+    int			x_ceil;
+	int			x_floor;
+	int			Floor_color;
+	int			Ceiling_color;
 } t_map;
 
 typedef struct s_game
@@ -145,6 +147,8 @@ t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
 int			get_texture_pixel_color(t_texture *tex, int x, int y);
 void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
 void		calc_fps(t_fps *fps);
+int			walk(int keycode, t_vars *vars);
+
 
 
 

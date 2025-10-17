@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/09/25 12:10:36 by erick            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:08:45 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int escape(int keycode, t_vars *vars)
-{
-    if (keycode == XK_Escape)
-        free_and_exit(vars);
-}
-
 int x_button(t_vars *vars)
 {
     free_and_exit(vars);
-}
-
-int walk(t_vars *vars)
-{
-    
 }

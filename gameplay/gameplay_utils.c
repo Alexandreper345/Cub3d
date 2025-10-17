@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/16 12:49:21 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:50:55 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ void calc_fps(t_fps *fps)
     printf("aqui está o tempo %f\n", fps->time);
     fps->frameTime = (fps->time - fps->oldTime);
     printf("aqui esta o frameTime %f\n" , fps->frameTime);
-    fps->moveSpeed = fps->frameTime * 5.0;
-    fps->rotSpeed = fps->frameTime * 3.0;
+    fps->mv = fps->frameTime * 5.0;
+    fps->rs = fps->frameTime * 3.0;
 }

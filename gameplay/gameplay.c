@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/16 12:22:27 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:50:23 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,27 @@ int gameplay(t_vars *vars)
     player = &vars->player;
     cam->height = 720;
     x = 0;
-    cam->dirX = 1;
-    cam->dirY = 1;
-    cam->planeX = 0.66;
-    cam->planeY = 0.0;
+    cam->y = 0;
+    while (cam->y < vars->height / 2)
+    {
+        map->x_ceil = 0;
+        while (map->x_ceil < vars->width)
+        {
+            my_pixel_put_to_buffer(&vars->buffer, map->x_ceil, cam->y, map->Ceiling_color);
+            (map->x_ceil)++;
+        }
+        (cam->y)++;
+    }
+    while (cam->y < vars->height)
+    {
+        map->x_floor = 0;
+        while (map->x_floor < vars->width)
+        {
+            my_pixel_put_to_buffer(&vars->buffer, map->x_floor, cam->y, map->Floor_color);
+            (map->x_floor)++;
+        }
+        (cam->y)++;
+    }
     while(x < vars->width)
     {
         cam->hit = 0;
@@ -126,4 +143,5 @@ int gameplay(t_vars *vars)
     calc_fps(&vars->fps);
     mlx_clear_window(vars->mlx, vars->win);
     mlx_put_image_to_window(vars->mlx, vars->win, vars->buffer.img_ptr, 0, 0);
+    return (0);
 }

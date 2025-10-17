@@ -11,6 +11,8 @@ SRCC_MAIN = main.c \
 			gameplay/gameplay.c \
 			gameplay/gameplay_utils.c \
 			gameplay/render_map.c \
+			gameplay/walk_hook.c \
+
 
 
 

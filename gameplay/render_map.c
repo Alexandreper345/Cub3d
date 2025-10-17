@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/15 15:37:44 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:10:55 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,5 @@ static void render_map(t_vars *vars)
 void game_settings(t_vars *vars)
 {
     convert_textures_to_img(vars);
-    mlx_hook(vars->win, 2, 1L<<0, escape, vars); // create enum
     mlx_hook(vars->win, 17, 1L<<19, x_button, vars); // create enum
-    //render_map(vars);
 }

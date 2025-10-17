@@ -202,7 +202,7 @@ int main(int /*argc*/, char */*argv*/[])
 
     //speed modifiers
     double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-    double rotSpeed = frameTime * 3.0; //the constant value is in radians/second
+    double rs = frameTime * 3.0; //the constant value is in radians/second
     readKeys();
     //move forward if no wall in front of you
     if(keyDown(SDLK_UP))
@@ -221,22 +221,22 @@ int main(int /*argc*/, char */*argv*/[])
     {
       //both camera direction and camera plane must be rotated
       double oldDirX = dirX;
-      dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-      dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+      dirX = dirX * cos(-rs) - dirY * sin(-rs);
+      dirY = oldDirX * sin(-rs) + dirY * cos(-rs);
       double oldPlaneX = planeX;
-      planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-      planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+      planeX = planeX * cos(-rs) - planeY * sin(-rs);
+      planeY = oldPlaneX * sin(-rs) + planeY * cos(-rs);
     }
     //rotate to the left
     if(keyDown(SDLK_LEFT))
     {
       //both camera direction and camera plane must be rotated
       double oldDirX = dirX;
-      dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-      dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+      dirX = dirX * cos(rs) - dirY * sin(rs);
+      dirY = oldDirX * sin(rs) + dirY * cos(rs);
       double oldPlaneX = planeX;
-      planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-      planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+      planeX = planeX * cos(rs) - planeY * sin(rs);
+      planeY = oldPlaneX * sin(rs) + planeY * cos(rs);
     }
   }
 }

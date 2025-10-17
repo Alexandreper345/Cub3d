@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/16 12:56:38 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:49:44 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void init_fps(t_fps *fps)
     gettimeofday(&fps->timeOfDay, NULL);
     fps->time = fps->timeOfDay.tv_sec;
     fps->frameTime = 0;
-    fps->moveSpeed = 0;
-    fps->rotSpeed = 0;
+    fps->mv = 0;
+    fps->rs = 0;
 }
 
 void    init_vars(t_vars *vars)
@@ -59,6 +59,11 @@ void    init_vars(t_vars *vars)
     init_fps(&vars->fps);
     vars->player.posX = 7; 
     vars->player.posY = 3;
+    vars->camera.dirX = 1;
+    vars->camera.dirY = 1;
+    vars->camera.planeX = 0.66;
+    vars->camera.planeY = 0.0;
+    vars->camera.height = 720;
 }
 
 // only to simulate a parser, it will be substitued for alexandre real parser
@@ -95,12 +100,8 @@ void    simple_parser(t_map *map, char *path)
     map->SO_path = "./files/SOUTH.xpm";
     map->WE_path = "./files/WEST.xpm";
     map->EA_path = "./files/EAST.xpm";
-    map->Floor[0] = 220;
-    map->Floor[1] = 100;
-    map->Floor[2] = 0;
-    map->Ceiling[0] = 225;
-    map->Ceiling[1] = 30;
-    map->Ceiling[2] = 0;
+    map->Ceiling_color = 16711680;
+    map->Floor_color = 16711680;
     map->width = ft_strlen(map->map[i]);
     map->height = 10;
     map->tex_height = 0;

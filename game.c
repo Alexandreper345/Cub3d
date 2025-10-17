@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/15 16:18:09 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:14:44 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int game(t_vars *vars)
     }
     game_settings(vars);
     init_buffer(vars);
-
-    gameplay(vars);
+    mlx_hook(vars->win, 2, 1L<<0, walk, vars); // create enum
+    mlx_loop_hook(vars->mlx ,gameplay, vars);
     mlx_loop(vars->mlx);
     return (0);
 }
