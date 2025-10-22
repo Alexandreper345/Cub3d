@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/14 19:38:03 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/21 22:01:44 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,59 @@ int	format_texture(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-void	split_color(t_map *map)
+int	convert_color(char *rgb)
 {
+	char	**color;
+	int		r;
+	int		g;
+	int		b;
 
-	map->Floor = ft_split(map->Floor, ',');
-	map->Ceiling = ft_split(map->Ceiling, ',');
+
+	color = ft_split(rgb, ',');
+	if (!color)
+		return 	NULL;
+	r = ft_atoi(color[0]);
+	g = ft_atoi(color[1]);
+	b = ft_atoi(color[2]);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	{
+		ft_error("map invalid, because this color invalid");
+		return (EXIT_FAILURE);
+	}
+	free(color);
+	color = (r << 16) | (g << 8) | b;
+	return color;
 }
 
 
 int	get_color(t_map *map)
 {
-	int	i;
+	int		i;
+	char	*line;
+	char	*temp;
 
-	i = 0;
-	while (map->matriz[i] != 'F' || map->matriz[i] != 'C')
+	i = -1;
+	while (map->matriz[++i])
 	{
-		if (map->matriz[i] == 'F')
-			map->Floor = map->matriz[i][1];
-		else if (map->matriz[i] == 'C')
-			map->Ceiling = map->matriz[i][1];
-		i++;
+		line = map->matriz[i];
+		if (line[0] == 'F')
+		{
+			temp = ft_strtrim(line + 1, " ");
+			map->Floor = convert_color(temp);
+			free(temp);
+		}
+		else if (line[0] == 'C')
+		{
+			temp = ft_strtrim(line + 1, " ");
+			map->Ceiling = convert_color(temp);
+			free(temp);
+		}
 	}
 	if (!map->Floor || !map->Ceiling)
 	{
 		ft_error("map invalid, because not exist color");
 		return (EXIT_FAILURE);
 	}
-	split_color(map);
 	return (EXIT_SUCCESS);
 }
 
