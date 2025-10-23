@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/01 20:44:27 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/22 19:45:25 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int	check_file_path(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (format_map(argv[1]))
 		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

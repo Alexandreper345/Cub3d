@@ -12,7 +12,8 @@ SRCC =  parsing/check_file.c \
 		free/free_mlx.c	\
 		gameplay/hooks.c \
 		gameplay/game.c \
-		gameplay/gameplay.c
+		gameplay/gameplay.c \
+		utils.c
 SRC_DIR_SRC = src/
 SRC_DIR_GNL = get_next_line/
 LIBFT_DIR=libft

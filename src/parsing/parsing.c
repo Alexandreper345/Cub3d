@@ -6,23 +6,43 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/21 22:01:44 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:20:49 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+int	exist_textures_and_color(char *line, int flag)
+{
+	if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0) 
+		flag++;
+	if (ft_strcmp(line, "WE") == 0 || ft_strcmp(line, "EA") == 0)
+		flag++;
+	if (line[0] == 'F' || line[0] == 'C')
+		flag++;
+	return (flag);
+}
+
 int	format_texture(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	if (map->matriz[i] != 'NO' || map->matriz[i] != 'WE' || 
-		map->matriz[i] != 'SO' || map->matriz[i] != 'EA')
+	int		i;
+	int		flag;
+	char	*line;
+	
+	i = -1;
+	flag = 0;
+	while (map->matriz[++i])
 	{
-		//free(matrix) free matriz
-		ft_error("argument invalid");
-		return (EXIT_FAILURE);
+		line = map->matriz[i];
+		if (line[0] == '1' ||  line[0] == '0')
+		{
+			//free(matrix) free matriz
+			ft_error("invalid struct map");
+			return (EXIT_FAILURE);
+		}
+		flag = exist_textures_and_color(line, flag);
+		if (flag == 6)
+			return (EXIT_SUCCESS);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -34,10 +54,9 @@ int	convert_color(char *rgb)
 	int		g;
 	int		b;
 
-
 	color = ft_split(rgb, ',');
 	if (!color)
-		return 	NULL;
+		return 	(EXIT_FAILURE);
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);
@@ -47,8 +66,7 @@ int	convert_color(char *rgb)
 		return (EXIT_FAILURE);
 	}
 	free(color);
-	color = (r << 16) | (g << 8) | b;
-	return color;
+	return ((r << 16) | (g << 8) | b);
 }
 
 
@@ -65,17 +83,17 @@ int	get_color(t_map *map)
 		if (line[0] == 'F')
 		{
 			temp = ft_strtrim(line + 1, " ");
-			map->Floor = convert_color(temp);
+			map->floor = convert_color(temp);
 			free(temp);
 		}
 		else if (line[0] == 'C')
 		{
 			temp = ft_strtrim(line + 1, " ");
-			map->Ceiling = convert_color(temp);
+			map->ceiling = convert_color(temp);
 			free(temp);
 		}
 	}
-	if (!map->Floor || !map->Ceiling)
+	if (!map->floor || !map->ceiling)
 	{
 		ft_error("map invalid, because not exist color");
 		return (EXIT_FAILURE);
@@ -89,5 +107,5 @@ int	parsing(t_map *map)
 		return (EXIT_FAILURE);
 	if (get_color(map))
 		return (EXIT_FAILURE);
-
+	return (EXIT_SUCCESS);
 }

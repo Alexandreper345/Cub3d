@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 21:42:16 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/14 21:48:53 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/22 21:15:32 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (current_lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_map **lst, t_list *new)
 {
 	if (*lst == NULL)
 		*lst = new;
