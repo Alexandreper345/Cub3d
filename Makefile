@@ -36,7 +36,6 @@ clean:
 	${RM} ${OBJS_MAIN}  
 	${RM} ${OBJS_GNL}
 	${RM} ${OBJS_SRC}
-
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	${RM} ${NAME}

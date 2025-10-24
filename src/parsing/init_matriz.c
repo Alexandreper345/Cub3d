@@ -6,32 +6,34 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/14 21:41:10 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:34:22 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	is_malloc_in_pointe_x(t_map	*map)
+int	is_malloc_in_pointe_x(t_map	*map, char *path)
 {
-	int	index;
+	int		index;
+	int		fd;
+	char	*line;
 
 	index = 0;
-	while (index < map->height)
+	fd = open(path, O_RDWR);
+	if (!fd)
+		return (EXIT_FAILURE);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		map->matriz[index] = ft_calloc(sizeof(char), map->width + 1);
-		if (map->matriz[index] == NULL)
-		{
-			//frees(map->matriz, map->y); not yet create free
-			ft_error("failure in calloc map_x");
-			return (EXIT_FAILURE);
-		}
+		map->matriz[index] = ft_strdup(line);
+		free(line);
+		line = get_next_line(fd);
 		index++;
 	}
 	return (EXIT_SUCCESS);
 }
 
-int	malloc_in_pointer_y(t_map *map, char *line, int fd, int width)
+int	malloc_in_pointer_y(t_map *map, char *line, int fd, char *path)
 {
 	int		height;
 	t_map	*lines;
@@ -41,20 +43,17 @@ int	malloc_in_pointer_y(t_map *map, char *line, int fd, int width)
 	while (line != NULL)
 	{
 		free(line);
-		if (ft_strlen(line) > (size_t)width)
-			width = ft_strlen(line);
-		ft_lstadd_back(&lines, ft_lstnew(line));
 		height++;
 		line = get_next_line(fd);
 	}
-	map->width = lines;
 	map->matriz = (char **)ft_calloc(sizeof(char *), ((map->height) + 1));
 	if (!map->matriz)
 	{
 		ft_error("failure in calloc map_y");
+		free_matriz(map->matriz);
 		return (EXIT_FAILURE);
 	}
-	if (is_malloc_in_pointe_x(map))
+	if (is_malloc_in_pointe_x(map, path))
 		return (EXIT_FAILURE);
 	close(fd);
 	return (EXIT_SUCCESS);

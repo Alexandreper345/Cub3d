@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/22 20:47:50 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:34:25 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,15 @@ typedef struct s_vars
 void	ft_error(char *str);
 void	free_mlx(t_vars *vars);
 void	free_and_exit(t_vars *vars);
+void	free_matriz(char **matriz);
 void    init_vars(t_vars *vars, char *map_path);
 void	gameplay(t_vars *vars);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void *content);
 int		game(t_vars *vars);
 int		escape(int keycode, t_vars *vars);
 int		x_button(t_vars *vars);
 int		check_file_path(int argc, char **argv);
 int		init_matriz(t_map *map, char *path);
 int		parsing(t_map *map);
-int		malloc_in_pointer_y(t_map *map, char *line, int fd, int width);
+int		malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
 
 #endif

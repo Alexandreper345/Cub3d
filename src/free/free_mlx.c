@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/14 19:38:52 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/10/23 21:24:48 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ void	free_and_exit(t_vars *vars)
     free_map(vars->map.map);
 	exit(0);
 }
-*/
+*/ 
+
+void	free_matriz(char **matriz)
+{
+	int	i;
+
+	i = -1;
+	while(matriz[++i])
+		free(matriz[i]);
+	free(matriz);
+}
