@@ -62,10 +62,8 @@ int	malloc_in_pointer_y(t_map *map, char *line, int fd, char *path)
 int	init_matriz(t_map *map, char *path)
 {
 	int		fd;
-	int		width;
 	char	*line;
 
-	width = 0;
 	fd = open(path, O_RDWR);
 	if (!fd)
 	{
@@ -78,6 +76,6 @@ int	init_matriz(t_map *map, char *path)
 		ft_error("the content map is NULL");
 		return (EXIT_FAILURE);
 	}
-	if (malloc_in_pointer_y(map, line, fd, width))
+	if (malloc_in_pointer_y(map, line, fd, path))
 		return (EXIT_FAILURE);
 }

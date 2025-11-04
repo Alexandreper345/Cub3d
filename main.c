@@ -18,9 +18,8 @@ int	main(int argc, char **argv)
 
 	if (check_file_path(argc, argv) || init_matriz(vars->map, argv[1]))
 		return (EXIT_FAILURE);
-	if (parsing(vars->map))
+	if (parsing(vars->map) || )
 		return (EXIT_FAILURE);
-	
 	
 	//init_vars(vars, argv[1]);
 	//for (int i = 0; vars.map.map[i] != NULL; i++)

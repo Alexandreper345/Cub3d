@@ -23,7 +23,7 @@ int	exist_textures_and_color(char *line, int flag)
 	return (flag);
 }
 
-int	format_texture(t_map *map)
+int	check_config_info(t_map *map)
 {
 	int		i;
 	int		flag;
@@ -103,7 +103,7 @@ int	get_color(t_map *map)
 
 int	parsing(t_map *map)
 {
-	if (format_texture(map))
+	if (check_config_info(map))
 		return (EXIT_FAILURE);
 	if (get_color(map))
 		return (EXIT_FAILURE);
