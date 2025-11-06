@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/17 16:49:56 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:08:15 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_camera
 {
 	int				color;
 	int				y;
+	int				x;
 	int				texX;
 	int				texY;
 	int				side;
@@ -74,10 +75,10 @@ typedef struct s_player
 {
 	int				stepY;
 	int				stepX;
-	double				posX;
-	double				posY;
-	int				width;
-	int				height;
+	double			posX;
+	double			posY;
+	int				width;// leave
+	int				height;// leave
 } t_player;
 
 typedef struct s_texture

@@ -6,28 +6,15 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/17 16:50:23 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:09:44 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int gameplay(t_vars *vars)
+int cal_floor_and_ceilling(t_map *map, t_camera *cam, t_vars *vars)
 {
-    printf("entrei até aqui!\n");
-    t_map       *map;
-    t_camera    *cam;
-    t_player    *player;
-    t_texture   *tex;
-    int         x;
-    
-    map = &vars->map;
-    cam = &vars->camera;
-    player = &vars->player;
-    cam->height = 720;
-    x = 0;
-    cam->y = 0;
-    while (cam->y < vars->height / 2)
+        while (cam->y < vars->height / 2)
     {
         map->x_ceil = 0;
         while (map->x_ceil < vars->width)
@@ -47,10 +34,27 @@ int gameplay(t_vars *vars)
         }
         (cam->y)++;
     }
-    while(x < vars->width)
+}
+
+
+int gameplay(t_vars *vars)
+{
+    t_map       *map;
+    t_camera    *cam;
+    t_player    *player;
+    t_texture   *tex;
+    
+    map = &vars->map;
+    cam = &vars->camera;
+    player = &vars->player;
+    cam->height = 720;
+    cam->x = 0;
+    cam->y = 0;
+    cal_floor_and_ceilling(map, cam, vars);
+    while(cam->x < vars->width)
     {
         cam->hit = 0;
-        cam->camX = 2 * x / (double)vars->width - 1;
+        cam->camX = 2 * cam->x / (double)vars->width - 1;
         cam->rayDirX = cam->dirX + cam->planeX * cam->camX;
         cam->rayDirY = cam->dirY + cam->planeY * cam->camX;
         cam->mapX = vars->player.posX;
@@ -135,10 +139,10 @@ int gameplay(t_vars *vars)
             cam->color = get_texture_pixel_color(tex, cam->texX, cam->texY);
             if (cam->side == 1)
                 cam->color = (cam->color >> 1) & 8355711;
-            my_pixel_put_to_buffer(&vars->buffer, x, cam->y, cam->color);
+            my_pixel_put_to_buffer(&vars->buffer, cam->x, cam->y, cam->color);
             (cam->y)++;
         }
-        x++;
+        cam->x++;
     }
     calc_fps(&vars->fps);
     mlx_clear_window(vars->mlx, vars->win);
