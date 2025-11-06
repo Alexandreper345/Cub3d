@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/06 19:09:44 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:53:57 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,62 +53,7 @@ int gameplay(t_vars *vars)
     cal_floor_and_ceilling(map, cam, vars);
     while(cam->x < vars->width)
     {
-        cam->hit = 0;
-        cam->camX = 2 * cam->x / (double)vars->width - 1;
-        cam->rayDirX = cam->dirX + cam->planeX * cam->camX;
-        cam->rayDirY = cam->dirY + cam->planeY * cam->camX;
-        cam->mapX = vars->player.posX;
-        cam->mapY = vars->player.posY;
-        if (cam->rayDirX == 0)
-            cam->deltaDistX = 1e30;
-        else
-            cam->deltaDistX = fabs(1 / cam->rayDirX);
-        if (cam->rayDirY == 0)
-            cam->deltaDistY = 1e30; 
-        else
-            cam->deltaDistY = fabs(1 / cam->rayDirY);
-        if (cam->rayDirX < 0)
-        {
-            player->stepX = -1;
-            cam->sideDistX = (player->posX - cam->mapX) * cam->deltaDistX;
-        }
-        else
-        {
-            player->stepX = 1;
-            cam->sideDistX = (cam->mapX + 1.0 - player->posX ) * cam->deltaDistX;            
-        }
-        if (cam->rayDirY < 0)
-        {
-            player->stepY = -1;
-            cam->sideDistY = (player->posY - cam->mapY) * cam->deltaDistY;
-        }
-        else
-        {
-            player->stepY = 1;
-            cam->sideDistY = (cam->mapY + 1.0 - player->posY ) * cam->deltaDistY;            
-        }
-        while (cam->hit == 0)
-        {
-            if (cam->sideDistX < cam->sideDistY)
-            {
-                cam->sideDistX += cam->deltaDistX;
-                cam->mapX += player->stepX;
-                cam->side = 0;
-            }
-            else
-            {
-                cam->sideDistY += cam->deltaDistY;
-                cam->mapY += player->stepY;
-                cam->side = 1;
-            }
-            if (cam->mapX < 0 || cam->mapX >= vars->width || cam->mapY < 0 || cam->mapY >= vars->height) // Use a altura real do mapa
-            {
-                cam->hit = 1; // Para o loop como se tivesse batido numa parede
-                // Pode até definir uma cor de "vazio" aqui se quiser
-            }
-            if (map->map[cam->mapY][cam->mapX] == '1')
-                cam->hit = 1;
-        }
+        dda(map, cam, player, vars);
         tex = determinate_texture(cam, vars, map);
         if (cam->side == 0)
             cam->perpWallDist = (cam->sideDistX - cam->deltaDistX);

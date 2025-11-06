@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/06 19:08:15 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/06 19:11:38 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,8 @@ int			get_texture_pixel_color(t_texture *tex, int x, int y);
 void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
 void		calc_fps(t_fps *fps);
 int			walk(int keycode, t_vars *vars);
+void		dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars);
+
 
 
 
