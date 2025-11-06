@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/23 21:34:25 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:36:45 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int		check_file_path(int argc, char **argv);
 int		init_matriz(t_map *map, char *path);
 int		parsing(t_map *map);
 int		malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
+int		get_height_map(char **matriz);
+int		get_width_map(char **matriz)
 
 #endif
