@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/21 19:34:25 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/07 20:45:55 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void    init_vars(t_vars *vars)
     ft_memset(&vars->map.EA, 0, sizeof(t_texture));
     ft_memset(&vars->buffer, 0, sizeof(t_texture));
     init_fps(&vars->fps);
-    vars->player.posX = 7.5; 
-    vars->player.posY = 3.5;
-    vars->camera.dirX = 1;
-    vars->camera.dirY = 1;
-    vars->camera.planeX = 0.66;
-    vars->camera.planeY = 0.0;
+    vars->player.posX = 7.0; 
+    vars->player.posY = 3.0;
+    vars->camera.dirX = -1.0;
+    vars->camera.dirY = 0.0;
+    vars->camera.planeX = 0.0;
+    vars->camera.planeY = -0.66;
     vars->camera.height = 720;
 }
 

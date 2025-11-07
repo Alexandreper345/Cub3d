@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2025/10/17 15:39:28 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/07 20:55:53 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void walk_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
     double  oldPlaneX;
 
     oldDirX = cam->dirX;
-    cam->dirX = cam->dirX * cos(-fps->rs) - cam->dirY * sin(-fps->rs);
-    cam->dirY = oldDirX * sin(-fps->rs) + cam->dirY * cos(-fps->rs);
+    cam->dirX = cam->dirX * cos(fps->rs) - cam->dirY * sin(fps->rs);
+    cam->dirY = oldDirX * sin(fps->rs) + cam->dirY * cos(fps->rs);
     oldPlaneX = cam->planeX;
-    cam->planeX = cam->planeX * cos(-fps->rs) - cam->planeY * sin(-fps->rs);
-    cam->planeY = oldPlaneX * sin(-fps->rs) + cam->planeY * cos(-fps->rs);
+    cam->planeX = cam->planeX * cos(fps->rs) - cam->planeY * sin(fps->rs);
+    cam->planeY = oldPlaneX * sin(fps->rs) + cam->planeY * cos(fps->rs);
 }
 
 static void walk_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
@@ -47,11 +47,11 @@ static void walk_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
     double  oldPlaneX;
 
     oldDirX = cam->dirX;
-    cam->dirX = cam->dirX * cos(fps->rs) - cam->dirY * sin(fps->rs);
-    cam->dirY = oldDirX * sin(fps->rs) + cam->dirY * cos(fps->rs);
+    cam->dirX = cam->dirX * cos(-fps->rs) - cam->dirY * sin(-fps->rs);
+    cam->dirY = oldDirX * sin(-fps->rs) + cam->dirY * cos(-fps->rs);
     oldPlaneX = cam->planeX;
-    cam->planeX = cam->planeX * cos(fps->rs) - cam->planeY * sin(fps->rs);
-    cam->planeY = oldPlaneX * sin(fps->rs) + cam->planeY * cos(fps->rs);
+    cam->planeX = cam->planeX * cos(-fps->rs) - cam->planeY * sin(-fps->rs);
+    cam->planeY = oldPlaneX * sin(-fps->rs) + cam->planeY * cos(-fps->rs);
 }
 
 int walk(int keycode, t_vars *vars)

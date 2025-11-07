@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:52 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/06 19:49:33 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/07 20:34:09 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void calc_cam_vars(t_camera *cam, t_vars *vars)
     cam->camX = 2 * cam->x / (double)vars->width - 1;
     cam->rayDirX = cam->dirX + cam->planeX * cam->camX;
     cam->rayDirY = cam->dirY + cam->planeY * cam->camX;
-    cam->mapX = vars->player.posX;
-    cam->mapY = vars->player.posY;   
+    cam->mapX = (int)vars->player.posX;
+    cam->mapY = (int)vars->player.posY;   
 }
 
 static void delta_dist(t_camera *cam, t_player *player)
