@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/07 20:45:55 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/07 21:01:58 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void    simple_parser(t_map *map, char *path)
     map->SO_path = "./files/SOUTH.xpm";
     map->WE_path = "./files/WEST.xpm";
     map->EA_path = "./files/EAST.xpm";
-    map->Ceiling_color = 16711680;
-    map->Floor_color = 16711680;
+    map->Ceiling_color = 255;
+    map->Floor_color = 65280;
     map->width = ft_strlen(map->map[i]);
     map->height = 10;
     map->tex_height = 0;
