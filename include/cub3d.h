@@ -66,6 +66,7 @@ int		init_matriz(t_map *map, char *path);
 int		parsing(t_map *map);
 int		malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
 int		get_height_map(char **matriz);
-int		get_width_map(char **matriz)
+int		get_width_map(char **matriz);
+char 	**get_position_map(char **matriz);
 
 #endif

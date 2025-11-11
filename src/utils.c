@@ -46,3 +46,18 @@ int	get_width_map(char **matriz)
 	}
 	return (len);
 }
+
+char **get_position_map(char **matriz)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while(matriz[++i])
+	{
+		j = 0;
+		if(matriz[i][j] == '1')
+			if (matriz[i][j + 1] == '1')
+				return (matriz);
+	}
+}

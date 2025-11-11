@@ -76,17 +76,21 @@ char	**expand_map(char **dup_map, char **map, int width, int height)
 
 int	init_process_flood(t_map *map)
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	char	**dup_map;
-	
-	width = get_width_map(map->matriz);
-	height = get_height_map(map->matriz);
+	char	**map_matriz;
+
+	map_matriz = get_position_map(map->matriz);	
+	width = get_width_map(map_matriz);
+	height = get_height_map(map_matriz);
 	dup_map = copy_matriz(height, width);
 	if (!dup_map)
 		return (EXIT_FAILURE);
-	dup_map = expand_map(dup_map , map, height, width);
+	dup_map = expand_map(dup_map , map_matriz, height, width);
 	if (flood_fill(dup_map, width, height))
+		return (EXIT_FAILURE);
+	if (get_position_player(map_matriz))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
