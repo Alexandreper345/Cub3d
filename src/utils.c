@@ -6,11 +6,11 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/05 21:27:29 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:59:42 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	len(char *s)
+int	len(char *s)
 {
 	int	i;
 
@@ -34,17 +34,17 @@ int	get_width_map(char **matriz)
 {
 	int	i;
 	int	max;
-	int	len;
+	int	size;
 
 	i = -1;
 	max = 0;
 	while (matriz[++i])
 	{
-		len = len(matriz[i]);
-		if (len > max)
-			max = len;
+		size = len(matriz[i]);
+		if (size > max)
+			max = size;
 	}
-	return (len);
+	return (size);
 }
 
 char **get_position_map(char **matriz)

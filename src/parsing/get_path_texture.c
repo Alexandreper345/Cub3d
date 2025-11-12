@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/04 21:23:09 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:57:49 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	format_map(char *line, t_map *map)
 		ft_error("format texture invalid");
 		return(EXIT_FAILURE);
 	}
-	insert_value_texture(line);
+	insert_value_texture(line, map);
 	return (EXIT_SUCCESS);
 }
 
@@ -67,7 +67,7 @@ int	get_path_text(t_map *map)
 		line = map->matriz[i];
 		if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0 ||
 			ft_strcmp(line, "WE") == 0 || ft_strcmp(line, "EA") == 0)
-			if (format_texture(line, map))
+			if (format_map(line, map))
 				return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/04 21:25:31 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:42:20 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int	parsing(t_map *map)
 	if (check_config_info(map))
 		return (EXIT_FAILURE);
 	if (get_color(map))
+		return (EXIT_FAILURE);
+	if (init_process_flood(map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

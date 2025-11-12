@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/10/14 19:36:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/11 21:51:53 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 int	main(int argc, char **argv)
 {
-	t_vars *vars;
+	t_vars	*vars;
+	t_map	*map;
 
+	vars = malloc(sizeof(t_vars));
+	if (!vars)
+		return (EXIT_FAILURE);
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (EXIT_FAILURE);
+	vars->map = map;
 	if (check_file_path(argc, argv) || init_matriz(vars->map, argv[1]))
 		return (EXIT_FAILURE);
-	if (parsing(vars->map) || )
+	if (parsing(vars->map))
 		return (EXIT_FAILURE);
 	
 	//init_vars(vars, argv[1]);

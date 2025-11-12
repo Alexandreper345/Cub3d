@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/05 21:50:22 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/11 21:48:04 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	flood_fill(char **dup_map, int x, int y)
 {
-	if (x < 0 || y < 0 || !map[y] || map[y][x] == '\0')
+	if (x < 0 || y < 0 || !dup_map[y] || dup_map[y][x] == '\0')
 		return (EXIT_FAILURE);
 	if (dup_map[x][y] == 'x' || dup_map[x][y] == ' ')
-		dup_map[x][y] == '-';
+		dup_map[x][y] = '-';
 	if (dup_map[x][y] == '1')
 		return (EXIT_FAILURE);
 	if(dup_map[x][y] == '0' || dup_map[x][y] == 'N' ||
 		dup_map[x][y] == 'S' || dup_map[x][y] == 'E' || dup_map[x][y] == 'W')
 	{
-		dup_map[x][y] == '-';
+		dup_map[x][y] = '-';
 		return (EXIT_SUCCESS);
 	}
 	if (dup_map[x][y] == '-')
 		return (EXIT_FAILURE);
-	return (flood_fill(dup_map, x + 1, y) && flood_fill(dup_map, x - 1, y) 
-			flood_fill(dup_map, x, y + 1) &&  flood_fill(dup_map, x, y - 1));
+	return ((flood_fill(dup_map, x + 1, y) && flood_fill(dup_map, x - 1, y)) && 
+			(flood_fill(dup_map, x, y + 1) &&  flood_fill(dup_map, x, y - 1)));
 }
 
 char	**copy_matriz(int height, int width)
