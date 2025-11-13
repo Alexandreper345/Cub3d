@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/06 19:11:38 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:44:13 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_texture
 
 typedef	struct s_map
 {
-	char 		**map; // does we need that?
+	char 		**matriz;
 	char		*NO_path;
 	char		*SO_path;
 	char		*WE_path;
@@ -114,19 +114,12 @@ typedef	struct s_map
 	int			Ceiling_color;
 } t_map;
 
-typedef struct s_game
-{
-	t_map	*game;
-} t_game;
-
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	int			width;
-	int			height;
 	t_player	player;
-	t_map		map;
+	t_map		*map;
 	t_game		game;
 	t_camera	camera;
 	t_texture	buffer;
@@ -150,10 +143,16 @@ void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
 void		calc_fps(t_fps *fps);
 int			walk(int keycode, t_vars *vars);
 void		dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars);
-
-
-
-
-
+void		free_matriz(char **matriz);
+void    	init_vars(t_vars *vars, char *map_path); // see
+int 		get_position_player(char **map);
+int			check_file_path(int argc, char **argv);
+int			init_matriz(t_map *map, char *path);
+int			parsing(t_map *map); // check
+int			malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
+int			get_height_map(char **matriz);
+int			get_width_map(char **matriz);
+int			init_process_flood(t_map *map);
+char 		**get_position_map(char **matriz);
 
 #endif
