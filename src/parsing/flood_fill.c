@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/11 21:48:04 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/12 21:52:18 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ int	init_process_flood(t_map *map)
 {
 	int		width;
 	int		height;
+	int		i = 0;
 	char	**dup_map;
 	char	**map_matriz;
 
-	map_matriz = get_position_map(map->matriz);	
+	map_matriz = get_position_map(map->matriz);
 	width = get_width_map(map_matriz);
 	height = get_height_map(map_matriz);
 	dup_map = copy_matriz(height, width);

@@ -6,9 +6,11 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/11 19:59:42 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:05:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 int	len(char *s)
 {
@@ -22,11 +24,16 @@ int	len(char *s)
 
 int	get_height_map(char **matriz)
 {
-	int	i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (matriz[i])
+	j = 0;
+	while ((matriz[i][0] != '\n' && matriz[i][0]) && matriz[i][0] != '\0')
+	{
+		printf("%s",matriz[i]);
 		i++;
+	}
 	return (i);
 }
 
@@ -44,7 +51,7 @@ int	get_width_map(char **matriz)
 		if (size > max)
 			max = size;
 	}
-	return (size);
+	return (max);
 }
 
 char **get_position_map(char **matriz)
@@ -58,6 +65,7 @@ char **get_position_map(char **matriz)
 		j = 0;
 		if(matriz[i][j] == '1')
 			if (matriz[i][j + 1] == '1')
-				return (matriz);
+				return (&matriz[i]);
 	}
+	return (NULL);
 }

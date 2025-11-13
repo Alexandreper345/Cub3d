@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/11 19:42:20 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/12 20:45:44 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	exist_textures_and_color(char *line, int flag)
 {
-	if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0) 
-		flag++;
-	if (ft_strcmp(line, "WE") == 0 || ft_strcmp(line, "EA") == 0)
-		flag++;
+char **split;
+
+	split = ft_split(line, ' ');
+	if (ft_strcmp(split[0], "NO") == 0 || ft_strcmp(split[0], "SO") == 0)
+		flag++;;
+	if (ft_strcmp(split[0], "WE") == 0 || ft_strcmp(split[0], "EA") == 0)
+		flag++;;
 	if (line[0] == 'F' || line[0] == 'C')
 		flag++;
+	//free split not create
 	return (flag);
 }
 
