@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2025/11/07 20:55:53 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/07 21:10:18 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,30 @@
 
 static void walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-    if(map->map[(int)(p->posY + cam->dirY * fps->mv)][(int)p->posX] == '0')
-        p->posY += cam->dirY * fps->mv;
-    if(map->map[(int)p->posY][(int)(p->posX + cam->dirX * fps->mv)] == '0')
-        p->posX += cam->dirX * fps->mv;
+    double newPosX;
+    double newPosY;
+    
+    newPosX = p->posX + cam->dirX * fps->mv;
+    newPosY = p->posY + cam->dirY * fps->mv;
+    if (map->map[(int)newPosY][(int)newPosX] == '0')
+    {
+        p->posX = newPosX;
+        p->posY = newPosY;
+    }
 }
 
 static void walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-    if(map->map[(int)(p->posY - cam->dirY * fps->mv)][(int)p->posX] == '0')
-        p->posY -= cam->dirY * fps->mv;
-    if(map->map[(int)p->posY][(int)(p->posX - cam->dirX * fps->mv)] == '0')
-        p->posX -= cam->dirX * fps->mv;
+    double newPosX; 
+    double newPosY;
+
+    newPosX = p->posX - cam->dirX * fps->mv;
+    newPosY =p->posY - cam->dirY * fps->mv;
+    if (map->map[(int)newPosY][(int)newPosX] == '0')
+    {
+        p->posX = newPosX;
+        p->posY = newPosY;
+    }
 }
 
 static void walk_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
