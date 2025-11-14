@@ -4,30 +4,27 @@ FLAGS =  -g -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c \
-			game.c \
-			gameplay/game.c \
-			vars_init.c \
-			free/free_mlx.c \
-			gameplay/hooks.c \
-			gameplay/gameplay.c \
-			gameplay/gameplay_utils.c \
-			gameplay/render_map.c \
-			gameplay/walk_hook.c \
-			gameplay/dda.c \
-			parsing/check_file.c \
-			parsing/vars_init.c \
-			parsing/parsing.c \
-			parsing/init_matriz.c \
-			parsing/flood_fill.c \
-			parsing/get_path_texture.c \
-			parsing/get_position_player.c \
-			error/ft_error.c  \
-			free/free_mlx.c	\
-			utils.c
+			src/gameplay/game.c \
+			src/gameplay/hooks.c \
+			src/gameplay/gameplay.c \
+			src/gameplay/gameplay_utils.c \
+			src/gameplay/render_map.c \
+			src/gameplay/walk_hook.c \
+			src/gameplay/dda.c \
+			src/parsing/check_file.c \
+			src/parsing/vars_init.c \
+			src/parsing/parsing.c \
+			src/parsing/init_matriz.c \
+			src/parsing/flood_fill.c \
+			src/parsing/get_path_texture.c \
+			src/parsing/get_position_player.c \
+			src/error/ft_error.c  \
+			src/free/free_mlx.c	\
+			src/utils.c \
 
 
 
-SRCC =  parsing/parsing.c error/ft_error.c
+SRCC = 
 SRC_DIR_SRC = src/
 SRC_DIR_GNL = get_next_line/
 LIBFT_DIR=libft

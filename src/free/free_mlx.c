@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/23 21:24:48 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:41:26 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-/*
+
 void    free_map(char **map)
 {
     int i;
@@ -37,10 +37,10 @@ void	free_and_exit(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
-    free_map(vars->map.map);
+    free_map(vars->map->matriz);
 	exit(0);
 }
-*/ 
+
 
 void	free_matriz(char **matriz)
 {

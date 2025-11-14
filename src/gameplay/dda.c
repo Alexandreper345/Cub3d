@@ -6,11 +6,12 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:52 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/07 20:34:09 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:45:01 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+
+#include "../../include/cub3d.h"
 
 static void calc_cam_vars(t_camera *cam, t_vars *vars)
 {
@@ -79,7 +80,7 @@ void dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars)
         }
         if (cam->mapX < 0 || cam->mapX >= vars->width || cam->mapY < 0 || cam->mapY >= vars->height)
             cam->hit = 1; 
-        if (map->map[cam->mapY][cam->mapX] == '1')
+        if (map->matriz[cam->mapY][cam->mapX] == '1')
             cam->hit = 1;
     }
 }

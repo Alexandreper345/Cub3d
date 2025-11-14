@@ -12,7 +12,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void cal_floor_and_ceilling(t_map *map, t_camera *cam, t_vars *vars)
 {
@@ -89,7 +89,7 @@ int gameplay(t_vars *vars)
     t_camera    *cam;
     t_player    *player;
     
-    map = &vars->map;
+    map = vars->map;
     cam = &vars->camera;
     player = &vars->player;
     cam->height = 720;

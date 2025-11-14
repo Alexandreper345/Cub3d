@@ -6,11 +6,11 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/07 20:58:15 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:06:21 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 t_texture *determinate_texture(t_camera *cam, t_vars *vars, t_map *map)
 {

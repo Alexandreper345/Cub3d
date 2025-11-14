@@ -6,11 +6,11 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2025/11/07 21:10:18 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:37:39 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 static void walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
@@ -19,7 +19,7 @@ static void walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
     
     newPosX = p->posX + cam->dirX * fps->mv;
     newPosY = p->posY + cam->dirY * fps->mv;
-    if (map->map[(int)newPosY][(int)newPosX] == '0')
+    if (map->matriz[(int)newPosY][(int)newPosX] == '0')
     {
         p->posX = newPosX;
         p->posY = newPosY;
@@ -33,7 +33,7 @@ static void walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 
     newPosX = p->posX - cam->dirX * fps->mv;
     newPosY =p->posY - cam->dirY * fps->mv;
-    if (map->map[(int)newPosY][(int)newPosX] == '0')
+    if (map->matriz[(int)newPosY][(int)newPosX] == '0')
     {
         p->posX = newPosX;
         p->posY = newPosY;
@@ -73,7 +73,7 @@ int walk(int keycode, t_vars *vars)
     t_fps       *fps;
     t_camera    *cam;
     
-    map = &vars->map;
+    map = vars->map;
     p = &vars->player;
     fps = &vars->fps;
     cam = &vars->camera;

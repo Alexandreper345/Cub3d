@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/07 21:01:58 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:37:27 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ static void init_fps(t_fps *fps)
     fps->rs = 0;
 }
 
-void    init_vars(t_vars *vars)
+/*void    init_vars(t_vars *vars)
 {
     vars->height = 720;
     vars->width = 1080;
     vars->mlx = NULL;
     vars->win = NULL;
-    ft_memset(&vars->game, 0, sizeof(t_game));
     ft_memset(&vars->map, 0, sizeof(t_map));
     ft_memset(&vars->player, 0, sizeof(t_player));
     ft_memset(&vars->camera, 0, sizeof(t_camera));
@@ -64,7 +63,7 @@ void    init_vars(t_vars *vars)
     vars->camera.planeX = 0.0;
     vars->camera.planeY = -0.66;
     vars->camera.height = 720;
-}
+}*/
 
 // only to simulate a parser, it will be substitued for alexandre real parser
 void    simple_parser(t_map *map, char *path)
@@ -82,14 +81,14 @@ void    simple_parser(t_map *map, char *path)
         i++;
         line = get_next_line(fd);
     }
-    map->map = ft_calloc(sizeof(char *), (i + 1));
+    map->matriz = ft_calloc(sizeof(char *), (i + 1));
     i = 0;
     close(fd);
     fd = open(path, O_RDWR);
     line = get_next_line(fd);
     while (line != NULL)
     {
-        map->map[i] = ft_strdup(line);
+        map->matriz[i] = ft_strdup(line);
         free(line);
         line = get_next_line(fd);
         i++;
@@ -102,7 +101,7 @@ void    simple_parser(t_map *map, char *path)
     map->EA_path = "./files/EAST.xpm";
     map->Ceiling_color = 255;
     map->Floor_color = 65280;
-    map->width = ft_strlen(map->map[i]);
+    map->width = ft_strlen(map->matriz[i]);
     map->height = 10;
     map->tex_height = 0;
     map->tex_width = 0;

@@ -6,16 +6,16 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/10/17 15:10:55 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:37:27 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 static void create_texture(t_vars *vars, t_texture *tex, char *path)
 {
     t_map   *map;
     
-    map = &vars->map;
+    map = vars->map;
     tex->img_ptr = mlx_xpm_file_to_image(vars->mlx, path, &map->tex_width, &map->tex_height);
     if (tex->img_ptr == NULL)
     {
@@ -35,7 +35,7 @@ static  void    convert_textures_to_img(t_vars *vars)
 {
     t_map   *map;
 
-    map = &vars->map;
+    map = vars->map;
     map->tex_width = 256;
     map->tex_height = 256;
     create_texture(vars, &map->NO, map->NO_path);
@@ -75,7 +75,7 @@ static void render_map(t_vars *vars)
 
     i = 0;
     map = &vars->map;
-    grid = map->map;
+    grid = map->matriz;
     y_axis = 0;
     while (grid[i] != NULL)
     {

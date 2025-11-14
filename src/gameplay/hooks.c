@@ -6,11 +6,11 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/13 17:47:03 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:05:50 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
 int x_button(t_vars *vars)
 {

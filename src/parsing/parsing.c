@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 20:45:44 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:53:48 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exist_textures_and_color(char *line, int flag)
 {
-char **split;
+	char **split;
 
 	split = ft_split(line, ' ');
 	if (ft_strcmp(split[0], "NO") == 0 || ft_strcmp(split[0], "SO") == 0)
@@ -87,17 +87,17 @@ int	get_color(t_map *map)
 		if (line[0] == 'F')
 		{
 			temp = ft_strtrim(line + 1, " ");
-			map->floor = convert_color(temp);
+			map->Floor_color = convert_color(temp);
 			free(temp);
 		}
 		else if (line[0] == 'C')
 		{
 			temp = ft_strtrim(line + 1, " ");
-			map->ceiling = convert_color(temp);
+			map->Ceiling_color = convert_color(temp);
 			free(temp);
 		}
 	}
-	if (!map->floor || !map->ceiling)
+	if (!map->Floor_color || !map->Ceiling_color)
 	{
 		ft_error("map invalid, because not exist color");
 		return (EXIT_FAILURE);
@@ -111,7 +111,7 @@ int	parsing(t_map *map)
 		return (EXIT_FAILURE);
 	if (get_color(map))
 		return (EXIT_FAILURE);
-	if (init_process_flood(map))
-		return (EXIT_FAILURE);
+	//if (init_process_flood(map))
+	//	return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

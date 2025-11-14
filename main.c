@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/13 17:44:53 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:55:57 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	main(int argc, char **argv)
 	if (parsing(vars->map))
 		return (EXIT_FAILURE);
 	
-	//init_vars(vars, argv[1]);
-	//for (int i = 0; vars.map.map[i] != NULL; i++)
-	//	printf("lina: %s", vars.map.map[i]);
-	//game(&vars);
+	init_vars(vars, argv[1]);
+	for (int i = 0; vars->map->matriz[i] != NULL; i++)
+		printf("lina: %s", vars->map->matriz[i]);
+	printf("tex: %s\n", vars->map->NO_path);
+	game(vars);
 }

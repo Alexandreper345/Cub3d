@@ -1,4 +1,11 @@
-111111111111111111111
+F 220,100,0
+C 225,30,0
+
+NO ./textures/Pac-Man/pac_open_down.xpm
+SO ./textures/Pac-Man/Ghosts/B/ghost_down1.xpm
+WE ./textures/Pac-Man/Ghosts/G/ghost_down1.xpm
+EA ./textures/Pac-Man/Ghosts/R/ghost_down1.xpm
+
 101010100101000000001
 110000000000000000001
 100000000001000000001
@@ -6,3 +13,8 @@
 11000000000001
 10101010101101
 11111111111111
+
+
+
+
+

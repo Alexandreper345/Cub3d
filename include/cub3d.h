@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/13 17:44:13 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/13 23:40:06 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,17 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
+	int			width; // added see where it is
+	int			height;
 	t_player	player;
 	t_map		*map;
-	t_game		game;
 	t_camera	camera;
 	t_texture	buffer;
 	t_fps		fps;
 } t_vars;
 
-int			parsing(int argc, char **argv);
 void		ft_error(char *str);
-void    	init_vars(t_vars *vars);
+//void    	init_vars(t_vars *vars);
 int			game(t_vars *vars);
 void		simple_parser(t_map *map, char *path);
 void		free_mlx(t_vars *vars);
@@ -154,5 +154,7 @@ int			get_height_map(char **matriz);
 int			get_width_map(char **matriz);
 int			init_process_flood(t_map *map);
 char 		**get_position_map(char **matriz);
+int			ft_strcmp(const char *s1, const char *s2);
+
 
 #endif
