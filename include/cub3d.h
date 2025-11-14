@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/11 21:48:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:46:35 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_player
 typedef	struct s_map
 {
 	char 		**matriz;
+	char 		**map;
+	char		**dup_map;
 	char		*NO_path;
 	char		*SO_path;
 	char		*WE_path;
@@ -69,7 +71,6 @@ int		malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
 int		get_height_map(char **matriz);
 int		get_width_map(char **matriz);
 int		init_process_flood(t_map *map);
-char 	**get_position_map(char **matriz);
-
+int		coord_map(t_map *map);
 
 #endif

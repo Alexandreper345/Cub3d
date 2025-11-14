@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 22:05:23 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:44:55 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,4 @@ int	get_width_map(char **matriz)
 			max = size;
 	}
 	return (max);
-}
-
-char **get_position_map(char **matriz)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while(matriz[++i])
-	{
-		j = 0;
-		if(matriz[i][j] == '1')
-			if (matriz[i][j + 1] == '1')
-				return (&matriz[i]);
-	}
-	return (NULL);
 }
