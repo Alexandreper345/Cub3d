@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   vars_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 18:50:14 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 20:43:09 by alda-sil         ###   ########.fr       */
+/*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/10/22 19:52:12 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	ft_error(char *str)
+t_map	*init_map(t_map *map, char *map_path)
 {
-	ft_putstr_fd("[ERROR]: ", 2);
-	ft_putstr_fd(str, 2);
-	printf("\n");
+	init_matriz(map, map_path);
+	return (map);
+}
+
+void	init_vars(t_vars *vars, char *map_path)
+{
+	t_player	*player;
+	t_map		*map;
+
+	vars->map =  init_map(map, map_path);
+	vars->mlx = NULL;
+	vars->win = NULL;
 }

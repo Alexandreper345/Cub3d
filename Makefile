@@ -1,13 +1,22 @@
 NAME = Cub3d
 CC = cc -g
-FLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux
+FLAGS =  -g -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
-SRCC_MAIN = main.c \
-			game.c \
-			vars_init.c \
-
-SRCC =  parsing/parsing.c error/ft_error.c
+SRCC_MAIN = main.c
+SRCC =  parsing/check_file.c \
+		parsing/vars_init.c \
+		parsing/parsing.c \
+		parsing/init_matriz.c \
+		parsing/flood_fill.c \
+		parsing/get_path_texture.c \
+		parsing/get_position_player.c \
+		error/ft_error.c  \
+		free/free_mlx.c	\
+		gameplay/hooks.c \
+		gameplay/game.c \
+		gameplay/gameplay.c \
+		utils.c
 SRC_DIR_SRC = src/
 SRC_DIR_GNL = get_next_line/
 LIBFT_DIR=libft
@@ -30,7 +39,6 @@ clean:
 	${RM} ${OBJS_MAIN}  
 	${RM} ${OBJS_GNL}
 	${RM} ${OBJS_SRC}
-
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	${RM} ${NAME}

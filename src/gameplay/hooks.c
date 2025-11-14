@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 18:50:14 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 20:43:09 by alda-sil         ###   ########.fr       */
+/*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/10/14 19:40:15 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	ft_error(char *str)
+/*
+int escape(int keycode, t_vars *vars)
 {
-	ft_putstr_fd("[ERROR]: ", 2);
-	ft_putstr_fd(str, 2);
-	printf("\n");
+    if (keycode == XK_Escape)
+        free_and_exit(vars);
 }
+
+int x_button(t_vars *vars)
+{
+    free_and_exit(vars);
+}
+*/

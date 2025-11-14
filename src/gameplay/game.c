@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 18:50:14 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 20:43:09 by alda-sil         ###   ########.fr       */
+/*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
+/*   Updated: 2025/10/14 19:40:16 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	ft_error(char *str)
+/*
+int game(t_vars *vars)
 {
-	ft_putstr_fd("[ERROR]: ", 2);
-	ft_putstr_fd(str, 2);
-	printf("\n");
+    printf("cheguei até aqui\n");
+    vars->mlx = mlx_init();
+    vars->win = mlx_new_window(vars->mlx, 1080, 720, "Hello world!");
+    if (vars->win == NULL)
+        free_mlx(vars->mlx);
+    gameplay(vars);
+    mlx_loop(vars->mlx);
+    return (0);
 }
+    */

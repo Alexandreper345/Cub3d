@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/09/15 20:43:03 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:46:35 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,50 @@ typedef struct s_player
 	int	height;
 } t_player;
 
-
 typedef	struct s_map
 {
-	char 		**map; // does we need that?
-	int			map_fd;
-	int			width;
+	char 		**matriz;
+	char 		**map;
+	char		**dup_map;
+	char		*NO_path;
+	char		*SO_path;
+	char		*WE_path;
+	char		*EA_path;
+	void		*NO;
+	void		*SO;
+	void		*WE;
+	void		*EA;
 	int			height;
-	char		*ceiling_color;
-	char		*floor_color;
-	t_player	*player;
+	int			width;
+	int			floor;
+	int			ceiling;
 } t_map;
-
-typedef struct s_game
-{
-	t_map	*game;
-} t_game;
 
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	int			width;
-	int			height;
 	t_player	player;
-	t_map		map;
-	t_game		game;
+	t_map		*map;
 } t_vars;
 
-int		parsing(int argc, char **argv);
 void	ft_error(char *str);
-void    init_vars(t_vars *vars);
+void	free_mlx(t_vars *vars);
+void	free_and_exit(t_vars *vars);
+void	free_matriz(char **matriz);
+void    init_vars(t_vars *vars, char *map_path);
+void	gameplay(t_vars *vars);
+int 	get_position_player(char **map);
 int		game(t_vars *vars);
-
+int		escape(int keycode, t_vars *vars);
+int		x_button(t_vars *vars);
+int		check_file_path(int argc, char **argv);
+int		init_matriz(t_map *map, char *path);
+int		parsing(t_map *map);
+int		malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
+int		get_height_map(char **matriz);
+int		get_width_map(char **matriz);
+int		init_process_flood(t_map *map);
+int		coord_map(t_map *map);
 
 #endif
