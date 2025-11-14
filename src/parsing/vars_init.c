@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/14 00:04:09 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/14 00:26:07 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ void	init_vars(t_vars *vars, char *map_path)
 	vars->win = NULL;
     vars->height = 720;
     vars->width = 1080;
-    ft_memset(&vars->map, 0, sizeof(t_map));
     ft_memset(&vars->player, 0, sizeof(t_player));
     ft_memset(&vars->camera, 0, sizeof(t_camera));
-    ft_memset(vars->map->NO, 0, sizeof(t_texture));
-    ft_memset(vars->map->WE, 0, sizeof(t_texture));
-    ft_memset(vars->map->SO, 0, sizeof(t_texture));
-    ft_memset(vars->map->EA, 0, sizeof(t_texture));
+    ft_memset(&vars->map->NO, 0, sizeof(t_texture));
+    ft_memset(&vars->map->WE, 0, sizeof(t_texture));
+    ft_memset(&vars->map->SO, 0, sizeof(t_texture));
+    ft_memset(&vars->map->EA, 0, sizeof(t_texture));
     ft_memset(&vars->buffer, 0, sizeof(t_texture));
     init_fps(&vars->fps);
     vars->player.posX = 7.0; 

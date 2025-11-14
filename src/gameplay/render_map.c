@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/11/13 23:37:27 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/14 00:29:01 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void create_texture(t_vars *vars, t_texture *tex, char *path)
     t_map   *map;
     
     map = vars->map;
+    printf("aqui está o path: %s\n", path);
     tex->img_ptr = mlx_xpm_file_to_image(vars->mlx, path, &map->tex_width, &map->tex_height);
     if (tex->img_ptr == NULL)
     {
