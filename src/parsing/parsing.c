@@ -17,14 +17,30 @@ int	exist_textures_and_color(char *line, int flag)
 	char **split;
 
 	split = ft_split(line, ' ');
-	if (ft_strcmp(split[0], "NO") == 0 || ft_strcmp(split[0], "SO") == 0)
+	if (ft_strncmp(split[0], "NO", 2) == 0 || ft_strcmp(split[0], "SO", 2) == 0)
 		flag++;;
-	if (ft_strcmp(split[0], "WE") == 0 || ft_strcmp(split[0], "EA") == 0)
+	if (ft_strcmp(split[0], "WE", 2) == 0 || ft_strcmp(split[0], "EA", 2) == 0)
 		flag++;;
 	if (line[0] == 'F' || line[0] == 'C')
 		flag++;
 	//free split not create
 	return (flag);
+}
+
+int	check_file_before_map(char *line)
+{
+	char **split;
+
+	if ((line[0] == '1' ||  line[0] == '0'))
+		return (EXIT_FAILURE);
+	split = ft_split(line, ' ');
+	if ((ft_strncmp(split[0], "NO", 2) != 0 && ft_strcmp(split[0], "SO", 2) != 0) &&
+		(ft_strcmp(split[0], "WE", 2) != 0 && ft_strcmp(split[0], "EA", 2) != 0) &&
+		(line[0] == 'F' || line[0] == 'C') && line[0] != ' ')
+			return (EXIT_FAILURE);
+	//free split not create
+	return (flag);
+		
 }
 
 int	check_config_info(t_map *map)
@@ -38,7 +54,7 @@ int	check_config_info(t_map *map)
 	while (map->matriz[++i])
 	{
 		line = map->matriz[i];
-		if (line[0] == '1' ||  line[0] == '0')
+		if (check_file_before_map(line))
 		{
 			//free(matrix) free matriz
 			ft_error("invalid struct map");
@@ -111,6 +127,7 @@ int	parsing(t_map *map)
 		return (EXIT_FAILURE);
 	if (get_color(map))
 		return (EXIT_FAILURE);
+	if (get_path_text(map))
 	//if (init_process_flood(map))
 	//	return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

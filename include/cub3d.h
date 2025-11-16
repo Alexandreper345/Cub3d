@@ -127,24 +127,23 @@ typedef struct s_vars
 	t_fps		fps;
 } t_vars;
 
-void		ft_error(char *str);
 //void    	init_vars(t_vars *vars);
-int			game(t_vars *vars);
+void		ft_error(char *str);
+void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
+void		calc_fps(t_fps *fps);
+void		dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars);
 void		simple_parser(t_map *map, char *path);
 void		free_mlx(t_vars *vars);
 void		game_settings(t_vars *vars);
 void		free_and_exit(t_vars *vars);
+void		free_matriz(char **matriz);
+void    	init_vars(t_vars *vars, char *map_path); // see
+int			game(t_vars *vars);
 int			escape(int keycode, t_vars *vars);
 int			x_button(t_vars *vars);
 int			gameplay(t_vars *vars);
-t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
 int			get_texture_pixel_color(t_texture *tex, int x, int y);
-void		my_pixel_put_to_buffer(t_texture *img, int x, int y, int color);
-void		calc_fps(t_fps *fps);
 int			walk(int keycode, t_vars *vars);
-void		dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars);
-void		free_matriz(char **matriz);
-void    	init_vars(t_vars *vars, char *map_path); // see
 int 		get_position_player(char **map);
 int			check_file_path(int argc, char **argv);
 int			init_matriz(t_map *map, char *path);
@@ -153,8 +152,10 @@ int			malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
 int			get_height_map(char **matriz);
 int			get_width_map(char **matriz);
 int			init_process_flood(t_map *map);
-char 		**get_position_map(char **matriz);
 int			ft_strcmp(const char *s1, const char *s2);
+int			get_path_text(t_map *map);
+char 		**get_position_map(char **matriz);
+t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
 
 
 #endif
