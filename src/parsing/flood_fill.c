@@ -55,7 +55,7 @@ char	**copy_matriz(int height, int width)
 	return (copy_matriz);
 }
 
-char	**expand_map(char **dup_map, char **map, int width, int height)
+void	expand_map(t_map *map, int height)
 {
 	int	i;
 	int	j;
@@ -66,26 +66,21 @@ char	**expand_map(char **dup_map, char **map, int width, int height)
 		j = 0;
 		while(dup_map[i][j] && dup_map[i][j] != '\n')
 		{
-			dup_map[i + 1][j + 1] = map[i][j];
+			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;
 		}
 	}
-	dup_map[height + 2] = NULL;
-	return (dup_map);
+	map->dup_map[height + 2] = NULL;
 }
 
 int	init_process_flood(t_map *map)
 {
 	int		width;
 	int		height;
-	int		i = 0;
-	char	**dup_map;
-	char	**map_matriz;
-
-	map_matriz = get_position_map(map->matriz);
-	width = get_width_map(map_matriz);
+	
+	width = get_width_map(map->map);
 	height = get_height_map(map_matriz);
-	dup_map = copy_matriz(height, width);
+	copy_matriz(height, width);
 	if (!dup_map)
 		return (EXIT_FAILURE);
 	dup_map = expand_map(dup_map , map_matriz, height, width);

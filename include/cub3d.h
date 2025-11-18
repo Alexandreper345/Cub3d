@@ -96,6 +96,8 @@ typedef struct s_texture
 typedef	struct s_map
 {
 	char 		**matriz;
+	char		**map;
+	char		**dup_map;
 	char		*NO_path;
 	char		*SO_path;
 	char		*WE_path;

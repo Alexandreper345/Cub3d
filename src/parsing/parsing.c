@@ -89,7 +89,6 @@ int	convert_color(char *rgb)
 	return ((r << 16) | (g << 8) | b);
 }
 
-
 int	get_color(t_map *map)
 {
 	int		i;

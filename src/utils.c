@@ -54,7 +54,7 @@ int	get_width_map(char **matriz)
 	return (max);
 }
 
-char **get_position_map(char **matriz)
+void	get_position_map(char **matriz, t_map *map)
 {
 	int	i;
 	int	j;
@@ -65,7 +65,10 @@ char **get_position_map(char **matriz)
 		j = 0;
 		if(matriz[i][j] == '1')
 			if (matriz[i][j + 1] == '1')
-				return (&matriz[i]);
+			{
+				map->map = matriz[i][j];
+				return ;
+			}	
 	}
 	return (NULL);
 }

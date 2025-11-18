@@ -61,8 +61,8 @@ int	get_path_text(t_map *map)
 	char    *line;
 	int		i;
 
-	i = 0;
-	while(map->matriz[i])
+	i = -1;
+	while(map->matriz[++i])
 	{
 		line = map->matriz[i];
 		if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0 ||
