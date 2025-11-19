@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/13 23:53:48 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:55:31 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_config_info(t_map *map)
 	while (map->matriz[++i])
 	{
 		line = map->matriz[i];
-		if (line[0] == '1' ||  line[0] == '0')
+		if (check_file_before_map(line))
 		{
 			//free(matrix) free matriz
 			ft_error("invalid struct map");
@@ -107,9 +107,9 @@ int	get_color(t_map *map)
 
 int	parsing(t_map *map)
 {
-	if (check_config_info(map))
+	if (check_config_info(map) || get_color(map))
 		return (EXIT_FAILURE);
-	if (get_color(map))
+	if (get_position_map(map->matriz, map) || get_position_player(map->matriz))
 		return (EXIT_FAILURE);
 	//if (init_process_flood(map))
 	//	return (EXIT_FAILURE);

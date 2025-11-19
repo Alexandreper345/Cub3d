@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_path_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/14 00:28:07 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/18 19:38:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	get_path_text(t_map *map)
 	char    *line;
 	int		i;
 
-	i = 0;
-	while(map->matriz[i])
+	i = -1;
+	while(map->matriz[++i])
 	{
 		line = map->matriz[i];
 		if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0 ||

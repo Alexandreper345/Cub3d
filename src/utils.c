@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/13 23:39:54 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:42:49 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,6 @@ int	get_width_map(char **matriz)
 			max = size;
 	}
 	return (max);
-}
-
-char **get_position_map(char **matriz)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while(matriz[++i])
-	{
-		j = 0;
-		if(matriz[i][j] == '1')
-			if (matriz[i][j + 1] == '1')
-				return (&matriz[i]);
-	}
-	return (NULL);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

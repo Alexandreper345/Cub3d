@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/12 21:52:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:58:30 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,43 +55,36 @@ char	**copy_matriz(int height, int width)
 	return (copy_matriz);
 }
 
-char	**expand_map(char **dup_map, char **map, int width, int height)
+void	expand_map(t_map *map, int width, int height)
 {
 	int	i;
 	int	j;
 
+	map->dup_map =copy_matriz(height, width);
+	if (!map->dup_map)
+		return ;
 	i = -1;
 	while(++i < height)
 	{
 		j = 0;
-		while(dup_map[i][j] && dup_map[i][j] != '\n')
+		while(map->map[i][j] && map->map[i][j] != '\n')
 		{
-			dup_map[i + 1][j + 1] = map[i][j];
+			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;
 		}
 	}
-	dup_map[height + 2] = NULL;
-	return (dup_map);
+	map->dup_map[height + 2] = NULL;
 }
 
 int	init_process_flood(t_map *map)
 {
 	int		width;
 	int		height;
-	int		i = 0;
-	char	**dup_map;
-	char	**map_matriz;
 
-	map_matriz = get_position_map(map->matriz);
-	width = get_width_map(map_matriz);
-	height = get_height_map(map_matriz);
-	dup_map = copy_matriz(height, width);
-	if (!dup_map)
-		return (EXIT_FAILURE);
-	dup_map = expand_map(dup_map , map_matriz, height, width);
-	if (flood_fill(dup_map, width, height))
-		return (EXIT_FAILURE);
-	if (get_position_player(map_matriz))
+	width = get_width_map(map->map);
+	height = get_height_map(map->map);
+	expand_map(map, height, width);
+	if (flood_fill(map->dup_map, width, height))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

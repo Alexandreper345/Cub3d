@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/14 00:31:52 by erocha-l         ###   ########.fr       */
+/*   Updated: 2025/11/18 21:53:01 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (parsing(vars->map))
 		return (EXIT_FAILURE);
-	
+	/*
 	init_vars(vars, argv[1]);
 	for (int i = 0; vars->map->matriz[i] != NULL; i++)
 		printf("lina: %s", vars->map->matriz[i]);
 	printf("tex: %s\n", vars->map->NO_path);
 	game(vars);
+	*/
 }

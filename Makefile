@@ -17,11 +17,10 @@ SRCC_MAIN = main.c \
 			src/parsing/init_matriz.c \
 			src/parsing/flood_fill.c \
 			src/parsing/get_path_texture.c \
-			src/parsing/get_position_player.c \
+			src/parsing/validate_map.c \
 			src/error/ft_error.c  \
 			src/free/free_mlx.c	\
 			src/utils.c \
-
 
 
 SRCC = 
