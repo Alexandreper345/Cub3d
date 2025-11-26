@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/18 21:42:42 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/25 21:59:06 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,18 @@ int	check_file_before_map(char *line)
 	if ((line[0] == '1' ||  line[0] == '0'))
 		return (EXIT_FAILURE);
 	split = ft_split(line, ' ');
-	if ((ft_strncmp(split[0], "NO", 2) != 0 && ft_strcmp(split[0], "SO", 2) != 0) &&
-		(ft_strcmp(split[0], "WE", 2) != 0 && ft_strcmp(split[0], "EA", 2) != 0) &&
-		(line[0] == 'F' || line[0] == 'C') && line[0] != ' ')
+	if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0) &&
+		(ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0) &&
+		(ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0) && line[0] != '\n')
 			return (EXIT_FAILURE);
 	//free split not create
-	return (flag);
-		
+	return (EXIT_SUCCESS);
 }
 
-int get_position_player(char **map)
+int get_position_player(char **map , t_player *player)
 {
 	int 		i;
 	int 		j;
-	t_player	*player;
 	
 	i = -1;
 	while(map[++i])
@@ -40,7 +38,8 @@ int get_position_player(char **map)
 		j = -1;
 		while(map[i][++j])
 		{
-			if (map[i][j] == 'P')
+			if (map[i][j] == 'N' || map[i][j] == 'W' ||
+				map[i][j] == 'S' || map[i][j] == 'E')
 			{
 				player->height = i;
 				player->width = j;
@@ -56,21 +55,28 @@ int	check_map_valid(char **map)
 {
 	int	i;
 	int	j;
+	int	flag;
 
 	i = 0;
+	flag = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			if ((ft_strncmp(map[i][j], "NO", 2) != 0 && ft_strcmp(map[i][j], "SO", 2) != 0) &&
-				(ft_strcmp(map[i][j], "WE", 2) != 0 && ft_strcmp(map[i][j], "EA", 2) != 0) &&
-				(map[i][j] != '0' && map[i][j] == '1'))
+			if ((map[i][j] != 'N') && (map[i][j] != 'S') &&
+				(map[i][j] != 'W') && map[i][j] != 'E' &&
+				(map[i][j] != '0' && map[i][j] != '1') && map[i][j] != '\n')
 				return (EXIT_FAILURE);
+			if ((map[i][j] == 'N') || (map[i][j] == 'S') ||
+				(map[i][j] == 'W') || (map[i][j] == 'E'))
+				flag++;
 			j++;
 		}
 		i++;
 	}
+	if (flag != 1)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -78,22 +84,24 @@ int	get_position_map(char **matriz, t_map *map)
 {
 	int	i;
 	int	j;
+	int	count;
 
-	i = -1;
-	while(matriz[++i])
-	{
-		j = 0;
-		if(matriz[i][j] == '1')
-			if (matriz[i][j + 1] == '1')
-			{
-				map->map = matriz[i][j];
-				if (check_map_valid(map->map))
-				{
-					ft_error("charecter map invalid");
-					return (EXIT_FAILURE);
-				}
-				return(EXIT_SUCCESS);
-			}	
-	}
-	return (EXIT_FAILURE);
+	i = 0;
+	while(matriz[i] && matriz[i][0] != '1')
+		i++;
+	if (!matriz[i])
+		return(ft_error("map not exist"), EXIT_FAILURE);
+	count = 0;
+	while(matriz[i + count] && matriz[i + count][0] == '1')
+		count++;
+	map->map = malloc(sizeof(char *) * (count + 1));
+	if (!map->map)
+		return (ft_error("malloc error"), EXIT_FAILURE);
+	j = -1;
+	while (++j < count)
+		map->map[j] = ft_strdup(matriz[i + j]);
+	map->map[j] = NULL;
+	if (check_map_valid(map->map))
+		return (ft_error("map invalid"), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/18 21:57:06 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/25 22:00:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ typedef struct s_vars
 	void		*win;
 	int			width; // added see where it is
 	int			height;
-	t_player	player;
+	t_player	*player;
 	t_map		*map;
 	t_camera	camera;
 	t_texture	buffer;
@@ -146,10 +146,10 @@ int			gameplay(t_vars *vars);
 int			get_position_map(char **matriz, t_map *map);
 int			get_texture_pixel_color(t_texture *tex, int x, int y);
 int			walk(int keycode, t_vars *vars);
-int 		get_position_player(char **map);
+int 		get_position_player(char **map , t_player *player);
 int			check_file_path(int argc, char **argv);
 int			init_matriz(t_map *map, char *path);
-int			parsing(t_map *map); // check
+int			parsing(t_map *map, t_player *player); // check
 int			malloc_in_pointer_y(t_map *map, char *line, int fd, char *path);
 int			get_height_map(char **matriz);
 int			get_width_map(char **matriz);

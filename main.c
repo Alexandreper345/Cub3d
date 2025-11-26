@@ -6,27 +6,38 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/18 21:53:01 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/25 22:00:42 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
+int	init_struct(t_vars *vars)
+{
+	t_map	*map;
+	t_player *player;
+
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (EXIT_FAILURE);
+	player = malloc(sizeof(t_player));
+	if (!player)
+		return (EXIT_FAILURE);
+	vars->map = map;
+	vars->player = player;
+	return (EXIT_SUCCESS);
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars	*vars;
-	t_map	*map;
 
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		return (EXIT_FAILURE);
-	map = malloc(sizeof(t_map));
-	if (!map)
+	if (check_file_path(argc, argv) || init_struct(vars))
 		return (EXIT_FAILURE);
-	vars->map = map;
-	if (check_file_path(argc, argv) || init_matriz(vars->map, argv[1]))
-		return (EXIT_FAILURE);
-	if (parsing(vars->map))
+	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars->player))
 		return (EXIT_FAILURE);
 	/*
 	init_vars(vars, argv[1]);
