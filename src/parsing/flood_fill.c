@@ -6,30 +6,32 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/18 21:58:30 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/26 22:05:41 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	flood_fill(char **dup_map, int x, int y)
+int	flood_fill(char **map, int x, int y)
 {
-	if (x < 0 || y < 0 || !dup_map[y] || dup_map[y][x] == '\0')
+	if (y < 0 || x < 0 || !map[y] || !map[y][x] || map[y][x] == '\0')
 		return (EXIT_FAILURE);
-	if (dup_map[x][y] == 'x' || dup_map[x][y] == ' ')
-		dup_map[x][y] = '-';
-	if (dup_map[x][y] == '1')
+	if (map[y][x] == 'x' || map[y][x] == ' ')
+		map[y][x] = '-';
+	else if (map[y][x] == '1')
 		return (EXIT_FAILURE);
-	if(dup_map[x][y] == '0' || dup_map[x][y] == 'N' ||
-		dup_map[x][y] == 'S' || dup_map[x][y] == 'E' || dup_map[x][y] == 'W')
+	else if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+			|| map[y][x] == 'E' || map[y][x] == 'W')
 	{
-		dup_map[x][y] = '-';
+		map[y][x] = '-';
 		return (EXIT_SUCCESS);
 	}
-	if (dup_map[x][y] == '-')
+	else if (map[y][x] == '-')
 		return (EXIT_FAILURE);
-	return ((flood_fill(dup_map, x + 1, y) && flood_fill(dup_map, x - 1, y)) && 
-			(flood_fill(dup_map, x, y + 1) &&  flood_fill(dup_map, x, y - 1)));
+	return (flood_fill(map, x + 1, y)
+		&& flood_fill(map, x - 1, y)
+		&& flood_fill(map, x, y + 1)
+		&& flood_fill(map, x, y - 1));
 }
 
 char	**copy_matriz(int height, int width)
@@ -38,17 +40,17 @@ char	**copy_matriz(int height, int width)
 	int		i;
 	int		j;
 
-	copy_matriz = (char **)malloc(sizeof(char *) * height + 3);
+	copy_matriz = (char **)malloc(sizeof(char *) * (height + 4));
 	if (!copy_matriz)
 		return (NULL);
 	i = -1;
-	while (++i < height + 2)
+	while (++i < height + 3)
 	{
-		copy_matriz[i] = (char *)malloc(sizeof(char) * width + 3);
-		if (!copy_matriz)
+		copy_matriz[i] = (char *)malloc(sizeof(char) * (width + 4));
+		if (!copy_matriz[i])
 			return (NULL);
 		j = -1;
-		while (++j < width + 2)
+		while (++j < width + 3)
 			copy_matriz[i][j] = 'x';
 		copy_matriz[i][j] = '\0';
 	}
@@ -63,15 +65,16 @@ void	expand_map(t_map *map, int width, int height)
 	map->dup_map =copy_matriz(height, width);
 	if (!map->dup_map)
 		return ;
-	i = -1;
-	while(++i < height)
+	i = 0;
+	while(i < height)
 	{
 		j = 0;
-		while(map->map[i][j] && map->map[i][j] != '\n')
+		while(map->map[i][j])
 		{
 			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;
 		}
+		i++;
 	}
 	map->dup_map[height + 2] = NULL;
 }
@@ -83,8 +86,11 @@ int	init_process_flood(t_map *map)
 
 	width = get_width_map(map->map);
 	height = get_height_map(map->map);
-	expand_map(map, height, width);
-	if (flood_fill(map->dup_map, width, height))
+	expand_map(map, width, height);
+	if (flood_fill(map->dup_map, 0, 0))
+	{
+		ft_error("flood fill map invalid");
 		return (EXIT_FAILURE);
+	}	
 	return (EXIT_SUCCESS);
 }

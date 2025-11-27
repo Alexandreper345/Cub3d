@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/18 21:42:49 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/26 21:19:45 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ int	len(char *s)
 	return (i);	
 }
 
-int	get_height_map(char **matriz)
+int	get_height_map(char **map)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	j = 0;
-	while ((matriz[i][0] != '\n' && matriz[i][0]) && matriz[i][0] != '\0')
-	{
-		printf("%s",matriz[i]);
+	if (!map)
+    	return (EXIT_FAILURE);
+	while (map[i] != NULL)
 		i++;
-	}
+	
 	return (i);
 }
 

@@ -4,15 +4,7 @@ FLAGS =  -g -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3
 RM = rm -rf
 SRCC_GNL = get_next_line.c get_next_line_utils.c
 SRCC_MAIN = main.c \
-			src/gameplay/game.c \
-			src/gameplay/hooks.c \
-			src/gameplay/gameplay.c \
-			src/gameplay/gameplay_utils.c \
-			src/gameplay/render_map.c \
-			src/gameplay/walk_hook.c \
-			src/gameplay/dda.c \
 			src/parsing/check_file.c \
-			src/parsing/vars_init.c \
 			src/parsing/parsing.c \
 			src/parsing/init_matriz.c \
 			src/parsing/flood_fill.c \

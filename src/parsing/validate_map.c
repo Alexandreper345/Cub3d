@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/25 21:59:06 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/26 21:14:29 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,26 +80,76 @@ int	check_map_valid(char **map)
 	return (EXIT_SUCCESS);
 }
 
+int is_line_map(char *line)
+{
+	int	i;
+	int	found_valid;
+
+	found_valid = 0;
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == '\0' || line[i] == '\n')
+		return (0);
+	
+    while (line[i] && line[i] != '\n' && line[i] != '\r')
+    {
+        if (!ft_strchr(" 01NSEW", line[i]))
+            return -1;
+        found_valid = 1;
+        i++;
+    }
+	return (found_valid);
+}
+
 int	get_position_map(char **matriz, t_map *map)
 {
 	int	i;
 	int	j;
 	int	count;
+	int	res;
+	int	end;
 
 	i = 0;
-	while(matriz[i] && matriz[i][0] != '1')
-		i++;
+	end = 0;
+	
+	while(matriz[i] && !end)
+	{
+		j = 0;
+		while (matriz[i][j] == ' ' || matriz[i][j] == '\t')
+			j++;
+		if (matriz[i][j] == '1')
+			end = 1;
+		else
+			i++;
+	}
 	if (!matriz[i])
 		return(ft_error("map not exist"), EXIT_FAILURE);
 	count = 0;
-	while(matriz[i + count] && matriz[i + count][0] == '1')
-		count++;
+	while(matriz[i + count] && end == 1)
+	{
+		res = is_line_map(matriz[i + count]); 
+		if (res == -1)
+			return ft_error("invalid character in map"), EXIT_FAILURE;
+		else if (res == 0)
+			end = 0;
+		else
+			count++;
+	}
 	map->map = malloc(sizeof(char *) * (count + 1));
 	if (!map->map)
 		return (ft_error("malloc error"), EXIT_FAILURE);
 	j = -1;
 	while (++j < count)
-		map->map[j] = ft_strdup(matriz[i + j]);
+	{
+		res = 0;
+		while (matriz[i + j][res] == ' ' || matriz[i + j][res] == '\t')
+			res++;
+		map->map[j] = ft_strdup(&matriz[i + j][res]);
+		int len = ft_strlen(map->map[j]);
+		if (len > 0 && map->map[j][len - 1] == '\n')
+    		map->map[j][len - 1] = '\0';
+	}
 	map->map[j] = NULL;
 	if (check_map_valid(map->map))
 		return (ft_error("map invalid"), EXIT_FAILURE);
