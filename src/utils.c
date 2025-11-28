@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/26 21:19:45 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/27 22:05:58 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,32 @@ int	ft_strcmp(const char *s1, const char *s2)
 	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int check_file(char **map)
+{
+	int		i;
+	int		flag;
+	char	**split;
+
+	i = 0;
+	flag = 0;
+	while (map[i])
+	{
+		split = ft_split(map[i], ' ');
+		ft_strtrim(map[i], " \t");
+		if (map[i][0] == '1' && flag == 0)
+		{
+			if (check_map_valid(&map[i]))
+				return (EXIT_FAILURE);
+			flag = 1;
+		}
+		if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0) &&
+			(ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0) &&
+			(ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0) && map[i][0] != '\n'
+			&& map[i][0] != ' ' && map[i][0] != '\t' && map[i][0] != '1')
+				return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }

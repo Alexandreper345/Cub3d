@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/26 21:14:29 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/27 21:40:52 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	check_file_before_map(char *line)
 	split = ft_split(line, ' ');
 	if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0) &&
 		(ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0) &&
-		(ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0) && line[0] != '\n')
+		(ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0) && line[0] != '\n'
+		&& line[0] != ' ' && line[0] != '\t')
 			return (EXIT_FAILURE);
 	//free split not create
 	return (EXIT_SUCCESS);

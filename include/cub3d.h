@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/25 22:00:23 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/11/27 21:49:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ int			get_width_map(char **matriz);
 int			init_process_flood(t_map *map);
 int			ft_strcmp(const char *s1, const char *s2);
 int			check_file_before_map(char *line);
+int			check_map_valid(char **map);
+int 		check_file(char **map);
 //void    	init_vars(t_vars *vars);
 t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map);
 
