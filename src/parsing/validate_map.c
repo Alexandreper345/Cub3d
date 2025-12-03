@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/27 21:40:52 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/02 22:02:57 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,32 @@
 
 int	check_file_before_map(char *line)
 {
-	char **split;
+	char	**split;
 
-	if ((line[0] == '1' ||  line[0] == '0'))
+	if ((line[0] == '1' || line[0] == '0'))
 		return (EXIT_FAILURE);
 	split = ft_split(line, ' ');
-	if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0) &&
-		(ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0) &&
-		(ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0) && line[0] != '\n'
-		&& line[0] != ' ' && line[0] != '\t')
-			return (EXIT_FAILURE);
-	//free split not create
+	if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0)
+		&& (ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0)
+		&& (ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0)
+		&& line[0] != '\n' && line[0] != ' ' && line[0] != '\t')
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int get_position_player(char **map , t_player *player)
+int	get_position_player(char **map, t_player *player)
 {
-	int 		i;
-	int 		j;
-	
+	int	i;
+	int	j;
+
 	i = -1;
-	while(map[++i])
+	while (map[++i])
 	{
 		j = -1;
-		while(map[i][++j])
+		while (map[i][++j])
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'W' ||
-				map[i][j] == 'S' || map[i][j] == 'E')
+			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S'
+				|| map[i][j] == 'E')
 			{
 				player->height = i;
 				player->width = j;
@@ -65,12 +64,12 @@ int	check_map_valid(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if ((map[i][j] != 'N') && (map[i][j] != 'S') &&
-				(map[i][j] != 'W') && map[i][j] != 'E' &&
-				(map[i][j] != '0' && map[i][j] != '1') && map[i][j] != '\n')
+			if ((map[i][j] != 'N') && (map[i][j] != 'S') && (map[i][j] != 'W')
+				&& map[i][j] != 'E' && (map[i][j] != '0' && map[i][j] != '1')
+				&& map[i][j] != '\n')
 				return (EXIT_FAILURE);
-			if ((map[i][j] == 'N') || (map[i][j] == 'S') ||
-				(map[i][j] == 'W') || (map[i][j] == 'E'))
+			if ((map[i][j] == 'N') || (map[i][j] == 'S') || (map[i][j] == 'W')
+				|| (map[i][j] == 'E'))
 				flag++;
 			j++;
 		}
@@ -81,7 +80,7 @@ int	check_map_valid(char **map)
 	return (EXIT_SUCCESS);
 }
 
-int is_line_map(char *line)
+int	is_line_map(char *line)
 {
 	int	i;
 	int	found_valid;
@@ -92,14 +91,13 @@ int is_line_map(char *line)
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
 		return (0);
-	
-    while (line[i] && line[i] != '\n' && line[i] != '\r')
-    {
-        if (!ft_strchr(" 01NSEW", line[i]))
-            return -1;
-        found_valid = 1;
-        i++;
-    }
+	while (line[i] && line[i] != '\n' && line[i] != '\r')
+	{
+		if (!ft_strchr(" 01NSEW", line[i]))
+			return (-1);
+		found_valid = 1;
+		i++;
+	}
 	return (found_valid);
 }
 
@@ -110,11 +108,11 @@ int	get_position_map(char **matriz, t_map *map)
 	int	count;
 	int	res;
 	int	end;
+	int	len;
 
 	i = 0;
 	end = 0;
-	
-	while(matriz[i] && !end)
+	while (matriz[i] && !end)
 	{
 		j = 0;
 		while (matriz[i][j] == ' ' || matriz[i][j] == '\t')
@@ -125,13 +123,13 @@ int	get_position_map(char **matriz, t_map *map)
 			i++;
 	}
 	if (!matriz[i])
-		return(ft_error("map not exist"), EXIT_FAILURE);
+		return (ft_error("map not exist"), EXIT_FAILURE);
 	count = 0;
-	while(matriz[i + count] && end == 1)
+	while (matriz[i + count] && end == 1)
 	{
-		res = is_line_map(matriz[i + count]); 
+		res = is_line_map(matriz[i + count]);
 		if (res == -1)
-			return ft_error("invalid character in map"), EXIT_FAILURE;
+			return (ft_error("invalid character in map"), EXIT_FAILURE);
 		else if (res == 0)
 			end = 0;
 		else
@@ -147,9 +145,9 @@ int	get_position_map(char **matriz, t_map *map)
 		while (matriz[i + j][res] == ' ' || matriz[i + j][res] == '\t')
 			res++;
 		map->map[j] = ft_strdup(&matriz[i + j][res]);
-		int len = ft_strlen(map->map[j]);
+		len = ft_strlen(map->map[j]);
 		if (len > 0 && map->map[j][len - 1] == '\n')
-    		map->map[j][len - 1] = '\0';
+			map->map[j][len - 1] = '\0';
 	}
 	map->map[j] = NULL;
 	if (check_map_valid(map->map))

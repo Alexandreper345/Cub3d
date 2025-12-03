@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/27 20:10:40 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/02 21:36:21 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	expand_map(t_map *map, int width, int height)
 	int	i;
 	int	j;
 
-	map->dup_map =copy_matriz(height, width);
+	map->dup_map = copy_matriz(height, width);
 	if (!map->dup_map)
 		return ;
 	i = 0;
-	while(i < height)
+	while (i < height)
 	{
 		j = 0;
-		while(map->map[i][j])
+		while (map->map[i][j])
 		{
 			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;

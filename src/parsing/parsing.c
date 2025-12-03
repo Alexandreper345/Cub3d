@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/11/27 22:06:34 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/02 21:49:31 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	exist_textures_and_color(char *line, int flag)
 {
-	char **split;
+	char	**split;
 
 	split = ft_split(line, ' ');
 	if (ft_strcmp(split[0], "NO") == 0 || ft_strcmp(split[0], "SO") == 0)
-		flag++;;
+		flag++;
 	if (ft_strcmp(split[0], "WE") == 0 || ft_strcmp(split[0], "EA") == 0)
-		flag++;;
+		flag++;
 	if (line[0] == 'F' || line[0] == 'C')
 		flag++;
-	//free split not create
+	free_matriz(split);
 	return (flag);
 }
 
@@ -32,7 +32,7 @@ int	check_config_info(t_map *map)
 	int		i;
 	int		flag;
 	char	*line;
-	
+
 	i = -1;
 	flag = 0;
 	while (map->matriz[++i])
@@ -40,7 +40,7 @@ int	check_config_info(t_map *map)
 		line = map->matriz[i];
 		if (check_file_before_map(line))
 		{
-			//free(matrix) free matriz
+			free_matriz(map->matriz);
 			ft_error("invalid struct map");
 			return (EXIT_FAILURE);
 		}
@@ -60,7 +60,7 @@ int	convert_color(char *rgb)
 
 	color = ft_split(rgb, ',');
 	if (!color)
-		return 	(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);
@@ -73,26 +73,23 @@ int	convert_color(char *rgb)
 	return ((r << 16) | (g << 8) | b);
 }
 
-
 int	get_color(t_map *map)
 {
 	int		i;
-	char	*line;
 	char	*temp;
 
 	i = -1;
 	while (map->matriz[++i])
 	{
-		line = map->matriz[i];
-		if (line[0] == 'F')
+		if (map->matriz[i][0] == 'F')
 		{
-			temp = ft_strtrim(line + 1, " ");
+			temp = ft_strtrim(map->matriz[i] + 1, " ");
 			map->Floor_color = convert_color(temp);
 			free(temp);
 		}
-		else if (line[0] == 'C')
+		else if (map->matriz[i][0] == 'C')
 		{
-			temp = ft_strtrim(line + 1, " ");
+			temp = ft_strtrim(map->matriz[i] + 1, " ");
 			map->Ceiling_color = convert_color(temp);
 			free(temp);
 		}
@@ -114,7 +111,8 @@ int	parsing(t_map *map, t_player *player)
 	}
 	if (check_config_info(map) || get_color(map))
 		return (EXIT_FAILURE);
-	if (get_position_map(map->matriz, map) || get_position_player(map->map, player))
+	if (get_position_map(map->matriz, map)
+		|| get_position_player(map->map, player))
 		return (EXIT_FAILURE);
 	if (init_process_flood(map))
 		return (EXIT_FAILURE);
