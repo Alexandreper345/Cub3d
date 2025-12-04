@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/02 22:11:14 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 21:10:27 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 int	x_button(t_vars *vars)
 {
 	free_and_exit(vars);
+	return (EXIT_SUCCESS);
 }

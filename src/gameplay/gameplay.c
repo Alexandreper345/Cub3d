@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/02 22:09:46 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 21:11:40 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	gameplay(t_vars *vars)
 
 	map = vars->map;
 	cam = &vars->camera;
-	player = &vars->player;
+	player = vars->player;
 	cam->height = 720;
 	cam->x = 0;
 	cam->y = 0;

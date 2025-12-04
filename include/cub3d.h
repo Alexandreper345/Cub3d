@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/02 22:25:00 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 22:06:20 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ typedef struct s_player
 	int				stepX;
 	double			posX;
 	double			posY;
-	int				width;
-	int				height;
 }					t_player;
 
 typedef struct s_texture
@@ -148,10 +146,10 @@ int					gameplay(t_vars *vars);
 int					get_position_map(char **matriz, t_map *map);
 int					get_texture_pixel_color(t_texture *tex, int x, int y);
 int					walk(int keycode, t_vars *vars);
-int					get_position_player(char **map, t_player *player);
+int					get_position_player(char **map, t_vars *vars_main)
 int					check_file_path(int argc, char **argv);
 int					init_matriz(t_map *map, char *path);
-int					parsing(t_map *map, t_player *player);
+int					parsing(t_map *map, t_vars *vars_main)
 int					malloc_in_pointer_y(t_map *map, char *line, int fd,
 						char *path);
 int					get_height_map(char **matriz);

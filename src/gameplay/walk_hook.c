@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2025/12/02 22:14:04 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 21:13:26 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	walk(int keycode, t_vars *vars)
 	t_camera	*cam;
 
 	map = vars->map;
-	p = &vars->player;
+	p = vars->player;
 	fps = &vars->fps;
 	cam = &vars->camera;
 	if (keycode == XK_Escape)
@@ -90,4 +90,5 @@ int	walk(int keycode, t_vars *vars)
 		walk_right(map, p, fps, cam);
 	if (keycode == XK_a)
 		walk_left(map, p, fps, cam);
+	return(0);
 }

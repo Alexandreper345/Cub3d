@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/02 22:21:23 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 21:43:00 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	init_fps(t_fps *fps)
 	vars->camera.height = 720;
 }*/
 // only to simulate a parser, it will be substitued for alexandre real parser
+/*
 void	simple_parser(t_map *map, char *path)
 {
 	fd = open(path, O_RDWR);
@@ -104,3 +105,4 @@ void	simple_parser(t_map *map, char *path)
 	close(fd);
 	printf("sai aqui do simples parser\n");
 }
+*/

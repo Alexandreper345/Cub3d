@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/02 22:02:57 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/03 22:09:11 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,39 @@ int	check_file_before_map(char *line)
 	return (EXIT_SUCCESS);
 }
 
-int	get_position_player(char **map, t_player *player)
+void	star_game(t_map *map, t_vars *vars, int	i, int j)
+{
+	if (map[i][j] == 'N')
+	{
+		vars->camera.dirX = 0;
+		vars->camera.dirY = -1;
+		vars->camera.planeX = 0.66;
+		vars->camera.planeY = 0;
+	}
+	else if (map[i][j] == 'S')
+	{
+		vars->camera.dirX = 0;
+		vars->camera.dirY = 1;
+		vars->camera.planeX = -0.66;
+		vars->camera.planeY = 0;
+	}
+	else if (map[i][j] == 'E')
+	{
+		vars->camera.dirX = 1;
+		vars->camera.dirY = 0;
+		vars->camera.planeX = 0;
+		vars->camera.planeY = 0.66;
+	}
+	else if (map[i][j] == 'W')
+	{
+		vars->camera.dirX = -1;
+		vars->camera.dirY = 0;
+		vars->camera.planeX = 0;
+		vars->camera.planeY = - 0.66;
+	}
+}
+
+int	get_position_player(char **map, t_vars *vars_main)
 {
 	int	i;
 	int	j;
@@ -41,8 +73,8 @@ int	get_position_player(char **map, t_player *player)
 			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S'
 				|| map[i][j] == 'E')
 			{
-				player->height = i;
-				player->width = j;
+				player->posY = i;
+				player->posX = j;
 				return (EXIT_SUCCESS);
 			}
 		}
