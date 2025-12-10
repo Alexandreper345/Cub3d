@@ -6,10 +6,11 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/03 21:03:06 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:16:00 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
 #include "../../include/cub3d.h"
 
 static void	init_fps(t_fps *fps)
@@ -55,7 +56,7 @@ void	init_vars(t_vars *vars, char *map_path)
 	vars->camera.planeX = 0.0;
 	vars->camera.planeY = -0.66;
 	vars->camera.height = 720;
-}
+}*/
 /*void    init_vars(t_vars *vars)
 {
 	vars->height = 720;

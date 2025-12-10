@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/03 21:58:09 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:03:09 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	init_struct(t_vars *vars, t_fps	*fps)
 	init_fps(fps);
 	vars->map = map;
 	vars->player = player;
-	vars->fps = fps;
-	vars->camera = camera;
-	vars->buffer = buffer;
+	vars->fps = *fps;
+	vars->camera = *camera;
+	vars->buffer = *buffer;
 	return (EXIT_SUCCESS);
 }
 

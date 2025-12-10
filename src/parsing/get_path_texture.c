@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/02 21:42:46 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:08:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	insert_value_texture(char *line, t_map *map)
 		ft_error("split texture failed");
 		return (EXIT_FAILURE);
 	}
+	if (split[1][ft_strlen(split[1]) - 1] == '\n')
+		split[1][ft_strlen(split[1]) - 1] = '\0';
 	if (ft_strcmp(split[0], "NO") == 0)
 		map->NO_path = split[1];
 	if (ft_strcmp(split[0], "SO") == 0)
@@ -31,7 +33,7 @@ int	insert_value_texture(char *line, t_map *map)
 		map->WE_path = split[1];
 	if (ft_strcmp(split[0], "EA") == 0)
 		map->EA_path = split[1];
-	free_matriz(split);
+	//free_matriz(split);
 	return (EXIT_SUCCESS);
 }
 
@@ -46,7 +48,7 @@ static int	format_map(char *line, t_map *map)
 		ft_error("format invalid");
 		return (EXIT_FAILURE);
 	}
-	result = ft_strcmp(search_dot, ".xpm");
+	result = ft_strcmp(search_dot, ".xpm\n");
 	if (result != 0)
 	{
 		ft_error("format texture invalid");
@@ -65,8 +67,8 @@ int	get_path_text(t_map *map)
 	while (map->matriz[++i])
 	{
 		line = map->matriz[i];
-		if (ft_strcmp(line, "NO") == 0 || ft_strcmp(line, "SO") == 0
-			|| ft_strcmp(line, "WE") == 0 || ft_strcmp(line, "EA") == 0)
+		if (ft_strncmp(line, "NO", 2) == 0 || ft_strncmp(line, "SO", 2) == 0
+			|| ft_strncmp(line, "WE", 2) == 0 || ft_strncmp(line, "EA", 2) == 0)
 			if (format_map(line, map))
 				return (EXIT_FAILURE);
 	}

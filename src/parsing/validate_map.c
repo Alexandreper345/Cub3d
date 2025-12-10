@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/03 22:09:11 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:40:18 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_file_before_map(char *line)
 	return (EXIT_SUCCESS);
 }
 
-void	star_game(t_map *map, t_vars *vars, int	i, int j)
+void	star_game(char **map, t_vars *vars, int i, int j)
 {
 	if (map[i][j] == 'N')
 	{
@@ -55,7 +55,7 @@ void	star_game(t_map *map, t_vars *vars, int	i, int j)
 		vars->camera.dirX = -1;
 		vars->camera.dirY = 0;
 		vars->camera.planeX = 0;
-		vars->camera.planeY = - 0.66;
+		vars->camera.planeY = -0.66;
 	}
 }
 
@@ -73,8 +73,9 @@ int	get_position_player(char **map, t_vars *vars_main)
 			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S'
 				|| map[i][j] == 'E')
 			{
-				player->posY = i;
-				player->posX = j;
+				vars_main->player->posY = i;
+				vars_main->player->posX = j;
+				star_game(map,vars_main, i, j);
 				return (EXIT_SUCCESS);
 			}
 		}

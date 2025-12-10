@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/03 21:34:37 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:15:09 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int	parsing(t_map *map, t_vars *vars_main)
 		return (EXIT_FAILURE);
 	}
 	if (check_config_info(map) || get_color(map))
+		return (EXIT_FAILURE);
+	if (get_path_text(map))
 		return (EXIT_FAILURE);
 	if (get_position_map(map->matriz, map)
 		|| get_position_player(map->map, vars_main))

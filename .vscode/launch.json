@@ -2,20 +2,31 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
+      "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "args": ["./files/cubmap.cub"],
+      "program": "${workspaceFolder}/Cub3d",
+      "args": ["map/map_teste.cub"],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/erick/Documentos/42/cub3d",
-      "program": "/home/erick/Documentos/42/cub3d/Cub3d",
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set GDB to stop on breakpoints",
+          "text": "-gdb-set stop-on-solib-events 1",
           "ignoreFailures": true
         }
       ]
