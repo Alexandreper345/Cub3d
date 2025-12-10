@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/09 21:20:19 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:55:30 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int	game(t_vars *vars)
 	printf("fui até aqui 1\n");
 	mlx_loop_hook(vars->mlx, gameplay, vars);
 	printf("fui até aqui 2 %x \n", vars->mlx);
-	mlx_loop(vars->mlx);
+	while (1)
+	{
+		
+	}
+	
 	return (0);
 }

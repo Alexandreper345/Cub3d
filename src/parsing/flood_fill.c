@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/02 21:36:21 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/10 20:37:04 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	init_process_flood(t_map *map)
 
 	width = get_width_map(map->map);
 	height = get_height_map(map->map);
+	map->width = width;
+	map->height = height;
 	expand_map(map, width, height);
 	if (!flood_fill(map->dup_map, 0, 0))
 	{
