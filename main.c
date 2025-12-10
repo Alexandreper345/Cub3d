@@ -62,5 +62,12 @@ int	main(int argc, char **argv)
 	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars))
 		return (EXIT_FAILURE);
 
+	int i = 0;
+	while (vars->map->matriz[i] != NULL)
+	{
+		printf("%s\n", vars->map->matriz[i]);
+		i++;
+	}
+	
 	game(vars);
 }
