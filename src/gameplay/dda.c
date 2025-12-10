@@ -24,6 +24,7 @@ static void	calc_cam_vars(t_camera *cam, t_vars *vars)
 
 static void	delta_dist(t_camera *cam, t_player *player)
 {
+	(void)player;
 	if (cam->rayDirX == 0)
 		cam->deltaDistX = 1e30;
 	else
@@ -77,10 +78,10 @@ void	dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars)
 			cam->mapY += player->stepY;
 			cam->side = 1;
 		}
-		if (cam->mapX < 0 || cam->mapX >= vars->width || cam->mapY < 0
-			|| cam->mapY >= vars->height)
+		if (cam->mapX < 0 || cam->mapX >= map->width || cam->mapY < 0
+			|| cam->mapY >= map->height)
 			cam->hit = 1;
-		if (map->matriz[cam->mapY][cam->mapX] == '1')
+		else if (map->matriz[cam->mapY][cam->mapX] == '1')
 			cam->hit = 1;
 	}
 }

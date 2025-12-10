@@ -12,20 +12,6 @@
 
 #include "include/cub3d.h"
 
-static void	init_buffer(t_vars *vars)
-{
-	printf("Inicializando o buffer de imagem...\n");
-	vars->buffer.img_ptr = mlx_new_image(vars->mlx, vars->width, vars->height);
-	if (vars->buffer.img_ptr == NULL)
-	{
-		printf("Erro fatal: mlx_new_image() para o buffer falhou.\n");
-		exit(1);
-	}
-	vars->buffer.addr = mlx_get_data_addr(vars->buffer.img_ptr,
-			&vars->buffer.bpp, &vars->buffer.line_len, &vars->buffer.endian);
-	printf("Buffer inicializado. Endereço (addr): %p\n", vars->buffer.addr);
-}
-
 static void	init_fps(t_fps *fps)
 {
 	fps->time = 0;
@@ -57,6 +43,8 @@ int	init_struct(t_vars *vars, t_fps	*fps)
 	vars->fps = *fps;
 	vars->camera = *camera;
 	vars->buffer = *buffer;
+	vars->width = 1080;
+	vars->height = 720;
 	return (EXIT_SUCCESS);
 }
 
@@ -65,6 +53,7 @@ int	main(int argc, char **argv)
 	t_vars	*vars;
 	t_fps	*fps;
 
+	fps = NULL;
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		return (EXIT_FAILURE);
@@ -72,11 +61,13 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars))
 		return (EXIT_FAILURE);
-	/*
-	init_vars(vars, argv[1]);
-	for (int i = 0; vars->map->matriz[i] != NULL; i++)
-		printf("lina: %s", vars->map->matriz[i]);
-	printf("tex: %s\n", vars->map->NO_path);
-	*/
+
+	int i = 0;
+	while (vars->map->matriz[i] != NULL)
+	{
+		printf("%s\n", vars->map->matriz[i]);
+		i++;
+	}
+	
 	game(vars);
 }
