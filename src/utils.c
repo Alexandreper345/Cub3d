@@ -25,7 +25,7 @@ int	len(char *s)
 int	get_height_map(char **map)
 {
 	int	i;
-	int	j;
+	//int	j;
 
 	i = 0;
 	if (!map)

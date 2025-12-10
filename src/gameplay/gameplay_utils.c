@@ -14,6 +14,7 @@
 
 t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map)
 {
+	(void) vars;
 	if (cam->side == 0)
 	{
 		if (cam->rayDirX < 0)

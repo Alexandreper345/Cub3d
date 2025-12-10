@@ -24,6 +24,7 @@ static void	calc_cam_vars(t_camera *cam, t_vars *vars)
 
 static void	delta_dist(t_camera *cam, t_player *player)
 {
+	(void)player;
 	if (cam->rayDirX == 0)
 		cam->deltaDistX = 1e30;
 	else

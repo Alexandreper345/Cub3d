@@ -12,20 +12,6 @@
 
 #include "include/cub3d.h"
 
-static void	init_buffer(t_vars *vars)
-{
-	printf("Inicializando o buffer de imagem...\n");
-	vars->buffer.img_ptr = mlx_new_image(vars->mlx, vars->width, vars->height);
-	if (vars->buffer.img_ptr == NULL)
-	{
-		printf("Erro fatal: mlx_new_image() para o buffer falhou.\n");
-		exit(1);
-	}
-	vars->buffer.addr = mlx_get_data_addr(vars->buffer.img_ptr,
-			&vars->buffer.bpp, &vars->buffer.line_len, &vars->buffer.endian);
-	printf("Buffer inicializado. Endereço (addr): %p\n", vars->buffer.addr);
-}
-
 static void	init_fps(t_fps *fps)
 {
 	ft_memset(fps, 0, sizeof(t_fps));

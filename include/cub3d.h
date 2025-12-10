@@ -160,6 +160,8 @@ int					check_file_before_map(char *line);
 int					check_map_valid(char **map);
 int					check_file(char **map);
 int					get_path_text(t_map *map);
+void				init_buffer(t_vars *vars);
+
 // void    	init_vars(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,
 						t_map *map);

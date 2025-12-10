@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-static void	init_buffer(t_vars *vars)
+void	init_buffer(t_vars *vars)
 {
 	printf("Inicializando o buffer de imagem...\n");
 	vars->buffer.img_ptr = mlx_new_image(vars->mlx, vars->width, vars->height);
@@ -40,7 +40,6 @@ int	game(t_vars *vars)
 	mlx_hook(vars->win, 2, 1L << 0, walk, vars);
 	printf("fui até aqui 1\n");
 	mlx_loop_hook(vars->mlx, gameplay, vars);
-	printf("fui até aqui 2 %x \n", vars->mlx);
 	mlx_loop(vars->mlx);
 	return (0);
 }

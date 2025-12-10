@@ -45,6 +45,8 @@ static void	walk_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 	double	oldDirX;
 	double	oldPlaneX;
 
+	(void)p;
+	(void)map;
 	oldDirX = cam->dirX;
 	cam->dirX = cam->dirX * cos(fps->rs) - cam->dirY * sin(fps->rs);
 	cam->dirY = oldDirX * sin(fps->rs) + cam->dirY * cos(fps->rs);
@@ -58,6 +60,8 @@ static void	walk_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 	double	oldDirX;
 	double	oldPlaneX;
 
+	(void)p;
+	(void)map;
 	oldDirX = cam->dirX;
 	cam->dirX = cam->dirX * cos(-fps->rs) - cam->dirY * sin(-fps->rs);
 	cam->dirY = oldDirX * sin(-fps->rs) + cam->dirY * cos(-fps->rs);
