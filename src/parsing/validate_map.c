@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:40:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 02:46:17 by erick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	get_position_player(char **map, t_vars *vars_main)
 			{
 				vars_main->player->posY = i;
 				vars_main->player->posX = j;
+				printf("posiçãoi do jogardo de inicio qui Y:%d e X:%d\n", i,j);
 				star_game(map,vars_main, i, j);
 				return (EXIT_SUCCESS);
 			}
