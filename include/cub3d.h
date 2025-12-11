@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:13:35 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 02:42:20 by erick            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ int					check_map_valid(char **map);
 int					check_file(char **map);
 int					get_path_text(t_map *map);
 void				init_buffer(t_vars *vars);
+int				recreate_matriz(t_vars *vars, char *path);
 
 // void    	init_vars(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,
