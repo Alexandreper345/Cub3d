@@ -65,9 +65,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars))
 		return (EXIT_FAILURE);
+	/*
 	if (recreate_matriz(vars, argv[1]) == 1)
 		return(EXIT_FAILURE);
-		
+	*/	
 	
 	game(vars);
 }
