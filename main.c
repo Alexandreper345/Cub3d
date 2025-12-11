@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:03:09 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 20:31:44 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int	main(int argc, char **argv)
 		printf("%s\n", vars->map->matriz[i]);
 		i++;
 	}
-	
 	game(vars);
 }
