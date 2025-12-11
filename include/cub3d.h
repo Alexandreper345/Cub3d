@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:13:35 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:31:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int					check_file_before_map(char *line);
 int					check_map_valid(char **map);
 int					check_file(char **map);
 int					get_path_text(t_map *map);
+int					check_duplacate_map(char **map);
 void				init_buffer(t_vars *vars);
 
 // void    	init_vars(t_vars *vars);

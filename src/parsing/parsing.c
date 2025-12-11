@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:15:09 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:31:47 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,12 @@ int	convert_color(char *rgb)
 
 	color = ft_split(rgb, ',');
 	if (!color)
-		return (EXIT_FAILURE);
+		return -1;
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-	{
-		ft_error("map invalid, because this color invalid");
-		return (EXIT_FAILURE);
-	}
+		return -1;
 	free(color);
 	return ((r << 16) | (g << 8) | b);
 }
@@ -94,9 +91,9 @@ int	get_color(t_map *map)
 			free(temp);
 		}
 	}
-	if (!map->Floor_color || !map->Ceiling_color)
+	if (map->Floor_color == -1 || map->Ceiling_color == -1)
 	{
-		ft_error("map invalid, because not exist color");
+		ft_error("map invalid, because invalid color");
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
@@ -104,7 +101,7 @@ int	get_color(t_map *map)
 
 int	parsing(t_map *map, t_vars *vars_main)
 {
-	if (check_file(map->matriz))
+	if (check_file(map->matriz) || check_duplacate_map(map->matriz))
 	{
 		ft_error("map invalid");
 		return (EXIT_FAILURE);
