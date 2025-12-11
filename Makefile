@@ -19,6 +19,7 @@ SRC = \
 	src/parsing/vars_init.c \
 	src/parsing/check_file.c \
 	src/parsing/parsing.c \
+	src/parsing/recreate_matriz.c \
 	src/parsing/init_matriz.c \
 	src/parsing/flood_fill.c \
 	src/parsing/get_path_texture.c \

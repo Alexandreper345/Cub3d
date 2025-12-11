@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/12/11 20:31:44 by alda-sil         ###   ########.fr       */
+=======
+/*   Updated: 2025/12/11 02:42:42 by erick            ###   ########.fr       */
+>>>>>>> 2d4ce9139a65b4628a0a328d5646908c16b4539f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +65,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars))
 		return (EXIT_FAILURE);
-
-	int i = 0;
-	while (vars->map->matriz[i] != NULL)
-	{
-		printf("%s\n", vars->map->matriz[i]);
-		i++;
-	}
+	if (recreate_matriz(vars, argv[1]) == 1)
+		return(EXIT_FAILURE);
+		
+	
 	game(vars);
 }
