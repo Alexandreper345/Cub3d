@@ -55,9 +55,9 @@ void	calc_fps(t_fps *fps)
 	gettimeofday(&fps->timeOfDay, NULL);
 	fps->time = fps->timeOfDay.tv_sec + (fps->timeOfDay.tv_usec / 1000000.0);
 	;
-	printf("aqui está o tempo %f\n", fps->time);
+	//printf("aqui está o tempo %f\n", fps->time);
 	fps->frameTime = (fps->time - fps->oldTime);
-	printf("aqui esta o frameTime %f\n", fps->frameTime);
+	//printf("aqui esta o frameTime %f\n", fps->frameTime);
 	fps->mv = fps->frameTime * 10.0;
 	fps->rs = fps->frameTime * 10.0;
 }
