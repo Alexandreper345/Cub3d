@@ -19,7 +19,7 @@ static void	walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 
 	newPosX = p->posX + cam->dirX * fps->mv;
 	newPosY = p->posY + cam->dirY * fps->mv;
-	if (map->matriz[(int)newPosY][(int)newPosX] == '0')
+	if (map->map[(int)newPosY][(int)newPosX] == '0')
 	{
 		p->posX = newPosX;
 		p->posY = newPosY;
@@ -33,7 +33,7 @@ static void	walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 
 	newPosX = p->posX - cam->dirX * fps->mv;
 	newPosY = p->posY - cam->dirY * fps->mv;
-	if (map->matriz[(int)newPosY][(int)newPosX] == '0')
+	if (map->map[(int)newPosY][(int)newPosX] == '0')
 	{
 		p->posX = newPosX;
 		p->posY = newPosY;
@@ -85,11 +85,14 @@ int	walk(int keycode, t_vars *vars)
 		free_and_exit(vars);
 	if (keycode == XK_w)
 	{
-		printf("cai aqui\n");
+		printf("cliquei w\n");
 		walk_up(map, p, fps, cam);
 	}
 	if (keycode == XK_s)
+	{
+		printf("cliquei w\n");
 		walk_down(map, p, fps, cam);
+	}
 	if (keycode == XK_d)
 		walk_right(map, p, fps, cam);
 	if (keycode == XK_a)

@@ -9,7 +9,7 @@
 /*   Updated: 2025/12/11 20:37:44 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+//excluir depois
 #include "../../include/cub3d.h"
 
 static int check_is_map_line(char *line)
@@ -53,9 +53,9 @@ int find_height(char *path)
 
     fd = 0;
     height = 0;
-	open()
+	fd = open(path, O_RDWR);
     if (!fd)
-		return ; 
+		return (-1); 
     line = start_line(fd);
     while (line != NULL && check_is_map_line(line) == 0)
     {
