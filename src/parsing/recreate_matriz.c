@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 02:30:14 by erick             #+#    #+#             */
-/*   Updated: 2025/12/11 20:37:44 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:12:15 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int find_height(char *path)
 
     fd = 0;
     height = 0;
-	open()
     if (!fd)
 		return ; 
     line = start_line(fd);
@@ -101,3 +100,4 @@ int recreate_matriz(t_vars *vars, char *path)  // need to free oldmatriz
 	vars->map->width = (int)max;
 	return (EXIT_SUCCESS);
 }
+
