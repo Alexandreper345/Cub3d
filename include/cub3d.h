@@ -162,7 +162,7 @@ int					check_file(char **map);
 int					get_path_text(t_map *map);
 int					check_duplacate_map(char **map);
 void				init_buffer(t_vars *vars);
-int				recreate_matriz(t_vars *vars, char *path);
+int					recreate_matriz(t_vars *vars, char *path);
 
 // void    	init_vars(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,

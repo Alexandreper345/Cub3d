@@ -81,7 +81,7 @@ void	dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars)
 		if (cam->mapX < 0 || cam->mapX >= map->width || cam->mapY < 0
 			|| cam->mapY >= map->height)
 			cam->hit = 1;
-		else if (map->matriz[cam->mapY][cam->mapX] == '1')
+		else if (map->map[cam->mapY][cam->mapX] == '1')
 			cam->hit = 1;
 	}
 }

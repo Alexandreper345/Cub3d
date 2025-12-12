@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 02:30:14 by erick             #+#    #+#             */
-/*   Updated: 2025/12/11 21:12:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:13:46 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int find_height(char *path)
 
     fd = 0;
     height = 0;
+	fd = open(path, O_RDWR);
     if (!fd)
-		return ; 
+		return (-1); 
     line = start_line(fd);
     while (line != NULL && check_is_map_line(line) == 0)
     {

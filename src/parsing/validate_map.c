@@ -73,8 +73,8 @@ int	get_position_player(char **map, t_vars *vars_main)
 			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S'
 				|| map[i][j] == 'E')
 			{
-				vars_main->player->posY = i;
-				vars_main->player->posX = j;
+				vars_main->player->posY = (i + 0.5);
+				vars_main->player->posX = (j + 0.5);
 				printf("posiçãoi do jogardo de inicio qui Y:%d e X:%d\n", i,j);
 				star_game(map,vars_main, i, j);
 				return (EXIT_SUCCESS);
