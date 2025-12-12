@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/03 21:11:40 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:59:33 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,32 @@ static void	draw_texture(t_texture *tex, t_camera *cam, t_vars *vars)
 	}
 }
 
-static void	draw_walls(t_map *map, t_camera *cam, t_player *player,
-		t_vars *vars)
+static void	draw_walls(t_map *map, t_camera *c, t_player *p, t_vars *vars)
 {
 	t_texture	*tex;
 
-	tex = determinate_texture(cam, vars, map);
-	if (cam->side == 0)
-		cam->perpWallDist = (cam->mapX - player->posX + (1 - player->stepX) / 2)
-			/ cam->rayDirX;
+	tex = determinate_texture(c, vars, map);
+	if (c->side == 0)
+		c->perpWallDist = (c->mapX - p->posX + (1 - p->stepX) / 2) / c->rayDirX;
 	else
-		cam->perpWallDist = (cam->mapY - player->posY + (1 - player->stepY) / 2)
-			/ cam->rayDirY;
-	cam->lineHeight = (int)(cam->height / cam->perpWallDist);
-	cam->drawStart = -cam->lineHeight / 2 + cam->height / 2;
-	if (cam->drawStart < 0)
-		cam->drawStart = 0;
-	cam->drawEnd = cam->lineHeight / 2 + cam->height / 2;
-	if (cam->drawEnd >= cam->height)
-		cam->drawEnd = cam->height - 1;
-	if (cam->side == 0)
-		cam->wallX = player->posY + cam->perpWallDist * cam->rayDirY;
+		c->perpWallDist = (c->mapY - p->posY + (1 - p->stepY) / 2) / c->rayDirY;
+	c->lineHeight = (int)(c->height / c->perpWallDist);
+	c->drawStart = -c->lineHeight / 2 + c->height / 2;
+	if (c->drawStart < 0)
+		c->drawStart = 0;
+	c->drawEnd = c->lineHeight / 2 + c->height / 2;
+	if (c->drawEnd >= c->height)
+		c->drawEnd = c->height - 1;
+	if (c->side == 0)
+		c->wallX = p->posY + c->perpWallDist * c->rayDirY;
 	else
-		cam->wallX = player->posX + cam->perpWallDist * cam->rayDirX;
-	cam->wallX -= floor(cam->wallX);
-	cam->texX = (int)(cam->wallX * (double)tex->width);
-	if ((cam->side == 0 && cam->rayDirX > 0) || (cam->side == 1
-			&& cam->rayDirY < 0))
-		cam->texX = tex->width - cam->texX - 1;
-	draw_texture(tex, cam, vars);
+		c->wallX = p->posX + c->perpWallDist * c->rayDirX;
+	c->wallX -= floor(c->wallX);
+	c->texX = (int)(c->wallX * (double)tex->width);
+	if ((c->side == 0 && c->rayDirX > 0) || (c->side == 1
+			&& c->rayDirY < 0))
+		c->texX = tex->width - c->texX - 1;
+	draw_texture(tex, c, vars);
 }
 
 int	gameplay(t_vars *vars)

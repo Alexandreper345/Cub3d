@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 21:08:51 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:31:00 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	insert_value_texture(char *line, t_map *map)
 		map->WE_path = split[1];
 	if (ft_strcmp(split[0], "EA") == 0)
 		map->EA_path = split[1];
-	//free_matriz(split);
 	return (EXIT_SUCCESS);
 }
 

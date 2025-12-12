@@ -6,11 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/12/11 21:12:18 by alda-sil         ###   ########.fr       */
-=======
-/*   Updated: 2025/12/11 20:31:44 by alda-sil         ###   ########.fr       */
->>>>>>> f7463c005bce178c1ae1ed1e2a1a0d82deca98c7
+/*   Updated: 2025/12/11 22:14:18 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +23,10 @@ static void	init_fps(t_fps *fps)
 	fps->rs = 0;
 }
 
-int	init_struct(t_vars *vars, t_fps	*fps)
+int	init_struct(t_vars *vars, t_fps *fps)
 {
 	t_map		*map;
-	t_player 	*player;
+	t_player	*player;
 	t_camera	*camera;
 	t_texture	*buffer;
 
@@ -39,7 +35,7 @@ int	init_struct(t_vars *vars, t_fps	*fps)
 	camera = malloc(sizeof(t_camera));
 	fps = malloc(sizeof(t_fps));
 	buffer = malloc(sizeof(t_texture));
-	if (!map  || !player || !fps || !camera || !buffer)
+	if (!map || !player || !fps || !camera || !buffer)
 		return (EXIT_FAILURE);
 	init_fps(fps);
 	vars->map = map;
@@ -49,6 +45,10 @@ int	init_struct(t_vars *vars, t_fps	*fps)
 	vars->buffer = *buffer;
 	vars->width = 1080;
 	vars->height = 720;
+	vars->camera.dirX = 0;
+	vars->camera.dirY = 0;
+	vars->camera.planeX = 0;
+	vars->camera.planeY = 0;
 	return (EXIT_SUCCESS);
 }
 

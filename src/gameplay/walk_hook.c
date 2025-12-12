@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2025/12/03 21:13:26 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 22:18:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,60 @@
 
 static void	walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-	double	newPosX;
-	double	newPosY;
+	double	new_pos_x;
+	double	new_pos_y;
 
-	newPosX = p->posX + cam->dirX * fps->mv;
-	newPosY = p->posY + cam->dirY * fps->mv;
-	if (map->map[(int)newPosY][(int)newPosX] == '0')
+	new_pos_x = p->posX + cam->dirX * fps->mv;
+	new_pos_y = p->posY + cam->dirY * fps->mv;
+	if (map->map[(int)new_pos_y][(int)new_pos_x] != '1')
 	{
-		p->posX = newPosX;
-		p->posY = newPosY;
+		p->posX = new_pos_x;
+		p->posY = new_pos_y;
 	}
 }
 
 static void	walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-	double	newPosX;
-	double	newPosY;
+	double	new_pos_x;
+	double	new_pos_y;
 
-	newPosX = p->posX - cam->dirX * fps->mv;
-	newPosY = p->posY - cam->dirY * fps->mv;
-	if (map->map[(int)newPosY][(int)newPosX] == '0')
+	new_pos_x = p->posX - cam->dirX * fps->mv;
+	new_pos_y = p->posY - cam->dirY * fps->mv;
+	if (map->map[(int)new_pos_y][(int)new_pos_x] != '1')
 	{
-		p->posX = newPosX;
-		p->posY = newPosY;
+		p->posX = new_pos_x;
+		p->posY = new_pos_y;
 	}
 }
 
 static void	walk_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	(void)p;
 	(void)map;
-	oldDirX = cam->dirX;
+	old_dir_x = cam->dirX;
 	cam->dirX = cam->dirX * cos(fps->rs) - cam->dirY * sin(fps->rs);
-	cam->dirY = oldDirX * sin(fps->rs) + cam->dirY * cos(fps->rs);
-	oldPlaneX = cam->planeX;
+	cam->dirY = old_dir_x * sin(fps->rs) + cam->dirY * cos(fps->rs);
+	old_plane_x = cam->planeX;
 	cam->planeX = cam->planeX * cos(fps->rs) - cam->planeY * sin(fps->rs);
-	cam->planeY = oldPlaneX * sin(fps->rs) + cam->planeY * cos(fps->rs);
+	cam->planeY = old_plane_x * sin(fps->rs) + cam->planeY * cos(fps->rs);
 }
 
 static void	walk_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {
-	double	oldDirX;
-	double	oldPlaneX;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	(void)p;
 	(void)map;
-	oldDirX = cam->dirX;
+	old_dir_x = cam->dirX;
 	cam->dirX = cam->dirX * cos(-fps->rs) - cam->dirY * sin(-fps->rs);
-	cam->dirY = oldDirX * sin(-fps->rs) + cam->dirY * cos(-fps->rs);
-	oldPlaneX = cam->planeX;
+	cam->dirY = old_dir_x * sin(-fps->rs) + cam->dirY * cos(-fps->rs);
+	old_plane_x = cam->planeX;
 	cam->planeX = cam->planeX * cos(-fps->rs) - cam->planeY * sin(-fps->rs);
-	cam->planeY = oldPlaneX * sin(-fps->rs) + cam->planeY * cos(-fps->rs);
+	cam->planeY = old_plane_x * sin(-fps->rs) + cam->planeY * cos(-fps->rs);
 }
 
 int	walk(int keycode, t_vars *vars)
@@ -84,18 +84,12 @@ int	walk(int keycode, t_vars *vars)
 	if (keycode == XK_Escape)
 		free_and_exit(vars);
 	if (keycode == XK_w)
-	{
-		printf("cliquei w\n");
 		walk_up(map, p, fps, cam);
-	}
 	if (keycode == XK_s)
-	{
-		printf("cliquei w\n");
 		walk_down(map, p, fps, cam);
-	}
 	if (keycode == XK_d)
 		walk_right(map, p, fps, cam);
 	if (keycode == XK_a)
 		walk_left(map, p, fps, cam);
-	return(0);
+	return (0);
 }

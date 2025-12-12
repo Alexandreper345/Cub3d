@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/09 20:40:31 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:30:50 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	len(char *s)
 int	get_height_map(char **map)
 {
 	int	i;
-	//int	j;
 
 	i = 0;
 	if (!map)

@@ -19,11 +19,11 @@ SRC = \
 	src/parsing/vars_init.c \
 	src/parsing/check_file.c \
 	src/parsing/parsing.c \
-	src/parsing/recreate_matriz.c \
 	src/parsing/init_matriz.c \
 	src/parsing/flood_fill.c \
 	src/parsing/get_path_texture.c \
 	src/parsing/validate_map.c \
+	src/parsing/validate_map2.c \
 	src/parsing/check_two_map.c \
 	src/error/ft_error.c \
 	src/free/free_mlx.c \

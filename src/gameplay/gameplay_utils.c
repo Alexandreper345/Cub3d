@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:24:51 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/02 22:10:27 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/11 21:56:20 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_texture	*determinate_texture(t_camera *cam, t_vars *vars, t_map *map)
 {
-	(void) vars;
+	(void)vars;
 	if (cam->side == 0)
 	{
 		if (cam->rayDirX < 0)
@@ -54,7 +54,6 @@ void	calc_fps(t_fps *fps)
 	fps->oldTime = fps->time;
 	gettimeofday(&fps->timeOfDay, NULL);
 	fps->time = fps->timeOfDay.tv_sec + (fps->timeOfDay.tv_usec / 1000000.0);
-	;
 	printf("aqui está o tempo %f\n", fps->time);
 	fps->frameTime = (fps->time - fps->oldTime);
 	printf("aqui esta o frameTime %f\n", fps->frameTime);
