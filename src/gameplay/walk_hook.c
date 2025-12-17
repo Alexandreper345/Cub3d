@@ -83,6 +83,7 @@ int	walk(int keycode, t_vars *vars)
 	cam = &vars->camera;
 	if (keycode == XK_Escape)
 	{
+
 		free_mlx(vars);
 		free_all(vars);
 		exit(0);

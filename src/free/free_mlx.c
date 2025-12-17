@@ -29,6 +29,10 @@ void	free_mlx(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	free(vars->win);
+	mlx_destroy_image(vars->mlx, &vars->map->so);
+	mlx_destroy_image(vars->mlx, &vars->map->ea);
+	mlx_destroy_image(vars->mlx, &vars->map->we);
+	mlx_destroy_image(vars->mlx, &vars->map->no);
 	mlx_destroy_display(vars->mlx);
 }
 
