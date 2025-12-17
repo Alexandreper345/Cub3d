@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_matriz.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erick <erick@student.42.fr>                +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 02:27:28 by erick            ###   ########.fr       */
+/*   Updated: 2025/12/16 20:27:30 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	malloc_in_pointer_y(t_map *map, char *line, int fd, char *path)
 	map->matriz = (char **)ft_calloc((height) + 1, sizeof(char *));
 	if (!map->matriz)
 	{
-		ft_error("failure in calloc map_y");
+		ft_error("failure in calloc mapy");
 		free_matriz(map->matriz);
 		return (EXIT_FAILURE);
 	}

@@ -30,7 +30,7 @@ void	*mlx_init()
 	xvar->depth = DefaultDepth(xvar->display,xvar->screen);
 	if (mlx_int_get_visual(xvar)==-1)
 	{
-		printf(ERR_NO_TRUECOLOR);
+		printf(ERR_no_TRUECOLOR);
 		exit(1);
 	}
 	xvar->win_list = 0;
@@ -42,7 +42,7 @@ void	*mlx_init()
 	mlx_int_deal_shm(xvar);
 	if (xvar->private_cmap)
 		xvar->cmap = XCreateColormap(xvar->display,xvar->root,
-				 xvar->visual,AllocNone);
+				 xvar->visual,Allocnone);
 	mlx_int_rgb_conversion(xvar);
 	xvar->end_loop = 0;
 	return (xvar);
@@ -50,7 +50,7 @@ void	*mlx_init()
 
 
 /*
-** pshm_format of -1 :	Not XYBitmap|XYPixmap|ZPixmap
+** pshm_format of -1 :	not XYBitmap|XYPixmap|ZPixmap
 ** alpha libX need a check of the DISPLAY env var, or shm is allowed
 ** in remote Xserver connections.
 */

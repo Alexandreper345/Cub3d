@@ -1,7 +1,7 @@
 /* XPM */
 static char * ghost_blue_right_xpm[] = {
 "32 32 75 1",
-" 	c None",
+" 	c none",
 ".	c #20AEE6",
 "+	c #1FAEE6",
 "@	c #17AEE6",
@@ -20,7 +20,7 @@ static char * ghost_blue_right_xpm[] = {
 "!	c #DFDEDE",
 "~	c #92C2E3",
 "{	c #A0C7E2",
-"]	c #1EAEE6",
+"]	c #1eaEE6",
 "^	c #7ABCE4",
 "/	c #A1C7E2",
 "(	c #B8CFE1",

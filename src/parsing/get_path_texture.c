@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 21:31:00 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:41:36 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	insert_value_texture(char *line, t_map *map)
 	if (split[1][ft_strlen(split[1]) - 1] == '\n')
 		split[1][ft_strlen(split[1]) - 1] = '\0';
 	if (ft_strcmp(split[0], "NO") == 0)
-		map->NO_path = split[1];
+		map->no_path = ft_strdup(split[1]);
 	if (ft_strcmp(split[0], "SO") == 0)
-		map->SO_path = split[1];
+		map->so_path = ft_strdup(split[1]);
 	if (ft_strcmp(split[0], "WE") == 0)
-		map->WE_path = split[1];
+		map->we_path = ft_strdup(split[1]);
 	if (ft_strcmp(split[0], "EA") == 0)
-		map->EA_path = split[1];
+		map->ea_path = ft_strdup(split[1]);
+	free_matriz(split);
 	return (EXIT_SUCCESS);
 }
 

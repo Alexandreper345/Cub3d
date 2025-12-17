@@ -35,7 +35,7 @@ at_exit() {
 	if ! kill -s TERM "$PID" 2>/dev/null || ! wait "$PID" ; then
 		log_error "Pid [$PID] died with status $status " 
 	fi
-	log_error "Something went wrong. Pid [$PID] has been killed. Status code $status"
+	log_error "something went wrong. Pid [$PID] has been killed. Status code $status"
 }
 # to properly quit from ctrl+c (SIGINT Signal)
 sigint_handler(){

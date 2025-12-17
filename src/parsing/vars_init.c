@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:08:42 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/09 20:16:00 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 20:28:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	init_fps(t_fps *fps)
 {
 	ft_memset(fps, 0, sizeof(t_fps));
 	fps->time = 0;
-	fps->oldTime = 0;
-	gettimeofday(&fps->timeOfDay, NULL);
-	fps->time = fps->timeOfDay.tv_sec;
-	fps->frameTime = 0;
+	fps->old_time = 0;
+	gettimeofday(&fps->timeofday, NULL);
+	fps->time = fps->timeofday.tv_sec;
+	fps->frame_time = 0;
 	fps->mv = 0;
 	fps->rs = 0;
 }
@@ -43,18 +43,18 @@ void	init_vars(t_vars *vars, char *map_path)
 	vars->width = 1080;
 	ft_memset(&vars->player, 0, sizeof(t_player));
 	ft_memset(&vars->camera, 0, sizeof(t_camera));
-	ft_memset(&vars->map->NO, 0, sizeof(t_texture));
-	ft_memset(&vars->map->WE, 0, sizeof(t_texture));
-	ft_memset(&vars->map->SO, 0, sizeof(t_texture));
-	ft_memset(&vars->map->EA, 0, sizeof(t_texture));
+	ft_memset(&vars->map->no, 0, sizeof(t_texture));
+	ft_memset(&vars->map->we, 0, sizeof(t_texture));
+	ft_memset(&vars->map->so, 0, sizeof(t_texture));
+	ft_memset(&vars->map->ea, 0, sizeof(t_texture));
 	ft_memset(&vars->buffer, 0, sizeof(t_texture));
 	init_fps(&vars->fps);
-	vars->player.posX = 7.0;
-	vars->player.posY = 3.0;
-	vars->camera.dirX = -1.0;
-	vars->camera.dirY = 0.0;
-	vars->camera.planeX = 0.0;
-	vars->camera.planeY = -0.66;
+	vars->player.posx = 7.0;
+	vars->player.posy = 3.0;
+	vars->camera.dir_x = -1.0;
+	vars->camera.dir_y = 0.0;
+	vars->camera.plane_x = 0.0;
+	vars->camera.plane_y = -0.66;
 	vars->camera.height = 720;
 }*/
 /*void    init_vars(t_vars *vars)
@@ -66,17 +66,17 @@ void	init_vars(t_vars *vars, char *map_path)
 	ft_memset(&vars->map, 0, sizeof(t_map));
 	ft_memset(&vars->player, 0, sizeof(t_player));
 	ft_memset(&vars->camera, 0, sizeof(t_camera));
-	ft_memset(&vars->map.NO, 0, sizeof(t_texture));
-	ft_memset(&vars->map.WE, 0, sizeof(t_texture));
-	ft_memset(&vars->map.SO, 0, sizeof(t_texture));
-	ft_memset(&vars->map.EA, 0, sizeof(t_texture));
+	ft_memset(&vars->map.no, 0, sizeof(t_texture));
+	ft_memset(&vars->map.we, 0, sizeof(t_texture));
+	ft_memset(&vars->map.so, 0, sizeof(t_texture));
+	ft_memset(&vars->map.ea, 0, sizeof(t_texture));
 	ft_memset(&vars->buffer, 0, sizeof(t_texture));
 	init_fps(&vars->fps);
-	vars->player.posX = 7.0;
-	vars->player.posY = 3.0;
-	vars->camera.dirX = -1.0;
-	vars->camera.dirY = 0.0;
-	vars->camera.planeX = 0.0;
-	vars->camera.planeY = -0.66;
+	vars->player.posx = 7.0;
+	vars->player.posy = 3.0;
+	vars->camera.dir_x = -1.0;
+	vars->camera.dir_y = 0.0;
+	vars->camera.plane_x = 0.0;
+	vars->camera.plane_y = -0.66;
 	vars->camera.height = 720;
 }*/

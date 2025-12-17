@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 21:31:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:38:14 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	convert_color(char *rgb)
 	b = ft_atoi(color[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return (-1);
-	free(color);
+	free_matriz(color);
 	return ((r << 16) | (g << 8) | b);
 }
 
@@ -81,17 +81,17 @@ int	get_color(t_map *map)
 		if (map->matriz[i][0] == 'F')
 		{
 			temp = ft_strtrim(map->matriz[i] + 1, " ");
-			map->Floor_color = convert_color(temp);
+			map->floor_color = convert_color(temp);
 			free(temp);
 		}
 		else if (map->matriz[i][0] == 'C')
 		{
 			temp = ft_strtrim(map->matriz[i] + 1, " ");
-			map->Ceiling_color = convert_color(temp);
+			map->ceiling_color = convert_color(temp);
 			free(temp);
 		}
 	}
-	if (map->Floor_color == -1 || map->Ceiling_color == -1)
+	if (map->floor_color == -1 || map->ceiling_color == -1)
 	{
 		ft_error("map invalid, because invalid color");
 		return (EXIT_FAILURE);
@@ -115,5 +115,6 @@ int	parsing(t_map *map, t_vars *vars_main)
 		return (EXIT_FAILURE);
 	if (init_process_flood(map))
 		return (EXIT_FAILURE);
+	free(map->dup_map);
 	return (EXIT_SUCCESS);
 }

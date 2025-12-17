@@ -9,7 +9,7 @@
                 "-g",
                 "./Cub3D",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenamenoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}"

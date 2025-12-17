@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/11 21:55:45 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:13:25 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	game(t_vars *vars)
 	mlx_hook(vars->win, 2, 1L << 0, walk, vars);
 	mlx_loop_hook(vars->mlx, gameplay, vars);
 	mlx_loop(vars->mlx);
+	free_and_exit(vars);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 21:30:50 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 22:04:34 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,26 @@ int	check_file(char **map)
 {
 	int		i;
 	int		flag;
+	char	*temp;
 	char	**split;
 
-	i = 0;
+	i = -1;
 	flag = 0;
-	while (map[i])
+	while (map[++i])
 	{
 		split = ft_split(map[i], ' ');
-		ft_strtrim(map[i], " \t");
+		temp = ft_strtrim(map[i], " \t");
+		free(map[i]);
+		map[i] = temp;
 		if (map[i][0] == '1' && flag == 0)
 		{
 			if (check_map_valid(&map[i]))
-				return (EXIT_FAILURE);
+				return (free_matriz(split),EXIT_FAILURE);
 			flag = 1;
 		}
 		if (params_map(split, map[i]))
-			return (EXIT_FAILURE);
-		i++;
+			return (free_matriz(split), EXIT_FAILURE);
+		free_matriz(split);
 	}
 	return (EXIT_SUCCESS);
 }

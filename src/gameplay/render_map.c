@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/11 21:36:06 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	convert_textures_to_img(t_vars *vars)
 	map = vars->map;
 	map->tex_width = 256;
 	map->tex_height = 256;
-	create_texture(vars, &map->NO, map->NO_path);
-	create_texture(vars, &map->EA, map->EA_path);
-	create_texture(vars, &map->SO, map->SO_path);
-	create_texture(vars, &map->WE, map->WE_path);
+	create_texture(vars, &map->no, map->no_path);
+	create_texture(vars, &map->ea, map->ea_path);
+	create_texture(vars, &map->so, map->so_path);
+	create_texture(vars, &map->we, map->we_path);
 }
 
 void	game_settings(t_vars *vars)

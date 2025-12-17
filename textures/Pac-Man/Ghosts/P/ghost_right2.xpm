@@ -1,14 +1,14 @@
 /* XPM */
 static char * ghost_right2_xpm[] = {
 "32 32 76 1",
-" 	c None",
+" 	c none",
 ".	c #800080",
 "+	c #8B448B",
 "@	c #A37FA3",
 "#	c #A380A3",
 "$	c #873687",
 "%	c #976697",
-"&	c #A27EA2",
+"&	c #A27ea2",
 "*	c #A27DA2",
 "=	c #E0E1E0",
 "-	c #DFDFDF",

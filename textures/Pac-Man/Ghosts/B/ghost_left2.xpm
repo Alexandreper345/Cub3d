@@ -1,11 +1,11 @@
 /* XPM */
 static char * ghost_left2_xpm[] = {
 "32 32 83 1",
-" 	c None",
+" 	c none",
 ".	c #20AEE6",
-"+	c #0EADE6",
+"+	c #0eaDE6",
 "@	c #14ADE6",
-"#	c #1EAEE6",
+"#	c #1eaEE6",
 "$	c #0DADE6",
 "%	c #1CAEE6",
 "&	c #0BADE6",
@@ -64,7 +64,7 @@ static char * ghost_left2_xpm[] = {
 "v	c #5DB5E5",
 "w	c #5BB5E5",
 "x	c #1DAEE6",
-"y	c #1EA6DB",
+"y	c #1ea6DB",
 "z	c #5CAAD5",
 "A	c #D1D0CF",
 "B	c #D0D0D0",

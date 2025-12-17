@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:52 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/03 21:14:06 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 20:27:30 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,48 +15,48 @@
 static void	calc_cam_vars(t_camera *cam, t_vars *vars)
 {
 	cam->hit = 0;
-	cam->camX = 2 * cam->x / (double)vars->width - 1;
-	cam->rayDirX = cam->dirX + cam->planeX * cam->camX;
-	cam->rayDirY = cam->dirY + cam->planeY * cam->camX;
-	cam->mapX = (int)vars->player->posX;
-	cam->mapY = (int)vars->player->posY;
+	cam->cam_x = 2 * cam->x / (double)vars->width - 1;
+	cam->raydirx = cam->dir_x + cam->plane_x * cam->cam_x;
+	cam->raydiry = cam->dir_y + cam->plane_y * cam->cam_x;
+	cam->mapx = (int)vars->player->posx;
+	cam->mapy = (int)vars->player->posy;
 }
 
 static void	delta_dist(t_camera *cam, t_player *player)
 {
 	(void)player;
-	if (cam->rayDirX == 0)
-		cam->deltaDistX = 1e30;
+	if (cam->raydirx == 0)
+		cam->delta_dist_x = 1e30;
 	else
-		cam->deltaDistX = fabs(1 / cam->rayDirX);
-	if (cam->rayDirY == 0)
-		cam->deltaDistY = 1e30;
+		cam->delta_dist_x = fabs(1 / cam->raydirx);
+	if (cam->raydiry == 0)
+		cam->delta_dist_y = 1e30;
 	else
-		cam->deltaDistY = fabs(1 / cam->rayDirY);
+		cam->delta_dist_y = fabs(1 / cam->raydiry);
 }
 
 static void	delta_n_side_dist(t_camera *cam, t_player *player)
 {
 	delta_dist(cam, player);
-	if (cam->rayDirX < 0)
+	if (cam->raydirx < 0)
 	{
-		player->stepX = -1;
-		cam->sideDistX = (player->posX - cam->mapX) * cam->deltaDistX;
+		player->stepx = -1;
+		cam->side_dist_x = (player->posx - cam->mapx) * cam->delta_dist_x;
 	}
 	else
 	{
-		player->stepX = 1;
-		cam->sideDistX = (cam->mapX + 1.0 - player->posX) * cam->deltaDistX;
+		player->stepx = 1;
+		cam->side_dist_x = (cam->mapx + 1.0 - player->posx) * cam->delta_dist_x;
 	}
-	if (cam->rayDirY < 0)
+	if (cam->raydiry < 0)
 	{
-		player->stepY = -1;
-		cam->sideDistY = (player->posY - cam->mapY) * cam->deltaDistY;
+		player->stepy = -1;
+		cam->side_dist_y = (player->posy - cam->mapy) * cam->delta_dist_y;
 	}
 	else
 	{
-		player->stepY = 1;
-		cam->sideDistY = (cam->mapY + 1.0 - player->posY) * cam->deltaDistY;
+		player->stepy = 1;
+		cam->side_dist_y = (cam->mapy + 1.0 - player->posy) * cam->delta_dist_y;
 	}
 }
 
@@ -66,22 +66,22 @@ void	dda(t_map *map, t_camera *cam, t_player *player, t_vars *vars)
 	delta_n_side_dist(cam, player);
 	while (cam->hit == 0)
 	{
-		if (cam->sideDistX < cam->sideDistY)
+		if (cam->side_dist_x < cam->side_dist_y)
 		{
-			cam->sideDistX += cam->deltaDistX;
-			cam->mapX += player->stepX;
+			cam->side_dist_x += cam->delta_dist_x;
+			cam->mapx += player->stepx;
 			cam->side = 0;
 		}
 		else
 		{
-			cam->sideDistY += cam->deltaDistY;
-			cam->mapY += player->stepY;
+			cam->side_dist_y += cam->delta_dist_y;
+			cam->mapy += player->stepy;
 			cam->side = 1;
 		}
-		if (cam->mapX < 0 || cam->mapX >= map->width || cam->mapY < 0
-			|| cam->mapY >= map->height)
+		if (cam->mapx < 0 || cam->mapx >= map->width || cam->mapy < 0
+			|| cam->mapy >= map->height)
 			cam->hit = 1;
-		else if (map->map[cam->mapY][cam->mapX] == '1')
+		else if (map->map[cam->mapy][cam->mapx] == '1')
 			cam->hit = 1;
 	}
 }

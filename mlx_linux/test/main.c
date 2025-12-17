@@ -213,9 +213,9 @@ int	main()
   mlx_key_hook(win2,key_win2,0);
   mlx_key_hook(win3,key_win3,0);
 
-  mlx_hook(win3, MotionNotify, PointerMotionMask, mouse_win3, 0);
+  mlx_hook(win3, Motionnotify, PointerMotionMask, mouse_win3, 0);
 
-  printf("OK\nNow in Loop. Just play. Esc in 3 to destroy, 1&2 to quit.\n");
+  printf("OK\nnow in Loop. Just play. Esc in 3 to destroy, 1&2 to quit.\n");
   
   mlx_loop(mlx);
 }

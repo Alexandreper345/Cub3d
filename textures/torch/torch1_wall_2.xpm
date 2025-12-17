@@ -46,7 +46,7 @@ static char * torch1_wall_2_xpm[] = {
 "d 	c #4A4848",
 "e 	c #5C5653",
 "f 	c #CC7E3C",
-"g 	c #EA8B2E",
+"g 	c #ea8B2E",
 "h 	c #DA812D",
 "i 	c #755745",
 "j 	c #73706F",

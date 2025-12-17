@@ -1,10 +1,10 @@
 /* XPM */
 static char * ghost_pink_right_xpm[] = {
 "32 32 59 1",
-" 	c None",
+" 	c none",
 ".	c #F19EB5",
 "+	c #F19DB5",
-"@	c #EABBC6",
+"@	c #eaBBC6",
 "#	c #E5C9D0",
 "$	c #E6C8CF",
 "%	c #E6C7CF",
@@ -44,7 +44,7 @@ static char * ghost_pink_right_xpm[] = {
 "b	c #AA6E7E",
 "c	c #A86D7E",
 "d	c #EE9CB3",
-"e	c #EEAABC",
+"e	c #EeaABC",
 "f	c #E7C4CD",
 "g	c #DFDFDF",
 "h	c #A7A7A7",

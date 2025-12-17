@@ -6,49 +6,41 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 22:14:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:33:54 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-static void	init_fps(t_fps *fps)
+static void	init_fps(t_fps fps)
 {
-	fps->time = 0;
-	fps->oldTime = 0;
-	gettimeofday(&fps->timeOfDay, NULL);
-	fps->time = fps->timeOfDay.tv_sec;
-	fps->frameTime = 0;
-	fps->mv = 0;
-	fps->rs = 0;
+	fps.time = 0;
+	fps.old_time = 0;
+	gettimeofday(&fps.timeofday, NULL);
+	fps.time = fps.timeofday.tv_sec;
+	fps.frame_time = 0;
+	fps.mv = 0;
+	fps.rs = 0;
 }
 
-int	init_struct(t_vars *vars, t_fps *fps)
+int	init_struct(t_vars *vars)
 {
 	t_map		*map;
 	t_player	*player;
-	t_camera	*camera;
-	t_texture	*buffer;
-
+	
 	map = malloc(sizeof(t_map));
 	player = malloc(sizeof(t_player));
-	camera = malloc(sizeof(t_camera));
-	fps = malloc(sizeof(t_fps));
-	buffer = malloc(sizeof(t_texture));
-	if (!map || !player || !fps || !camera || !buffer)
+	if (!map || !player)
 		return (EXIT_FAILURE);
-	init_fps(fps);
+	init_fps(vars->fps);
 	vars->map = map;
 	vars->player = player;
-	vars->fps = *fps;
-	vars->camera = *camera;
-	vars->buffer = *buffer;
 	vars->width = 1080;
 	vars->height = 720;
-	vars->camera.dirX = 0;
-	vars->camera.dirY = 0;
-	vars->camera.planeX = 0;
-	vars->camera.planeY = 0;
+	vars->camera.dir_x = 0;
+	vars->camera.dir_y = 0;
+	vars->camera.plane_x = 0;
+	vars->camera.plane_y = 0;
 	return (EXIT_SUCCESS);
 }
 
@@ -61,9 +53,13 @@ int	main(int argc, char **argv)
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
 		return (EXIT_FAILURE);
-	if (check_file_path(argc, argv) || init_struct(vars, fps))
+	if (check_file_path(argc, argv) || init_struct(vars))
 		return (EXIT_FAILURE);
 	if (init_matriz(vars->map, argv[1]) || parsing(vars->map, vars))
+	{
+		free_all(vars);
 		return (EXIT_FAILURE);
+	}
 	game(vars);
+	free_all(vars);
 }

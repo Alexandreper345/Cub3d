@@ -1,7 +1,7 @@
 /* XPM */
 static char * pacman_dying4_xpm[] = {
 "32 32 2 1",
-" 	c None",
+" 	c none",
 ".	c #FFF100",
 "                                ",
 "                                ",

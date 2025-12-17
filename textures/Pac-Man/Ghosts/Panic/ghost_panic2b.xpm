@@ -1,7 +1,7 @@
 /* XPM */
 static char * ghost_panic2b_xpm[] = {
 "32 32 68 1",
-" 	c None",
+" 	c none",
 ".	c #B2B2B2",
 "+	c #B1B3B3",
 "@	c #CD8586",
@@ -25,7 +25,7 @@ static char * ghost_panic2b_xpm[] = {
 "/	c #D76B6C",
 "(	c #D76B6D",
 "_	c #B4B0B0",
-":	c #BEA0A0",
+":	c #Bea0A0",
 "<	c #D76A6B",
 "[	c #D7696B",
 "}	c #B7ABAB",
@@ -50,7 +50,7 @@ static char * ghost_panic2b_xpm[] = {
 "h	c #DF484B",
 "i	c #C88F8F",
 "j	c #DC595B",
-"k	c #BEA1A1",
+"k	c #Bea1A1",
 "l	c #DD5557",
 "m	c #DD5456",
 "n	c #BF9E9F",

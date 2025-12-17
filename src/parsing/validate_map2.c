@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 21:59:36 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 22:24:54 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 21:46:07 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_file_before_map(char *line)
 		&& (ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0)
 		&& line[0] != '\n' && line[0] != ' ' && line[0] != '\t')
 		return (EXIT_FAILURE);
+	free_matriz(split);
 	return (EXIT_SUCCESS);
 }
 
@@ -41,8 +42,8 @@ int	get_position_player(char **map, t_vars *vars_main)
 			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'S'
 				|| map[i][j] == 'E')
 			{
-				vars_main->player->posY = (i + 0.5);
-				vars_main->player->posX = (j + 0.5);
+				vars_main->player->posy = (i + 0.5);
+				vars_main->player->posx = (j + 0.5);
 				star_game(map, vars_main, i, j);
 				return (EXIT_SUCCESS);
 			}
@@ -56,22 +57,22 @@ void	star_game(char **map, t_vars *vars, int i, int j)
 {
 	if (map[i][j] == 'N')
 	{
-		vars->camera.dirY = -1;
-		vars->camera.planeX = 0.66;
+		vars->camera.dir_y = -1;
+		vars->camera.plane_x = 0.66;
 	}
 	else if (map[i][j] == 'S')
 	{
-		vars->camera.dirY = 1;
-		vars->camera.planeX = -0.66;
+		vars->camera.dir_y = 1;
+		vars->camera.plane_x = -0.66;
 	}
 	else if (map[i][j] == 'E')
 	{
-		vars->camera.dirX = 1;
-		vars->camera.planeY = 0.66;
+		vars->camera.dir_x = 1;
+		vars->camera.plane_y = 0.66;
 	}
 	else if (map[i][j] == 'W')
 	{
-		vars->camera.dirX = -1;
-		vars->camera.planeY = -0.66;
+		vars->camera.dir_x = -1;
+		vars->camera.plane_y = -0.66;
 	}
 }

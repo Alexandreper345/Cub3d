@@ -4,7 +4,7 @@ CFLAGS = -g -O0 -Wall -Wextra -Werror
 RM = rm -rf
 
 # ==========================
-#       SOURCE FILES
+#       soURCE FILES
 # ==========================
 
 # Arquivos dentro de src/

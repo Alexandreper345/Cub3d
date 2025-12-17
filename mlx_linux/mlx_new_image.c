@@ -5,7 +5,7 @@
 ** Login   <ol@epitech.net>
 ** 
 ** Started on  Mon Aug 14 15:29:14 2000 Charlie Root
-** Last update Wed May 25 16:46:31 2011 Olivier Crouzet
+** Last update wed May 25 16:46:31 2011 Olivier Crouzet
 */
 
 
@@ -55,7 +55,7 @@ void	*mlx_int_new_xshm_image(t_xvar *xvar,int width,int height,int format)
   img->size_line = img->image->bytes_per_line;
   img->bpp = img->image->bits_per_pixel;
   img->format = format;
-  img->shm.shmid = shmget(IPC_PRIVATE,(width+32)*height*4,IPC_CREAT|0777);
+  img->shm.shmid = shmget(IPC_PRIVATE,(width+32)*height*4,IPC_CReaT|0777);
   if (img->shm.shmid==-1)
     {
       XDestroyImage(img->image);

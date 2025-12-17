@@ -1,7 +1,7 @@
 /* XPM */
 static char * ghost_left2_xpm[] = {
 "32 32 79 1",
-" 	c None",
+" 	c none",
 ".	c #009944",
 "+	c #00983E",
 "@	c #009841",

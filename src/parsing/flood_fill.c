@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/10 20:37:04 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 22:33:26 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,38 @@ int	flood_fill(char **map, int x, int y)
 		&& flood_fill(map, x, y - 1));
 }
 
-char	**copy_matriz(int height, int width)
+int	copy_matriz(t_map *map, int height, int width)
 {
 	char	**copy_matriz;
 	int		i;
 	int		j;
 
-	copy_matriz = (char **)malloc(sizeof(char *) * (height + 3));
+	copy_matriz = (char **)calloc((height + 3),sizeof(char *));
 	if (!copy_matriz)
-		return (NULL);
+		return (EXIT_FAILURE);
 	i = -1;
 	while (++i < height + 3)
 	{
-		copy_matriz[i] = (char *)malloc(sizeof(char) * (width + 3));
+		copy_matriz[i] = (char *)calloc((width + 3),sizeof(char));
 		if (!copy_matriz[i])
-			return (NULL);
+			return (free_matriz(copy_matriz), EXIT_FAILURE);
 		j = -1;
 		while (++j < width + 2)
 			copy_matriz[i][j] = 'x';
 		copy_matriz[i][j] = '\0';
 	}
-	return (copy_matriz);
+	map->dup_map = copy_matriz;
+	//free_matriz(copy_matriz);
+	return (EXIT_SUCCESS);
 }
 
-void	expand_map(t_map *map, int width, int height)
+int	expand_map(t_map *map, int width, int height)
 {
 	int	i;
 	int	j;
 
-	map->dup_map = copy_matriz(height, width);
-	if (!map->dup_map)
-		return ;
+	if (copy_matriz(map, height, width))
+		return (EXIT_FAILURE);
 	i = 0;
 	while (i < height)
 	{
@@ -77,6 +78,7 @@ void	expand_map(t_map *map, int width, int height)
 		i++;
 	}
 	map->dup_map[height + 2] = NULL;
+	return (EXIT_SUCCESS);
 }
 
 int	init_process_flood(t_map *map)
@@ -88,11 +90,18 @@ int	init_process_flood(t_map *map)
 	height = get_height_map(map->map);
 	map->width = width;
 	map->height = height;
-	expand_map(map, width, height);
+	if (expand_map(map, width, height))
+	{
+		ft_error("exanpad map invalid");
+		free_matriz(map->dup_map);
+		return (EXIT_FAILURE);
+	}
 	if (!flood_fill(map->dup_map, 0, 0))
 	{
 		ft_error("flood fill map invalid");
+		free_matriz(map->dup_map);
 		return (EXIT_FAILURE);
 	}	
+	free_matriz(map->dup_map);
 	return (EXIT_SUCCESS);
 }

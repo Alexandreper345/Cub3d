@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/11 22:09:43 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 20:54:19 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_ColorRGB
 
 typedef struct s_fps
 {
-	struct timeval	timeOfDay;
+	struct timeval	timeofday;
 	double			time;
-	double			oldTime;
-	double			frameTime;
+	double			old_time;
+	double			frame_time;
 	double			mv;
 	double			rs;
 }					t_fps;
@@ -45,39 +45,39 @@ typedef struct s_camera
 	int				color;
 	int				y;
 	int				x;
-	int				texX;
-	int				texY;
+	int				tex_x;
+	int				tex_y;
 	int				side;
-	int				drawEnd;
-	int				drawStart;
-	int				lineHeight;
+	int				draw_end;
+	int				draw_start;
+	int				line_height;
 	int				hit;
-	int				mapX;
-	int				mapY;
+	int				mapx;
+	int				mapy;
 	int				height;
 	double			step;
-	double			texPos;
-	double			camX;
-	double			wallX;
-	double			perpWallDist;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			sideDistX;
-	double			sideDistY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
-	double			rayDirX;
-	double			rayDirY;
+	double			tex_pos;
+	double			cam_x;
+	double			wall_x;
+	double			perpwalldist;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	double			raydirx;
+	double			raydiry;
 }					t_camera;
 
 typedef struct s_player
 {
-	int				stepY;
-	int				stepX;
-	double			posX;
-	double			posY;
+	int				stepy;
+	int				stepx;
+	double			posx;
+	double			posy;
 }					t_player;
 
 typedef struct s_texture
@@ -96,22 +96,22 @@ typedef struct s_map
 	char			**matriz;
 	char			**map;
 	char			**dup_map;
-	char			*NO_path;
-	char			*SO_path;
-	char			*WE_path;
-	char			*EA_path;
-	t_texture		NO;
-	t_texture		SO;
-	t_texture		WE;
-	t_texture		EA;
+	char			*no_path;
+	char			*so_path;
+	char			*we_path;
+	char			*ea_path;
+	t_texture		no;
+	t_texture		so;
+	t_texture		we;
+	t_texture		ea;
 	int				tex_height;
 	int				tex_width;
 	int				height;
 	int				width;
 	int				x_ceil;
 	int				x_floor;
-	int				Floor_color;
-	int				Ceiling_color;
+	int				floor_color;
+	int				ceiling_color;
 }					t_map;
 
 typedef struct s_vars
@@ -138,6 +138,7 @@ void				calc_fps(t_fps *fps);
 void				dda(t_map *map, t_camera *cam, t_player *player,
 						t_vars *vars);
 void				free_matriz(char **matriz);
+void				free_all(t_vars *vars);
 void				init_vars(t_vars *vars, char *map_path);
 int					game(t_vars *vars);
 int					escape(int keycode, t_vars *vars);

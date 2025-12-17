@@ -4,7 +4,7 @@
 ** Made by Charlie Root
 ** Login   <ol@epitech.net>
 ** 
-** Started on  Wed Aug  2 18:58:11 2000 Charlie Root
+** Started on  wed Aug  2 18:58:11 2000 Charlie Root
 ** Last update Fri Sep 30 14:47:41 2005 Olivier Crouzet
 */
 
@@ -50,8 +50,8 @@ int			mlx_loop(t_xvar *xvar)
 			while (win && (win->window!=ev.xany.window))
 				win = win->next;
 
-			if (win && ev.type == ClientMessage && ev.xclient.message_type == xvar->wm_protocols && ev.xclient.data.l[0] == xvar->wm_delete_window && win->hooks[DestroyNotify].hook)
-				win->hooks[DestroyNotify].hook(win->hooks[DestroyNotify].param);
+			if (win && ev.type == ClientMessage && ev.xclient.message_type == xvar->wm_protocols && ev.xclient.data.l[0] == xvar->wm_delete_window && win->hooks[Destroynotify].hook)
+				win->hooks[Destroynotify].hook(win->hooks[Destroynotify].param);
 			if (win && ev.type < MLX_MAX_EVENT && win->hooks[ev.type].hook)
 				mlx_int_param_event[ev.type](xvar, &ev, win);
 		}

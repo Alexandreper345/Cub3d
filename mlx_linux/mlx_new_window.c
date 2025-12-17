@@ -10,7 +10,7 @@
 
 
 /*
-** We do not use White/BlackPixel macro, TrueColor Visual make sure
+** we do not use White/BlackPixel macro, TrueColor Visual make sure
 ** 0 is black & -1 is white
 **
 ** With mlx_int_wait_first_expose, no flush is needed.
@@ -30,7 +30,7 @@ void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)
 	xswa.colormap = xvar->cmap;
 	/*
 	xswa.event_mask = ButtonPressMask | ButtonReleaseMask | ExposureMask |
-		KeyPressMask | KeyReleaseMask | StructureNotifyMask;
+		KeyPressMask | KeyReleaseMask | StructurenotifyMask;
 	*/
 	/* xswa.event_mask = ExposureMask; */
 	xswa.event_mask = 0xFFFFFF;	/* all events */
@@ -38,7 +38,7 @@ void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title)
 		return ((void *)0);
 	new_win->window = XCreateWindow(xvar->display,xvar->root,0,0,size_x,size_y,
 					0,CopyFromParent,InputOutput,xvar->visual,
-					CWEventMask|CWBackPixel|CWBorderPixel|
+					CweventMask|CWBackPixel|CWBorderPixel|
 					CWColormap,&xswa);
 	mlx_int_anti_resize_win(xvar,new_win->window,size_x,size_y);
 	XStoreName(xvar->display,new_win->window,title);

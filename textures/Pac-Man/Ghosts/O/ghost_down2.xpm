@@ -1,7 +1,7 @@
 /* XPM */
 static char * ghost_down2_xpm[] = {
 "32 32 69 1",
-" 	c None",
+" 	c none",
 ".	c #F08200",
 "+	c #F0830D",
 "@	c #F0841E",
@@ -17,12 +17,12 @@ static char * ghost_down2_xpm[] = {
 ",	c #F07E00",
 "'	c #E3CCC4",
 ")	c #E0D8D6",
-"!	c #EAA785",
+"!	c #eaA785",
 "~	c #E5C4B6",
 "{	c #E4C7BC",
 "]	c #E9B197",
 "^	c #F08000",
-"/	c #E6BEAD",
+"/	c #E6BeaD",
 "(	c #E5C3B5",
 "_	c #E0D8D5",
 ":	c #DFDCDB",

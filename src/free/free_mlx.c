@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/02 22:04:23 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/16 22:21:20 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	free_and_exit(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
-	free_map(vars->map->matriz);
+	//free_mlx(vars->mlx);
+	free_map(vars->map->map);
 	exit(0);
 }
 
@@ -48,4 +48,16 @@ void	free_matriz(char **matriz)
 	while (matriz[++i])
 		free(matriz[i]);
 	free(matriz);
+}
+
+void	free_all(t_vars *vars)
+{
+	free_matriz(vars->map->matriz);
+	free(vars->map->so_path);
+	free(vars->map->ea_path);
+	free(vars->map->we_path);
+	free(vars->map->no_path);
+	free_map(vars->map->map);
+	free(vars->player);
+
 }
