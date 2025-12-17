@@ -27,17 +27,9 @@ void	free_map(char **map)
 
 void	free_mlx(t_vars *vars)
 {
-	mlx_destroy_display(vars->win);
-	free(vars->win);
-}
-
-void	free_and_exit(t_vars *vars)
-{
 	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->win);
 	mlx_destroy_display(vars->mlx);
-	//free_mlx(vars->mlx);
-	free_map(vars->map->map);
-	exit(0);
 }
 
 void	free_matriz(char **matriz)
@@ -52,6 +44,7 @@ void	free_matriz(char **matriz)
 
 void	free_all(t_vars *vars)
 {
+	free(vars->buffer.img_ptr);
 	free_matriz(vars->map->matriz);
 	free(vars->map->so_path);
 	free(vars->map->ea_path);
@@ -59,5 +52,6 @@ void	free_all(t_vars *vars)
 	free(vars->map->no_path);
 	free_map(vars->map->map);
 	free(vars->player);
-
+	free(vars->map);
+	free(vars);
 }

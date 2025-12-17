@@ -133,7 +133,6 @@ void				my_pixel_put_to_buffer(t_texture *img, int x, int y,
 void				simple_parser(t_map *map, char *path);
 void				free_mlx(t_vars *vars);
 void				game_settings(t_vars *vars);
-void				free_and_exit(t_vars *vars);
 void				calc_fps(t_fps *fps);
 void				dda(t_map *map, t_camera *cam, t_player *player,
 						t_vars *vars);

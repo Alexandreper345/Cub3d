@@ -82,7 +82,11 @@ int	walk(int keycode, t_vars *vars)
 	fps = &vars->fps;
 	cam = &vars->camera;
 	if (keycode == XK_Escape)
-		free_and_exit(vars);
+	{
+		free_mlx(vars);
+		free_all(vars);
+		exit(0);
+	}
 	if (keycode == XK_w)
 		walk_up(map, p, fps, cam);
 	if (keycode == XK_s)

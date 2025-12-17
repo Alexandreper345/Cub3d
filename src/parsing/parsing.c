@@ -115,6 +115,5 @@ int	parsing(t_map *map, t_vars *vars_main)
 		return (EXIT_FAILURE);
 	if (init_process_flood(map))
 		return (EXIT_FAILURE);
-	free(map->dup_map);
 	return (EXIT_SUCCESS);
 }

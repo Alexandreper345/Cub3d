@@ -17,7 +17,6 @@ static void	create_texture(t_vars *vars, t_texture *tex, char *path)
 	t_map	*map;
 
 	map = vars->map;
-	printf("aqui está o path: %s\n", path);
 	tex->img_ptr = mlx_xpm_file_to_image(vars->mlx, path, &map->tex_width,
 			&map->tex_height);
 	if (tex->img_ptr == NULL)

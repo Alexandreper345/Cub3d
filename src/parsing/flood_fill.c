@@ -72,12 +72,13 @@ int	expand_map(t_map *map, int width, int height)
 		j = 0;
 		while (map->map[i][j])
 		{
+			
 			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;
 		}
 		i++;
 	}
-	map->dup_map[height + 2] = NULL;
+	map->dup_map[height + 3] = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -103,5 +104,6 @@ int	init_process_flood(t_map *map)
 		return (EXIT_FAILURE);
 	}	
 	free_matriz(map->dup_map);
+	free_matriz(map->matriz); // isso pode dar problema, dar free aqui antes?eu tirei do free_mlx
 	return (EXIT_SUCCESS);
 }

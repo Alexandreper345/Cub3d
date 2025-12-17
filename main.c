@@ -62,4 +62,5 @@ int	main(int argc, char **argv)
 	}
 	game(vars);
 	free_all(vars);
+	return (0);
 }
