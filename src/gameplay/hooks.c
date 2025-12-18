@@ -12,9 +12,9 @@
 
 #include "../../include/cub3d.h"
 
-int	x_button(t_vars *vars) // 
+void	x_button(t_vars *vars)
 {
-	free_all(vars);
 	free_mlx(vars);
-	return (EXIT_SUCCESS);
+	free_all(vars);
+	exit(0);
 }

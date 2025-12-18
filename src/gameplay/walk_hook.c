@@ -17,9 +17,19 @@ static void	walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 	double	new_posx;
 	double	new_posy;
 
+	new_posx = 0;
+	new_posy = 0;
 	new_posx = p->posx + cam->dir_x * fps->mv;
 	new_posy = p->posy + cam->dir_y * fps->mv;
-	if (map->map[(int)new_posy][(int)new_posx] != '1')
+	if (new_posy > (double)map->height)
+		return ;
+	if (new_posy < 0)
+		return ;
+	if (new_posx > (double)map->width)
+		return ;
+	if (new_posx < 0)
+		return ;
+	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;
@@ -31,9 +41,19 @@ static void	walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 	double	new_posx;
 	double	new_posy;
 
+	new_posx = 0;
+	new_posy = 0;
 	new_posx = p->posx - cam->dir_x * fps->mv;
 	new_posy = p->posy - cam->dir_y * fps->mv;
-	if (map->map[(int)new_posy][(int)new_posx] != '1')
+	if (new_posy > (double)map->height)
+		return ;
+	if (new_posy < 0)
+		return ;
+	if (new_posx > (double)map->width)
+		return ;
+	if (new_posx < 0)
+		return ;
+	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;
@@ -83,7 +103,6 @@ int	walk(int keycode, t_vars *vars)
 	cam = &vars->camera;
 	if (keycode == XK_Escape)
 	{
-
 		free_mlx(vars);
 		free_all(vars);
 		exit(0);

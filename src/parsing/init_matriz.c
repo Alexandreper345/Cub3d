@@ -30,6 +30,7 @@ int	is_malloc_in_pointe_x(t_map	*map, char *path)
 		line = get_next_line(fd);
 		index++;
 	}
+	close(fd);
 	return (EXIT_SUCCESS);
 }
 

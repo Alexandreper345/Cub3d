@@ -16,7 +16,6 @@ SRC = \
 	src/gameplay/render_map.c \
 	src/gameplay/walk_hook.c \
 	src/gameplay/dda.c \
-	src/parsing/vars_init.c \
 	src/parsing/check_file.c \
 	src/parsing/parsing.c \
 	src/parsing/init_matriz.c \

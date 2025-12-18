@@ -40,7 +40,7 @@ int	copy_matriz(t_map *map, int height, int width)
 	int		i;
 	int		j;
 
-	copy_matriz = (char **)calloc((height + 3),sizeof(char *));
+	copy_matriz = (char **)calloc((height + 4), sizeof(char *));
 	if (!copy_matriz)
 		return (EXIT_FAILURE);
 	i = -1;
@@ -54,8 +54,8 @@ int	copy_matriz(t_map *map, int height, int width)
 			copy_matriz[i][j] = 'x';
 		copy_matriz[i][j] = '\0';
 	}
+	copy_matriz[i] = NULL; 
 	map->dup_map = copy_matriz;
-	//free_matriz(copy_matriz);
 	return (EXIT_SUCCESS);
 }
 
@@ -78,7 +78,6 @@ int	expand_map(t_map *map, int width, int height)
 		}
 		i++;
 	}
-	map->dup_map[height + 3] = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -104,6 +103,6 @@ int	init_process_flood(t_map *map)
 		return (EXIT_FAILURE);
 	}	
 	free_matriz(map->dup_map);
-	free_matriz(map->matriz); // isso pode dar problema, dar free aqui antes?eu tirei do free_mlx
+	free_matriz(map->matriz);
 	return (EXIT_SUCCESS);
 }

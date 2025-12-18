@@ -33,7 +33,6 @@ void	free_mlx(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->map->no.img_ptr);
 	mlx_destroy_image(vars->mlx, vars->buffer.img_ptr);
 	mlx_destroy_window(vars->mlx, vars->win);
-	free(vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
 }
@@ -50,8 +49,6 @@ void	free_matriz(char **matriz)
 
 void	free_all(t_vars *vars)
 {
-	free(vars->buffer.img_ptr);
-	free_matriz(vars->map->matriz);
 	free(vars->map->so_path);
 	free(vars->map->ea_path);
 	free(vars->map->we_path);

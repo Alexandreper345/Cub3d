@@ -141,7 +141,7 @@ void				free_all(t_vars *vars);
 void				init_vars(t_vars *vars, char *map_path);
 int					game(t_vars *vars);
 int					escape(int keycode, t_vars *vars);
-int					x_button(t_vars *vars);
+void				x_button(t_vars *vars);
 int					gameplay(t_vars *vars);
 int					get_position_map(char **matriz, t_map *map);
 int					get_texture_pixel_color(t_texture *tex, int x, int y);
