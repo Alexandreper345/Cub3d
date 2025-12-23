@@ -25,16 +25,7 @@ static void	init_fps(t_fps fps)
 
 int	init_struct(t_vars *vars)
 {
-	t_map		*map;
-	t_player	*player;
-	
-	map = malloc(sizeof(t_map));
-	player = malloc(sizeof(t_player));
-	if (!map || !player)
-		return (EXIT_FAILURE);
 	init_fps(vars->fps);
-	vars->map = map;
-	vars->player = player;
 	vars->width = 1080;
 	vars->height = 720;
 	vars->camera.dir_x = 0;
@@ -44,30 +35,28 @@ int	init_struct(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-static void init_null(t_vars *vars)
+static int init_null(t_vars *vars)
 {
-	ft_memset(vars->map, 0, sizeof(t_map));
-	ft_memset(vars->map->map, 0, sizeof(t_map));
-	ft_memset(vars->map->matriz, 0, sizeof(t_map));
-	vars->map->no_path = NULL;
-	vars->map->so_path = NULL;
-	vars->map->we_path = NULL;
-	vars->map->ea_path = NULL;
-	vars->player = NULL;
+	vars->map = ft_calloc(1, sizeof(t_map));
+	vars->player = ft_calloc(1, sizeof(t_player));
+	if (!vars->map || !vars->player)
+		return (ft_error("init struct"));
 	vars->mlx = NULL;
 	vars->win = NULL;
 	vars->buffer.img_ptr = NULL;
 	vars->buffer.addr = NULL;
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
 {
 	t_vars	*vars;
 
-	vars = malloc(sizeof(t_vars));
+	vars = ft_calloc(1, sizeof(t_vars));
 	if (!vars)
 		return (EXIT_FAILURE);
-	init_null(vars);
+	if (init_null(vars))
+		return (EXIT_FAILURE);
 	if (check_file_path(argc, argv) || init_struct(vars))
 	{
 		free_all(vars);

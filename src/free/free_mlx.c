@@ -49,8 +49,8 @@ void	free_all(t_vars *vars)
 		free(vars->map->no_path);
 	if (vars->map->so_path)
 		free(vars->map->so_path);
-	if (vars->map->ea_path)
-		free(vars->map->ea_path);
+	if (vars->map->we_path)
+		free(vars->map->we_path);
 	if (vars->map)
 		free(vars->map);
 	if (vars->player)
