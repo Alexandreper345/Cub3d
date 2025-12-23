@@ -1,6 +1,6 @@
-NAME = Cub3d
+NAME = cub3D
 CC = cc
-CFLAGS = -g -O0 -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 RM = rm -rf
 
 # ==========================
@@ -52,7 +52,7 @@ OBJ = $(SRC:.c=.o) \
 #        RULES
 # ==========================
 
-%.o: %.c
+.o:.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

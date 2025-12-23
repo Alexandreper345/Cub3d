@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 21:59:36 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 21:46:07 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 22:38:23 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int	get_position_player(char **map, t_vars *vars_main)
 			}
 		}
 	}
-	ft_error("the player not exits");
-	return (EXIT_FAILURE);
+	return (ft_error("the player not exits"));
 }
 
 void	star_game(char **map, t_vars *vars, int i, int j)

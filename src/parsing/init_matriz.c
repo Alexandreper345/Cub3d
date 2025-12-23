@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 20:27:30 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 22:42:14 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ int	malloc_in_pointer_y(t_map *map, char *line, int fd, char *path)
 	map->height = height;
 	map->matriz = (char **)ft_calloc((height) + 1, sizeof(char *));
 	if (!map->matriz)
-	{
-		ft_error("failure in calloc mapy");
-		free_matriz(map->matriz);
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("failure in calloc mapy"));
 	if (is_malloc_in_pointe_x(map, path))
 		return (EXIT_FAILURE);
 	close(fd);
@@ -68,16 +64,10 @@ int	init_matriz(t_map *map, char *path)
 
 	fd = open(path, O_RDWR);
 	if (fd == -1)
-	{
-		ft_error("is fd failed");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("is fd failed"));
 	line = get_next_line(fd);
 	if (line == NULL)
-	{
-		ft_error("the content map is NULL");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("the content map is NULL"));
 	if (malloc_in_pointer_y(map, line, fd, path))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

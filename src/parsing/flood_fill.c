@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 22:33:26 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 21:59:49 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	flood_fill(char **map, int x, int y)
 {
 	if (y < 0 || x < 0 || !map[y] || !map[y][x] || map[y][x] == '\0')
 		return (EXIT_FAILURE);
-	if (map[y][x] == 'x' || map[y][x] == ' ')
+	if (map[y][x] == 'x' || map[y][x] == ' ' || map[y][x] == '\t')
 		map[y][x] = '-';
 	else if (map[y][x] == '1')
 		return (EXIT_FAILURE);
 	else if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
-			|| map[y][x] == 'E' || map[y][x] == 'W')
+		|| map[y][x] == 'E' || map[y][x] == 'W')
 	{
 		map[y][x] = '-';
 		return (EXIT_SUCCESS);
@@ -40,21 +40,24 @@ int	copy_matriz(t_map *map, int height, int width)
 	int		i;
 	int		j;
 
-	copy_matriz = (char **)calloc((height + 4), sizeof(char *));
+	copy_matriz = ft_calloc((height + 3), sizeof(char *));
 	if (!copy_matriz)
 		return (EXIT_FAILURE);
-	i = -1;
-	while (++i < height + 3)
+	i = 0;
+	while (i < height + 2)
 	{
-		copy_matriz[i] = (char *)calloc((width + 3),sizeof(char));
+		copy_matriz[i] = ft_calloc((width + 3),sizeof(char));
 		if (!copy_matriz[i])
-			return (free_matriz(copy_matriz), EXIT_FAILURE);
-		j = -1;
-		while (++j < width + 2)
-			copy_matriz[i][j] = 'x';
+		{
+			free_matriz(copy_matriz);
+			return (EXIT_FAILURE);
+		}
+		j = 0;
+		while (j < width + 1)
+			copy_matriz[i][j++] = 'x';
 		copy_matriz[i][j] = '\0';
+		i++;
 	}
-	copy_matriz[i] = NULL; 
 	map->dup_map = copy_matriz;
 	return (EXIT_SUCCESS);
 }
@@ -70,14 +73,14 @@ int	expand_map(t_map *map, int width, int height)
 	while (i < height)
 	{
 		j = 0;
-		while (map->map[i][j])
-		{
-			
+		while (map->map[i][j] && map->map[i][j] != '\n')
+		{		
 			map->dup_map[i + 1][j + 1] = map->map[i][j];
 			j++;
 		}
 		i++;
 	}
+	map->dup_map[height + 2] = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -91,17 +94,9 @@ int	init_process_flood(t_map *map)
 	map->width = width;
 	map->height = height;
 	if (expand_map(map, width, height))
-	{
-		ft_error("exanpad map invalid");
-		free_matriz(map->dup_map);
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("exanpad map invalid"));
 	if (!flood_fill(map->dup_map, 0, 0))
-	{
-		ft_error("flood fill map invalid");
-		free_matriz(map->dup_map);
-		return (EXIT_FAILURE);
-	}	
+		return (ft_error("flood fill map invalid"));
 	free_matriz(map->dup_map);
 	free_matriz(map->matriz);
 	return (EXIT_SUCCESS);

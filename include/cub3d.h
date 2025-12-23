@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 20:54:19 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/18 21:26:36 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ typedef struct s_vars
 	t_fps			fps;
 }					t_vars;
 
-void				ft_error(char *str);
 void				my_pixel_put_to_buffer(t_texture *img, int x, int y,
 						int color);
 void				simple_parser(t_map *map, char *path);
@@ -139,9 +138,10 @@ void				dda(t_map *map, t_camera *cam, t_player *player,
 void				free_matriz(char **matriz);
 void				free_all(t_vars *vars);
 void				init_vars(t_vars *vars, char *map_path);
+int					ft_error(char *str);
 int					game(t_vars *vars);
 int					escape(int keycode, t_vars *vars);
-void				x_button(t_vars *vars);
+int					x_button(t_vars *vars);
 int					gameplay(t_vars *vars);
 int					get_position_map(char **matriz, t_map *map);
 int					get_texture_pixel_color(t_texture *tex, int x, int y);
@@ -161,6 +161,7 @@ int					check_map_valid(char **map);
 int					check_file(char **map);
 int					get_path_text(t_map *map);
 int					check_duplacate_map(char **map);
+int					return_failure(char **matriz, char *temp);
 void				star_game(char **map, t_vars *vars, int i, int j);
 void				init_buffer(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 21:05:17 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 19:42:48 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_duplacate_map(char **map)
 				return (EXIT_FAILURE);
 			in_map = 1;
 		}
-		else if (in_map && map[i][0] == '\0')
+		else if (in_map && map[i][0] == '\n')
 			finish_map = 1;
 	}
 	return (EXIT_SUCCESS);

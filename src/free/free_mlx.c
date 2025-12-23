@@ -6,24 +6,12 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/16 22:21:20 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 23:07:17 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
 
 void	free_mlx(t_vars *vars)
 {
@@ -40,7 +28,7 @@ void	free_mlx(t_vars *vars)
 void	free_matriz(char **matriz)
 {
 	int	i;
-
+	
 	i = -1;
 	while (matriz[++i])
 		free(matriz[i]);
@@ -49,12 +37,24 @@ void	free_matriz(char **matriz)
 
 void	free_all(t_vars *vars)
 {
-	free(vars->map->so_path);
-	free(vars->map->ea_path);
-	free(vars->map->we_path);
-	free(vars->map->no_path);
-	free_map(vars->map->map);
-	free(vars->player);
-	free(vars->map);
-	free(vars);
+	if (vars->map->dup_map)
+		free_matriz(vars->map->dup_map);
+	if (vars->map->map)
+		free_matriz(vars->map->map);
+	if (vars->map->matriz)
+		free_matriz(vars->map->matriz);
+	if (vars->map->ea_path)
+		free(vars->map->ea_path);
+	if (vars->map->no_path)
+		free(vars->map->no_path);
+	if (vars->map->so_path)
+		free(vars->map->so_path);
+	if (vars->map->ea_path)
+		free(vars->map->ea_path);
+	if (vars->map)
+		free(vars->map);
+	if (vars->player)
+		free(vars->player);
+	if (vars)
+		free(vars);
 }

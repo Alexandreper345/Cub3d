@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 22:41:04 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	check_map_valid(char **map)
 		{
 			if ((map[i][j] != 'N') && (map[i][j] != 'S') && (map[i][j] != 'W')
 				&& map[i][j] != 'E' && (map[i][j] != '0' && map[i][j] != '1')
-				&& map[i][j] != '\n')
-				return (EXIT_FAILURE);
+				&& map[i][j] != '\n' && map[i][j] != ' ' && map[i][j] != '\t')
+				return (ft_error("invalid caracter"));
 			if ((map[i][j] == 'N') || (map[i][j] == 'S') || (map[i][j] == 'W')
 				|| (map[i][j] == 'E'))
 				flag++;
@@ -37,7 +37,7 @@ int	check_map_valid(char **map)
 		i++;
 	}
 	if (flag != 1)
-		return (EXIT_FAILURE);
+		return (ft_error("not exist player"));
 	return (EXIT_SUCCESS);
 }
 
@@ -73,8 +73,6 @@ int	save_map(char **matriz, int count, int i, t_map *map)
 	while (++j < count)
 	{
 		res = 0;
-		while (matriz[i + j][res] == ' ' || matriz[i + j][res] == '\t')
-			res++;
 		map->map[j] = ft_strdup(&matriz[i + j][res]);
 		len = ft_strlen(map->map[j]);
 		if (len > 0 && map->map[j][len - 1] == '\n')
@@ -102,7 +100,7 @@ int	check_invalid_caracter(char **matriz, int end, int i, t_map *map)
 	}
 	map->map = malloc(sizeof(char *) * (count + 1));
 	if (!map->map)
-		return (ft_error("malloc error"), EXIT_FAILURE);
+		return (ft_error("malloc error"));
 	if (save_map(matriz, count, i, map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -127,10 +125,10 @@ int	get_position_map(char **matriz, t_map *map)
 			i++;
 	}
 	if (!matriz[i])
-		return (ft_error("map not exist"), EXIT_FAILURE);
+		return (ft_error("map not exist"));
 	if (check_invalid_caracter(matriz, end, i, map))
 		return (EXIT_FAILURE);
 	if (check_map_valid(map->map))
-		return (ft_error("map invalid"), EXIT_FAILURE);
+		return (ft_error("map invalid"));
 	return (EXIT_SUCCESS);
 }

@@ -6,15 +6,17 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/18 21:25:32 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	x_button(t_vars *vars)
+
+int	x_button(t_vars *vars)
 {
 	free_mlx(vars);
 	free_all(vars);
 	exit(0);
+	return (0);
 }

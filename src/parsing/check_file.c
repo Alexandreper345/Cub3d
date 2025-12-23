@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/18 21:28:09 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,10 @@ static int	format_map(char *map)
 
 	search_dot = ft_strrchr(map, '.');
 	if (!search_dot)
-	{
-		ft_error("format invalid");
-		return (EXIT_FAILURE);
-	}
+		return(ft_error("format invalid"));
 	result = ft_strcmp(search_dot, ".cub");
 	if (result != 0)
-	{
-		ft_error("format invalid");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("format invalid"));
 	return (EXIT_SUCCESS);
 }
 

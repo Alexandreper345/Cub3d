@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 21:38:14 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/22 22:38:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,12 @@ int	check_config_info(t_map *map)
 	{
 		line = map->matriz[i];
 		if (check_file_before_map(line))
-		{
-			free_matriz(map->matriz);
-			ft_error("invalid struct map");
-			return (EXIT_FAILURE);
-		}
+			return (ft_error("invalid struct map"));
 		flag = exist_textures_and_color(line, flag);
 		if (flag == 6)
 			return (EXIT_SUCCESS);
 	}
+	i = -1;
 	return (EXIT_SUCCESS);
 }
 
@@ -92,20 +89,14 @@ int	get_color(t_map *map)
 		}
 	}
 	if (map->floor_color == -1 || map->ceiling_color == -1)
-	{
-		ft_error("map invalid, because invalid color");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("map invalid, because invalid color"));
 	return (EXIT_SUCCESS);
 }
 
 int	parsing(t_map *map, t_vars *vars_main)
 {
 	if (check_file(map->matriz) || check_duplacate_map(map->matriz))
-	{
-		ft_error("map invalid");
 		return (EXIT_FAILURE);
-	}
 	if (check_config_info(map) || get_color(map))
 		return (EXIT_FAILURE);
 	if (get_path_text(map))

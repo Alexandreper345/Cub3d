@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/16 21:41:36 by alda-sil         ###   ########.fr       */
+/*   Updated: 2025/12/18 21:30:42 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	insert_value_texture(char *line, t_map *map)
 	if (!split || !split[0] || !split[1])
 	{
 		free_matriz(split);
-		ft_error("split texture failed");
-		return (EXIT_FAILURE);
+		return (ft_error("split texture failed"));
 	}
 	if (split[1][ft_strlen(split[1]) - 1] == '\n')
 		split[1][ft_strlen(split[1]) - 1] = '\0';
@@ -44,16 +43,10 @@ static int	format_map(char *line, t_map *map)
 
 	search_dot = ft_strrchr(line, '.');
 	if (!search_dot)
-	{
-		ft_error("format invalid");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("format invalid"));
 	result = ft_strcmp(search_dot, ".xpm\n");
 	if (result != 0)
-	{
-		ft_error("format texture invalid");
-		return (EXIT_FAILURE);
-	}
+		return (ft_error("format texture invalid"));
 	insert_value_texture(line, map);
 	return (EXIT_SUCCESS);
 }
