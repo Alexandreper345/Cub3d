@@ -26,7 +26,7 @@ int	check_duplacate_map(char **map)
 		if (ft_strchr(" 01", map[i][0]))
 		{
 			if (finish_map)
-				return (EXIT_FAILURE);
+				return (ft_error("duplicate map"));
 			in_map = 1;
 		}
 		else if (in_map && map[i][0] == '\n')

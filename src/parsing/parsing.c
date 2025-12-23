@@ -56,8 +56,17 @@ int	convert_color(char *rgb)
 	int		b;
 
 	color = ft_split(rgb, ',');
-	if (!color)
+
+	if (!color[0] || !color[1] || !color[2] || color[3])
+	{
+		free_matriz(color);
 		return (-1);
+	}	
+	if (!is_number(color[0]) || !is_number(color[1]) || !is_number(color[2]))
+	{
+		free_matriz(color);
+		return (-1);
+	}	
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);

@@ -34,3 +34,19 @@ int	check_file_path(int argc, char **argv)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
+
+int	is_number(const char *s)
+{
+	int	i;
+
+	if (!s || !*s)
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
