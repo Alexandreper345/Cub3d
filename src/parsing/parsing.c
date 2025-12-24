@@ -55,14 +55,14 @@ int	convert_color(char *rgb)
 	int		g;
 	int		b;
 
+	rgb = switch_newline(rgb);
 	color = ft_split(rgb, ',');
-
 	if (!color[0] || !color[1] || !color[2] || color[3])
 	{
 		free_matriz(color);
 		return (-1);
 	}	
-	if (!is_number(color[0]) || !is_number(color[1]) || !is_number(color[2]))
+	if (is_number(color[0]) || is_number(color[1]) || is_number(color[2]))
 	{
 		free_matriz(color);
 		return (-1);

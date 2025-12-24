@@ -94,7 +94,10 @@ int	init_process_flood(t_map *map)
 	map->width = width;
 	map->height = height;
 	if (expand_map(map, width, height))
-		return (ft_error("exanpad map invalid"));
+	return (ft_error("exanpad map invalid"));
+	int	i = -1;
+	while (map->dup_map[++i])
+		printf("%s\n", map->dup_map[i]);
 	if (!flood_fill(map->dup_map, 0, 0))
 		return (ft_error("flood fill map invalid"));
 	free_matriz(map->dup_map);

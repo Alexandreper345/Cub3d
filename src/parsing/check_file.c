@@ -40,13 +40,30 @@ int	is_number(const char *s)
 	int	i;
 
 	if (!s || !*s)
-		return (0);
+		return (EXIT_FAILURE);
 	i = 0;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
-			return (0);
+			return (EXIT_FAILURE);
 		i++;
 	}
-	return (1);
+	return (EXIT_SUCCESS);
+}
+
+char	*switch_newline(char *rgb)
+{
+	int	i;
+
+	i = 0;
+	while(rgb[i])
+	{
+		if (rgb[i] == '\n')
+		{
+			rgb[i] = '\0';
+			break;
+		}
+		i++;
+	}
+	return (rgb);
 }

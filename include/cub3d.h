@@ -162,6 +162,7 @@ int					check_file(char **map);
 int					get_path_text(t_map *map);
 int					check_duplacate_map(char **map);
 int					is_number(const char *s);
+char				*switch_newline(char *rgb);
 int					return_failure(char **matriz, char *temp);
 void				star_game(char **map, t_vars *vars, int i, int j);
 void				init_buffer(t_vars *vars);
