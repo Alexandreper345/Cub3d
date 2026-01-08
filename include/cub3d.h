@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/18 21:26:36 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:52:09 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,5 +168,10 @@ void				star_game(char **map, t_vars *vars, int i, int j);
 void				init_buffer(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,
 						t_map *map);
+void				free_walk(t_vars *vars);
+void				look_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam);
+void				look_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam);
+
+
 
 #endif

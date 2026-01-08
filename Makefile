@@ -15,6 +15,7 @@ SRC = \
 	src/gameplay/gameplay_utils.c \
 	src/gameplay/render_map.c \
 	src/gameplay/walk_hook.c \
+	src/gameplay/look_hook.c \
 	src/gameplay/dda.c \
 	src/parsing/check_file.c \
 	src/parsing/parsing.c \
