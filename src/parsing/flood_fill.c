@@ -6,7 +6,7 @@
 /*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/07 20:41:35 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:55:22 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ int	init_process_flood(t_map *map)
 	if (!flood_fill(map->dup_map, 0, 0))
 		return (ft_error("flood fill map invalid"));
 	free_matriz(map->dup_map);
-	free_matriz(map->matriz);
+	map->dup_map = NULL;
 	return (EXIT_SUCCESS);
 }
