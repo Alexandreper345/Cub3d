@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/07 21:55:22 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/08 20:18:00 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	copy_matriz(t_map *map, int height, int width)
 			return (EXIT_FAILURE);
 		}
 		j = 0;
-		while (j < width + 1)
+		while (j < width + 2)
 			copy_matriz[i][j++] = 'x';
 		copy_matriz[i][j] = '\0';
 		i++;
@@ -100,6 +100,7 @@ int	init_process_flood(t_map *map)
 		printf("%s\n", map->dup_map[i]);
 	if (!flood_fill(map->dup_map, 0, 0))
 		return (ft_error("flood fill map invalid"));
+	
 	free_matriz(map->dup_map);
 	map->dup_map = NULL;
 	return (EXIT_SUCCESS);
