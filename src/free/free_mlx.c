@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/22 23:07:17 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:19:19 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 
 void	free_mlx(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->map->so.img_ptr);
-	mlx_destroy_image(vars->mlx, vars->map->ea.img_ptr);
-	mlx_destroy_image(vars->mlx, vars->map->we.img_ptr);
-	mlx_destroy_image(vars->mlx, vars->map->no.img_ptr);
-	mlx_destroy_image(vars->mlx, vars->buffer.img_ptr);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
+	if (vars->map->so.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->map->so.img_ptr);
+	if (vars->map->ea.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->map->ea.img_ptr);
+	if (vars->map->we.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->map->we.img_ptr);
+	if (vars->map->no.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->map->no.img_ptr);
+	if (vars->buffer.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->buffer.img_ptr);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+		mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/16 20:22:15 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:32:56 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static void	create_texture(t_vars *vars, t_texture *tex, char *path)
 			&map->tex_height);
 	if (tex->img_ptr == NULL)
 	{
-		printf("erro ao carregar textura\n");
+		printf("[ERROR] loading texture\n");
+		free_mlx(vars);
+		free_all(vars);
 		exit(1);
 	}
 	tex->addr = mlx_get_data_addr(tex->img_ptr, &tex->bpp, &tex->line_len,
@@ -46,5 +48,12 @@ static void	convert_textures_to_img(t_vars *vars)
 void	game_settings(t_vars *vars)
 {
 	convert_textures_to_img(vars);
+	vars->win = mlx_new_window(vars->mlx, 1080, 720, "Hello world!");
+	if (vars->win == NULL)
+	{
+		free_mlx(vars->mlx);
+		free_all(vars);
+		exit (0);
+	}
 	mlx_hook(vars->win, 17, 1L << 19, x_button, vars);
 }
