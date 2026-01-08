@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/07 20:52:09 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:08:44 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ int					malloc_in_pointer_y(t_map *map, char *line, int fd,
 int					get_height_map(char **matriz);
 int					get_width_map(char **matriz);
 int					init_process_flood(t_map *map);
-int					ft_strcmp(const char *s1, const char *s2);
 int					check_file_before_map(char *line);
 int					check_map_valid(char **map);
 int					check_file(char **map);
