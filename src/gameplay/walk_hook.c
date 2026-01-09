@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walk_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 13:21:56 by erick             #+#    #+#             */
-/*   Updated: 2026/01/07 21:10:16 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:45:49 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	walk_up(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 		return ;
 	if (new_posx < 0)
 		return ;
-	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
+	if (map->map[(int)new_posy][(int)new_posx] != '1'
+		&& map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;
@@ -53,7 +54,8 @@ static void	walk_down(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 		return ;
 	if (new_posx < 0)
 		return ;
-	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
+	if (map->map[(int)new_posy][(int)new_posx] != '1'
+		&& map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;
@@ -77,7 +79,8 @@ static void	walk_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 		return ;
 	if (new_posx < 0)
 		return ;
-	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
+	if (map->map[(int)new_posy][(int)new_posx] != '1'
+		&& map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;
@@ -101,7 +104,8 @@ static void	walk_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 		return ;
 	if (new_posx < 0)
 		return ;
-	if (map->map[(int)new_posy][(int)new_posx] != '1' && map->map[(int)new_posy][(int)new_posx])
+	if (map->map[(int)new_posy][(int)new_posx] != '1'
+		&& map->map[(int)new_posy][(int)new_posx])
 	{
 		p->posx = new_posx;
 		p->posy = new_posy;

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/18 21:28:09 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:29:53 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	format_map(char *map)
 
 	search_dot = ft_strrchr(map, '.');
 	if (!search_dot)
-		return(ft_error("format invalid"));
+		return (ft_error("format invalid"));
 	result = ft_strcmp(search_dot, ".cub");
 	if (result != 0)
 		return (ft_error("format invalid"));
@@ -27,7 +27,7 @@ static int	format_map(char *map)
 }
 
 int	check_file_path(int argc, char **argv)
-{	
+{
 	if (argc != 2)
 		return (EXIT_FAILURE);
 	if (format_map(argv[1]))
@@ -56,12 +56,12 @@ char	*switch_newline(char *rgb)
 	int	i;
 
 	i = 0;
-	while(rgb[i])
+	while (rgb[i])
 	{
 		if (rgb[i] == '\n')
 		{
 			rgb[i] = '\0';
-			break;
+			break ;
 		}
 		i++;
 	}

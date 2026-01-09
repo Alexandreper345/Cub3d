@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2026/01/07 21:19:19 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:34:58 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 void	free_mlx(t_vars *vars)
 {
@@ -35,7 +34,7 @@ void	free_mlx(t_vars *vars)
 void	free_matriz(char **matriz)
 {
 	int	i;
-	
+
 	i = -1;
 	while (matriz[++i])
 		free(matriz[i]);

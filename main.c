@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 23:12:02 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:22:40 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	init_struct(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-static int init_null(t_vars *vars)
+static int	init_null(t_vars *vars)
 {
 	vars->map = ft_calloc(1, sizeof(t_map));
 	vars->player = ft_calloc(1, sizeof(t_player));

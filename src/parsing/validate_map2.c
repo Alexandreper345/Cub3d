@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 21:59:36 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 22:38:23 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:31:53 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,52 @@ void	star_game(char **map, t_vars *vars, int i, int j)
 		vars->camera.dir_x = -1;
 		vars->camera.plane_y = -0.66;
 	}
+}
+
+int	check_spaces_in_map_2(char **map, int y, int height)
+{
+	int	x;
+	int	width;
+
+	x = -1;
+	width = 0;
+	while (map[y][width])
+		width++;
+	while (++x < width)
+	{
+		if (map[y][x] == ' ')
+		{
+			if (x + 1 < width && ft_strchr("0NSEW", map[y][x + 1]))
+				return (EXIT_FAILURE);
+			if (x - 1 >= 0 && ft_strchr("0NSEW", map[y][x - 1]))
+				return (EXIT_FAILURE);
+			if (y - 1 >= 0 && x < (int)ft_strlen(map[y - 1])
+				&& ft_strchr("0NSEW", map[y - 1][x]))
+				return (EXIT_FAILURE);
+			if (y + 1 < height && x < (int)ft_strlen(map[y + 1])
+				&& ft_strchr("0NSEW", map[y + 1][x]))
+				return (EXIT_FAILURE);
+		}
+	}
+	flood_fill(map, x, y);
+	return (EXIT_SUCCESS);
+}
+
+int	check_spaces_in_map(char **map)
+{
+	int	y;
+	int	height;
+
+	if (!map)
+		return (0);
+	height = 0;
+	while (map[height])
+		height++;
+	y = -1;
+	while (++y < height)
+	{
+		if (check_spaces_in_map_2(map, y, height))
+			return (ft_error("Spaces inside map"));
+	}
+	return (EXIT_SUCCESS);
 }

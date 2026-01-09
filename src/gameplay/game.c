@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:02:09 by erocha-l          #+#    #+#             */
-/*   Updated: 2026/01/07 21:27:26 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:35:40 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_buffer(t_vars *vars)
 	{
 		printf("Erro : mlx_new_image() para o buffer falhou.\n");
 		free_mlx(vars);
-    	free_all(vars);
+		free_all(vars);
 		exit(1);
 	}
 	vars->buffer.addr = mlx_get_data_addr(vars->buffer.img_ptr,

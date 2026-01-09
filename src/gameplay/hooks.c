@@ -6,12 +6,11 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 23:02:05 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/18 21:25:32 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:44:00 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 int	x_button(t_vars *vars)
 {

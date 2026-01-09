@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   look_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
+/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 20:41:40 by erocha-l          #+#    #+#             */
-/*   Updated: 2026/01/07 21:00:15 by erocha-l         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:44:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void free_walk(t_vars *vars)
+void	free_walk(t_vars *vars)
 {
-    free_mlx(vars);
-    free_all(vars);
-    exit(0);
+	free_mlx(vars);
+	free_all(vars);
+	exit(0);
 }
-
 
 void	look_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam)
 {

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/07 21:08:44 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:50:42 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ typedef struct s_vars
 
 void				my_pixel_put_to_buffer(t_texture *img, int x, int y,
 						int color);
-void				simple_parser(t_map *map, char *path);
 void				free_mlx(t_vars *vars);
 void				game_settings(t_vars *vars);
 void				calc_fps(t_fps *fps);
@@ -137,10 +136,8 @@ void				dda(t_map *map, t_camera *cam, t_player *player,
 						t_vars *vars);
 void				free_matriz(char **matriz);
 void				free_all(t_vars *vars);
-void				init_vars(t_vars *vars, char *map_path);
 int					ft_error(char *str);
 int					game(t_vars *vars);
-int					escape(int keycode, t_vars *vars);
 int					x_button(t_vars *vars);
 int					gameplay(t_vars *vars);
 int					get_position_map(char **matriz, t_map *map);
@@ -160,17 +157,18 @@ int					check_map_valid(char **map);
 int					check_file(char **map);
 int					get_path_text(t_map *map);
 int					check_duplacate_map(char **map);
+int					check_spaces_in_map(char **map);
 int					is_number(const char *s);
 char				*switch_newline(char *rgb);
 int					return_failure(char **matriz, char *temp);
+int					flood_fill(char **map, int x, int y);
 void				star_game(char **map, t_vars *vars, int i, int j);
 void				init_buffer(t_vars *vars);
 t_texture			*determinate_texture(t_camera *cam, t_vars *vars,
 						t_map *map);
 void				free_walk(t_vars *vars);
-void				look_right(t_map *map, t_player *p, t_fps *fps, t_camera *cam);
-void				look_left(t_map *map, t_player *p, t_fps *fps, t_camera *cam);
-
-
-
+void				look_right(t_map *map, t_player *p, t_fps *fps,
+						t_camera *cam);
+void				look_left(t_map *map, t_player *p, t_fps *fps,
+						t_camera *cam);
 #endif

@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 22:38:51 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/08 21:31:28 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int	convert_color(char *rgb)
 	{
 		free_matriz(color);
 		return (-1);
-	}	
+	}
 	if (is_number(color[0]) || is_number(color[1]) || is_number(color[2]))
 	{
 		free_matriz(color);
 		return (-1);
-	}	
+	}
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);
