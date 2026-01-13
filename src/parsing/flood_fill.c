@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/13 20:25:25 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:29:40 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,9 @@ int	init_process_flood(t_map *map)
 	map->width = width;
 	map->height = height;
 	if (expand_map(map, width, height))
-	return (ft_error("exanpad map invalid"));	
-	int	i = -1;
-	printf("antes da flood fill\n");
-	while (map->dup_map[++i])
-		printf("%s\n", map->dup_map[i]);
-	printf("-------------------\n");
-	i = -1;
+		return (ft_error("exanpad map invalid"));
 	if (!flood_fill(map->dup_map, 0, 0))
 		return (ft_error("flood fill map invalid"));
-	printf("depois da flood fill\n");
-	while (map->dup_map[++i])
-		printf("%s\n", map->dup_map[i]);
 	if (check_spaces_in_map(map->dup_map))
 		return (EXIT_FAILURE);
 	free_matriz(map->dup_map);
