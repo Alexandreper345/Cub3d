@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:25:52 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/08 22:29:03 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:25:25 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,11 @@ int	flood_fill(char **map, int x, int y)
 		&& flood_fill(map, x, y - 1));
 }
 
-char	**check_is_tab(char **copy, int i, int width, t_map *map)
-{
-	int k;
-	int	j;
-
-	j = 0;
-	k = 0;
-		while (j < width + 2)
-		{
-			if (map->map[i] && map->map[i][j] == '\t')
-			{
-				copy[i][k++] = 'x';
-				copy[i][k++] = 'x';
-				copy[i][k++] = 'x';
-				copy[i][k++] = 'x';
-			}
-			else
-				copy[i][k++] = 'x';
-			j++;
-		}
-	copy[i][j] = '\0';
-	return (copy);
-}
-
 int	copy_matriz(t_map *map, int height, int width)
 {
 	char	**copy_matriz;
 	int		i;
+	int		j;
 
 	copy_matriz = ft_calloc((height + 3), sizeof(char *));
 	if (!copy_matriz)
@@ -75,7 +52,10 @@ int	copy_matriz(t_map *map, int height, int width)
 			free_matriz(copy_matriz);
 			return (EXIT_FAILURE);
 		}
-		copy_matriz = check_is_tab(copy_matriz, i, width, map);
+		j = -1;
+		while (++j < width + 2)
+			copy_matriz[i][j] = 'x';
+		copy_matriz[i][j] = '\0';
 		i++;
 	}
 	map->dup_map = copy_matriz;
