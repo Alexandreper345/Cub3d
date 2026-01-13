@@ -43,7 +43,7 @@ char	**check_is_tab(char **copy, int i, int width, t_map *map)
 	k = 0;
 		while (j < width + 2)
 		{
-			if (map->map[i][j] == '\t')
+			if (map->map[i] && map->map[i][j] == '\t')
 			{
 				copy[i][k++] = 'x';
 				copy[i][k++] = 'x';
