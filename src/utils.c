@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 21:23:12 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 22:42:37 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:02:28 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	params_map(char **split, char *map)
 		return (EXIT_SUCCESS);
 	else if (ft_strcmp(split[0], "F") == 0 || ft_strcmp(split[0], "C") == 0)
 		return (EXIT_SUCCESS);
-	else if (map[0] == '\n' || map[0] == ' ' || map[0] == '\t')
+	else if (map[0] == '\n' || map[0] == ' ')
 		return (EXIT_SUCCESS);
 	else if (map[0] == '1')
 		return (EXIT_SUCCESS);
-	return (ft_error("file invalid"));
+	return (ft_error("content invalid: caracter invalid"));
 }
 
 int	check_file(char **map)
@@ -78,15 +78,17 @@ int	check_file(char **map)
 	while (map[++i])
 	{
 		split = ft_split(map[i], ' ');
-		temp = ft_strtrim(map[i], " \t");
+		temp = ft_strtrim(map[i], " ");;
+		if (ft_strchr(map[i], '\t'))
+			return (return_failure(split, temp, "content invalid: exist '\\t'"));
 		if (temp[0] == '1' && flag == 0)
 		{
 			if (check_map_valid(&map[i]))
-				return (return_failure(split, temp));
+				return (return_failure(split, temp, ""));
 			flag = 1;
 		}
 		if (params_map(split, temp))
-			return (return_failure(split, temp));
+			return (return_failure(split, temp, ""));
 		free(temp);
 		free_matriz(split);
 	}

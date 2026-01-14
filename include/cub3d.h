@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/08 21:50:42 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:00:24 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ int					check_duplacate_map(char **map);
 int					check_spaces_in_map(char **map);
 int					is_number(const char *s);
 char				*switch_newline(char *rgb);
-int					return_failure(char **matriz, char *temp);
+int					return_failure(char **matriz, char *temp, char *str);
 int					flood_fill(char **map, int x, int y);
 void				star_game(char **map, t_vars *vars, int i, int j);
 void				init_buffer(t_vars *vars);

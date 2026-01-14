@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 22:41:04 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:15:28 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_map_valid(char **map)
 
 	i = 0;
 	flag = 0;
-	while (map[i])
+	while (map[i] == '1' || map[i] == ' ')
 	{
 		j = 0;
 		while (map[i][j])
