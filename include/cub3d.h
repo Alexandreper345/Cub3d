@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 16:57:40 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/13 22:00:24 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:03:56 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,13 @@ void				dda(t_map *map, t_camera *cam, t_player *player,
 						t_vars *vars);
 void				free_matriz(char **matriz);
 void				free_all(t_vars *vars);
+int 				free_temp_and_split(char **split , char *temp);
 int					ft_error(char *str);
 int					game(t_vars *vars);
 int					x_button(t_vars *vars);
 int					gameplay(t_vars *vars);
 int					get_position_map(char **matriz, t_map *map);
+int					check_player(int flag);
 int					get_texture_pixel_color(t_texture *tex, int x, int y);
 int					walk(int keycode, t_vars *vars);
 int					get_position_player(char **map, t_vars *vars_main);
@@ -149,6 +151,8 @@ int					init_matriz(t_map *map, char *path);
 int					parsing(t_map *map, t_vars *vars_main);
 int					malloc_in_pointer_y(t_map *map, char *line, int fd,
 						char *path);
+int					check_error_in_check_file(char **split, char *temp,
+					char **map, int i);
 int					get_height_map(char **matriz);
 int					get_width_map(char **matriz);
 int					init_process_flood(t_map *map);
@@ -159,7 +163,10 @@ int					get_path_text(t_map *map);
 int					check_duplacate_map(char **map);
 int					check_spaces_in_map(char **map);
 int					is_number(const char *s);
+int					ft_color_free(char **color);
 char				*switch_newline(char *rgb);
+char				*ft_strtrim_cub(char const *s1, char const *set);
+int					params_map(char **split, char *map);
 int					return_failure(char **matriz, char *temp, char *str);
 int					flood_fill(char **map, int x, int y);
 void				star_game(char **map, t_vars *vars, int i, int j);

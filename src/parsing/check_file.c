@@ -6,11 +6,20 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/08 21:29:53 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:11:18 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	check_player(int flag)
+{
+	if (flag < 1)
+		return (ft_error("there is no player"));
+	else if (flag > 1)
+		return (ft_error("There is more than one player on the map."));
+	return (EXIT_SUCCESS);
+}
 
 static int	format_map(char *map)
 {
@@ -29,7 +38,7 @@ static int	format_map(char *map)
 int	check_file_path(int argc, char **argv)
 {
 	if (argc != 2)
-		return (EXIT_FAILURE);
+		return (ft_error("not exist the map"));
 	if (format_map(argv[1]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
@@ -54,10 +63,14 @@ int	is_number(const char *s)
 char	*switch_newline(char *rgb)
 {
 	int	i;
+	int	comma;
 
+	comma = 0;
 	i = 0;
 	while (rgb[i])
 	{
+		if (rgb[i] == ',')
+			comma++;
 		if (rgb[i] == '\n')
 		{
 			rgb[i] = '\0';
@@ -65,5 +78,7 @@ char	*switch_newline(char *rgb)
 		}
 		i++;
 	}
+	if (comma != 2)
+		return (NULL);
 	return (rgb);
 }

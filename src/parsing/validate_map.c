@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 21:52:46 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/13 22:15:28 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:08:51 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	check_map_valid(char **map)
 
 	i = 0;
 	flag = 0;
-	while (map[i] == '1' || map[i] == ' ')
+	while (map[i] && (map[i][0] == '1' || map[i][0] == ' '))
 	{
 		j = 0;
 		while (map[i][j])
 		{
 			if ((map[i][j] != 'N') && (map[i][j] != 'S') && (map[i][j] != 'W')
 				&& map[i][j] != 'E' && (map[i][j] != '0' && map[i][j] != '1')
-				&& map[i][j] != '\n' && map[i][j] != ' ' && map[i][j] != '\t')
+				&& map[i][j] != '\n' && map[i][j] != ' ')
 				return (ft_error("invalid caracter"));
 			if ((map[i][j] == 'N') || (map[i][j] == 'S') || (map[i][j] == 'W')
 				|| (map[i][j] == 'E'))
@@ -36,8 +36,8 @@ int	check_map_valid(char **map)
 		}
 		i++;
 	}
-	if (flag != 1)
-		return (ft_error("not exist player"));
+	if (check_player(flag))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -48,7 +48,7 @@ int	is_line_map(char *line)
 
 	found_valid = 0;
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
+	while (line[i] == ' ')
 		i++;
 	if (line[i] == '\0' || line[i] == '\n')
 		return (0);

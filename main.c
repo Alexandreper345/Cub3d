@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:26:28 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/08 21:22:40 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:12:38 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	init_null(t_vars *vars)
 	vars->map = ft_calloc(1, sizeof(t_map));
 	vars->player = ft_calloc(1, sizeof(t_player));
 	if (!vars->map || !vars->player)
-		return (ft_error("init struct"));
+		return (ft_error("init struct failed"));
 	vars->mlx = NULL;
 	vars->win = NULL;
 	vars->buffer.img_ptr = NULL;

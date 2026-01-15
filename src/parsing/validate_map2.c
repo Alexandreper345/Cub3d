@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 21:59:36 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/08 21:31:53 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:00:10 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_file_before_map(char *line)
 	if ((ft_strcmp(split[0], "NO") != 0 && ft_strcmp(split[0], "SO") != 0)
 		&& (ft_strcmp(split[0], "WE") != 0 && ft_strcmp(split[0], "EA") != 0)
 		&& (ft_strcmp(split[0], "F") != 0 && ft_strcmp(split[0], "C") != 0)
-		&& line[0] != '\n' && line[0] != ' ' && line[0] != '\t')
+		&& line[0] != '\n' && line[0] != ' ')
 		return (EXIT_FAILURE);
 	free_matriz(split);
 	return (EXIT_SUCCESS);

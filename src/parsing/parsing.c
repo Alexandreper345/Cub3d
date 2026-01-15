@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/13 21:45:43 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:15:55 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	check_config_info(t_map *map)
 	{
 		line = map->matriz[i];
 		if (check_file_before_map(line))
-			return (ft_error("invalid struct map"));
+			return (ft_error("invalid file structure: textures or "
+					"colors are missing or placed after the map"));
 		flag = exist_textures_and_color(line, flag);
 		if (flag == 6)
 			return (EXIT_SUCCESS);
@@ -56,12 +57,11 @@ int	convert_color(char *rgb)
 	int		b;
 
 	rgb = switch_newline(rgb);
+	if (rgb == NULL)
+		return (-1);
 	color = ft_split(rgb, ',');
 	if (!color[0] || !color[1] || !color[2] || color[3])
-	{
-		free_matriz(color);
-		return (-1);
-	}
+		ft_color_free(color);
 	if (is_number(color[0]) || is_number(color[1]) || is_number(color[2]))
 	{
 		free_matriz(color);

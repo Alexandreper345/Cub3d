@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 21:09:32 by alda-sil          #+#    #+#             */
-/*   Updated: 2025/12/22 22:42:14 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 20:38:07 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	init_matriz(t_map *map, char *path)
 		return (ft_error("is fd failed"));
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (ft_error("the content map is NULL"));
+		return (ft_error("the file is NULL"));
 	if (malloc_in_pointer_y(map, line, fd, path))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

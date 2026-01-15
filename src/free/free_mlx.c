@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 21:22:43 by erocha-l          #+#    #+#             */
-/*   Updated: 2026/01/08 21:34:58 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 21:17:56 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ void	free_all(t_vars *vars)
 		free(vars->player);
 	if (vars)
 		free(vars);
+}
+
+int	free_temp_and_split(char **split, char *temp)
+{
+	free(temp);
+	free_matriz(split);
+	return (EXIT_SUCCESS);
+}
+
+int	check_error_in_check_file(char **split, char *temp, char **map, int i)
+{
+	if (ft_strchr(map[i], '\t'))
+		return (return_failure(split, temp, "content invalid: exist '\\t'"));
+	if (params_map(split, temp))
+		return (return_failure(split, temp, ""));
+	return (EXIT_SUCCESS);
 }
