@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:23:54 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/14 22:11:18 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:40:09 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	format_map(char *map)
 int	check_file_path(int argc, char **argv)
 {
 	if (argc != 2)
-		return (ft_error("not exist the map"));
+		return (ft_error("invalid size arguments"));
 	if (format_map(argv[1]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

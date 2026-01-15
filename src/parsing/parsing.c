@@ -6,7 +6,7 @@
 /*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 21:05:56 by alda-sil          #+#    #+#             */
-/*   Updated: 2026/01/14 22:15:55 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/14 22:41:46 by alda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,14 @@ int	convert_color(char *rgb)
 		return (-1);
 	color = ft_split(rgb, ',');
 	if (!color[0] || !color[1] || !color[2] || color[3])
-		ft_color_free(color);
+		return (ft_color_free(color));
 	if (is_number(color[0]) || is_number(color[1]) || is_number(color[2]))
-	{
-		free_matriz(color);
-		return (-1);
-	}
+		return (ft_color_free(color));
 	r = ft_atoi(color[0]);
 	g = ft_atoi(color[1]);
 	b = ft_atoi(color[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		return (-1);
+		return (ft_color_free(color));
 	free_matriz(color);
 	return ((r << 16) | (g << 8) | b);
 }
