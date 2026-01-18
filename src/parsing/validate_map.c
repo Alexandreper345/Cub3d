@@ -92,12 +92,14 @@ int	check_invalid_caracter(char **matriz, int end, int i, t_map *map)
 	{
 		res = is_line_map(matriz[i + count]);
 		if (res == -1)
-			return (ft_error("invalid character in map"), EXIT_FAILURE);
+			return (ft_error("invalid character in map"));
 		else if (res == 0)
 			end = 0;
 		else
 			count++;
 	}
+	if (check_duplacate_map(matriz, i, count))
+		return (EXIT_FAILURE);
 	map->map = malloc(sizeof(char *) * (count + 1));
 	if (!map->map)
 		return (ft_error("malloc error"));
@@ -117,7 +119,7 @@ int	get_position_map(char **matriz, t_map *map)
 	while (matriz[i] && !end)
 	{
 		j = 0;
-		while (matriz[i][j] == ' ' || matriz[i][j] == '\t')
+		while (matriz[i][j] == ' ')
 			j++;
 		if (matriz[i][j] == '1')
 			end = 1;

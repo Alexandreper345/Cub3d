@@ -12,25 +12,18 @@
 
 #include "../../include/cub3d.h"
 
-int	check_duplacate_map(char **map)
+int	check_duplacate_map(char **map, int i, int count)
 {
-	int	in_map;
-	int	finish_map;
-	int	i;
+	int	k;
+	int	res;
 
-	in_map = 0;
-	finish_map = 0;
-	i = -1;
-	while (map[++i])
+	k = i + count;
+	while (map[k])
 	{
-		if (ft_strchr(" 01", map[i][0]))
-		{
-			if (finish_map)
-				return (ft_error("duplicate map"));
-			in_map = 1;
-		}
-		else if (in_map && map[i][0] == '\n')
-			finish_map = 1;
+		res = is_line_map(map[k]);
+		if (res == 1)
+			return (ft_error("duplicate map"));
+		k++;
 	}
 	return (EXIT_SUCCESS);
 }

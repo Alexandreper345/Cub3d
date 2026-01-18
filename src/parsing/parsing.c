@@ -110,7 +110,7 @@ int	parsing(t_map *map, t_vars *vars_main)
 	if (get_position_map(map->matriz, map) || get_position_player(map->map,
 			vars_main))
 		return (EXIT_FAILURE);
-	if (check_duplacate_map(map->map) || init_process_flood(map))
+	if (init_process_flood(map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
