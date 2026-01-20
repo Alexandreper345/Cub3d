@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gameplay.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alda-sil <alda-sil@student.42.rio>         +#+  +:+       +#+        */
+/*   By: erocha-l <erocha-l@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 17:32:57 by erocha-l          #+#    #+#             */
-/*   Updated: 2025/12/16 20:27:30 by alda-sil         ###   ########.fr       */
+/*   Updated: 2026/01/20 19:42:31 by erocha-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ static void	draw_walls(t_map *map, t_camera *c, t_player *p, t_vars *vars)
 		c->wall_x = p->posx + c->perpwalldist * c->raydirx;
 	c->wall_x -= floor(c->wall_x);
 	c->tex_x = (int)(c->wall_x * (double)tex->width);
-	if ((c->side == 0 && c->raydirx > 0) || (c->side == 1
-			&& c->raydiry < 0))
-		c->tex_x = tex->width - c->tex_x - 1;
+	if ((c->side == 0 && c->raydirx < 0) || (c->side == 1 && c->raydiry > 0))
+    	c->tex_x = tex->width - c->tex_x - 1;
 	draw_texture(tex, c, vars);
 }
 
