@@ -1,11 +1,11 @@
 F 255,255,255
 C 00,1,0
 
-WE ./textures/Pac-Man/pac_semi_down.xpm
+WE  ./textures/Pac-Man/pac_semi_dow.xpm
 EA ./textures/Pac-Man/pac_semi_left.xpm
 SO ./textures/Pac-Man/pac_semi_right.xpm
 NO ./textures/Pac-Man/pac_semi_up.xpm
 
-11111
-10S11
-11111
+111111111111    
+10W000000001
+111111111111

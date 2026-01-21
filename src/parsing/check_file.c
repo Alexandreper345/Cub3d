@@ -38,7 +38,7 @@ static int	format_map(char *map)
 int	check_file_path(int argc, char **argv)
 {
 	if (argc != 2)
-		return (ft_error("invalid size arguments"));
+		return (ft_error("invalid size of arguments"));
 	if (format_map(argv[1]))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

@@ -40,7 +40,7 @@ static int	init_null(t_vars *vars)
 	vars->map = ft_calloc(1, sizeof(t_map));
 	vars->player = ft_calloc(1, sizeof(t_player));
 	if (!vars->map || !vars->player)
-		return (ft_error("init struct failed"));
+		return (ft_error("Error\n init struct failed\n"));
 	vars->mlx = NULL;
 	vars->win = NULL;
 	vars->buffer.img_ptr = NULL;

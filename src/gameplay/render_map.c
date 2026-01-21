@@ -21,7 +21,8 @@ static void	create_texture(t_vars *vars, t_texture *tex, char *path)
 			&map->tex_height);
 	if (tex->img_ptr == NULL)
 	{
-		printf("[ERROR] loading texture\n");
+		printf("Error\n");
+		printf("loading texture\n");
 		free_mlx(vars);
 		free_all(vars);
 		exit(1);
@@ -48,7 +49,7 @@ static void	convert_textures_to_img(t_vars *vars)
 void	game_settings(t_vars *vars)
 {
 	convert_textures_to_img(vars);
-	vars->win = mlx_new_window(vars->mlx, 1080, 720, "Hello world!");
+	vars->win = mlx_new_window(vars->mlx, 1080, 720, "cub3D");
 	if (vars->win == NULL)
 	{
 		free_mlx(vars->mlx);
