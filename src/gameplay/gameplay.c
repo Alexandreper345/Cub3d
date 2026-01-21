@@ -79,7 +79,7 @@ static void	draw_walls(t_map *map, t_camera *c, t_player *p, t_vars *vars)
 	c->wall_x -= floor(c->wall_x);
 	c->tex_x = (int)(c->wall_x * (double)tex->width);
 	if ((c->side == 0 && c->raydirx < 0) || (c->side == 1 && c->raydiry > 0))
-    	c->tex_x = tex->width - c->tex_x - 1;
+		c->tex_x = tex->width - c->tex_x - 1;
 	draw_texture(tex, c, vars);
 }
 

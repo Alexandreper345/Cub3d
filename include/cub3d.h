@@ -136,7 +136,7 @@ void				dda(t_map *map, t_camera *cam, t_player *player,
 						t_vars *vars);
 void				free_matriz(char **matriz);
 void				free_all(t_vars *vars);
-int 				free_temp_and_split(char **split , char *temp);
+int					free_temp_and_split(char **split, char *temp);
 int					ft_error(char *str);
 int					game(t_vars *vars);
 int					x_button(t_vars *vars);
@@ -152,7 +152,7 @@ int					parsing(t_map *map, t_vars *vars_main);
 int					malloc_in_pointer_y(t_map *map, char *line, int fd,
 						char *path);
 int					check_error_in_check_file(char **split, char *temp,
-					char **map, int i);
+						char **map, int i);
 int					get_height_map(char **matriz);
 int					get_width_map(char **matriz);
 int					init_process_flood(t_map *map);
